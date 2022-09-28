@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 100px;
+            height: 40px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <p style="height: 500px ; ">啦啦啦啦啦</p>
+    <p style="height: 500px ; ">啦啦啦啦啦</p>
+    <p style="height: 500px ; ">啦啦啦啦啦</p>
+    <button>点击</button>
+</body>
+<script>
+    //滚动条的滚动距离
+    //scrollTop 距离窗口顶部/左边 的距离
+    console.log(document.documentElement.scrollTop);
+    console.log(document.documentElement.scrollLeft);
+    //求出滚动条滚动的最大距离 = html元素的高度/宽度 - 视图的高度/宽度
+    console.log('---------------');
+    console.log(document.documentElement.scrollHeight);
+    console.log(window.innerHeight);
+    var scrollh= document.documentElement.scrollHeight;
+    console.log(scrollh);
+    console.log(document.documentElement.scrollWidth);
+
+//出现滚动条(需要减去滚动条的占位17px)
+var scrollW = document.documentElement.scrollWidth = window.innerWidth - 17 ;
+console.log(scrollW);
+
+//当需要让网页视图展示在我们眼前不被滚动条遮挡，出现下拉滚动条或出现横拉滚动条减去他们的宽度//
+
+
+//案例 剩余滚动区域
+window.onscroll = function(){
+    var stop = document.documentElement.scrollTop;
+    if(stop >= 0){
+        var top = document.documentElement.scrollHeight - window.innerHeight - 17 -stop;
+        console.log('还剩余'+top + '空间');
+    }
+}
+//设置滚动条的滚动位置，参数（x,y）;
+// document.documentElement.scroll(0,200);
+
+//滚动条每次滚动的距离，可以累加滚动的过程 ，参数（x,y）
+//作用：想让滚动条滚到什么位置，就设置多少距离
+// document.documentElement.scrollBy(0 ,500);
+
+//案例：返回顶部
+var btn = document.querySelector('button');
+btn.onclick = function(){
+// document.documentElement.scrollTop = 0;
+// document.documentElement.scrollBy(0,-200);
+// document.documentElement.scroll(0,0);
+
+//兼容性写法
+document.documentElement.scrollTop || document.body.scrollTop;
+var st = document.scrollingElement.scrollTop;
+console.log(st);
+}
+
+
+
+// element.offsetWidth 返回自身包括padding，边框，内容区的宽度，返回数值不带单位
+// element.clientWidth 返回自身包括padding，内容区的宽度，不含边框，返回数值不带单位
+//element.scrollWidth 返回自身实际宽度，不含边框，返回数值不带单位
+
+
+</script>
+</html>

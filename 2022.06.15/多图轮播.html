@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝轮播</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .box {
+            position: relative;
+            overflow: hidden;
+            width: 1200px;
+            height: 200px;
+            border: 1px solid;
+            margin: 50px auto;
+        }
+
+        .box ul {
+
+            height: 100%;
+            width: 300%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 1s;
+        }
+
+        .box ul li {
+            float: left;
+            justify-content: center;
+            width: 1200px;
+            height: 300px;
+            display: flex;
+        }
+
+        .box ul li  img {
+            width: 25%;
+            height: 100%;
+        }
+
+        .box button {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background-color: rgb(84, 82, 82);
+            text-align: center;
+            font-size: 300px;
+        }
+        .lt{
+            left:0px;
+            top: 50%;
+        }
+        .rt{
+            right: 0px;
+            top: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="box">
+        <ul>
+            <li>
+                <img src="../../../测试专用图/1.webp" alt="">
+                <img src="../../../测试专用图/2.webp" alt="">
+                <img src="../../../测试专用图/3.webp" alt="">
+                <img src="../../../测试专用图/4.webp" alt="">
+            </li>
+            <li>
+                <img src="../../../测试专用图/2.webp" alt="">
+                <img src="../../../测试专用图/2.webp" alt="">
+                <img src="../../../测试专用图/2.webp" alt="">
+                <img src="../../../测试专用图/2.webp" alt="">
+            </li>
+            <li>
+                <img src="../../../测试专用图/3.webp" alt="">
+                <img src="../../../测试专用图/3.webp" alt="">
+                <img src="../../../测试专用图/3.webp" alt="">
+                <img src="../../../测试专用图/3.webp" alt="">
+            </li>
+            <li>
+                <img src="../../../测试专用图/1.webp" alt="">
+                <img src="../../../测试专用图/2.webp" alt="">
+                <img src="../../../测试专用图/3.webp" alt="">
+                <img src="../../../测试专用图/4.webp" alt="">
+            </li>
+
+        </ul>
+        <button class="lt"></button>
+        <button class="rt"></button>
+    </section>
+
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var ul = document.querySelector('ul');
+    var lt =document.querySelector('.lt');
+    var rt =document.querySelector('.rt');
+    var x = 0;
+    rt.onclick = function(){
+        x++ ;
+        if(x>=3){
+            x = 1;
+        }
+        
+        ul.style.left = x * -100 +'%';
+    }
+    lt.onclick = function(){
+        x-- ;
+        if(x<0){
+            x = 2;
+        }
+        ul.style.left = x * -100 +'%';
+    }
+  var arr =   setInterval(fn , 2000);
+  function fn(){
+    x++ ;
+        if(x>=3){
+            x = 0;
+            ul.style.transition = 'none';
+        }else if(x>0 && x<3){
+            ul.style.transition = 'all 1s';
+        }
+        
+        ul.style.left = x * -100 +'%';
+  }
+  box.onmouseover = function(){
+    clearInterval(arr);
+  }
+  box.onmouseout = function(){
+    arr = setInterval(fn , 2000);
+  }
+</script>
+
+</html>

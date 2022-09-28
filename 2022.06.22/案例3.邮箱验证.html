@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入邮箱" id="emall">
+    <button type="submit" id="btn">提交</button>
+</body>
+<script>
+        var btn = document.querySelector('#btn');
+    var emall = document.querySelector('#emall');
+    //\d 代表一个数字
+    var reg = /^[1-9]{5,10}@qq\.com/;
+    var reg2 = /^[1-9]{6,12}@(qq|sina|163)\.com/;
+    btn.onclick = function(){
+        if(reg.test(emall.value)){
+            alert('格式正确');
+        }else{
+            alert('格式错误');
+        }
+    }
+</script>
+</html>

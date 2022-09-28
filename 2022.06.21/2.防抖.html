@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+
+</body>
+<script>
+        var btn = document.querySelector('#btn');
+        //防抖 ：多次操作一个事件，以末次为准（只执行最后一次操作）
+        //原理：延迟执行下次事件触发“在某个时间段执行一次”
+        //作用：降低代码执行的频率
+var timer ;
+btn.onclick = function(){
+    clearTimeout(timer)
+    timer = setTimeout(function(){
+        console.log('00000');
+    },1000)
+}
+
+
+</script>
+</html>

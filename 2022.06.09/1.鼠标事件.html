@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid ;
+        }
+        section{
+            width: 800px;
+            height: auto;
+            border: 1px solid;
+        }
+        img{
+            width: 100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button class="click">点击</button>
+
+    <section>
+        <img src="../../../测试专用图/1.webp" alt="">
+    </section>
+</body>
+<script>
+    //鼠标事件
+    //点击事件 onclick ‘每一次点击都是上一次点击的结果的基础上的累计’
+    //案例
+    var box = document.querySelector('.box');
+    var btn = document.querySelector('.click');
+    btn.onclick = function(){
+        box.style.backgroundColor = 'pink';
+    }
+
+    //鼠标双击事件 ondblclick
+    box.ondblclick = function(){
+        box.style.backgroundColor = 'blue';
+    }
+
+    //移入 onmouseover
+    box.onmouseover = function(){
+        box.style.backgroundColor = 'yellow';
+    }
+    //移出 onmouseout 
+    box.onmouseout = function(){
+        box.style.backgroundColor = 'green';
+    }
+    //鼠标按下时 onmousedown 
+    box.onmousedown = function(){
+        box.innerHTML = '我是onmousedown';
+    }
+    //鼠标弹起时 onmouseup
+    box.onmouseup = function(){
+        box.innerHTML = '我是鼠标弹起事件';
+    }
+    
+    //滚轮滚动 onmousewheel 鼠标滚轮滚动事件
+    box.onmousewheel = function(){
+        box.innerHTML = '鼠标滚动啦';
+    }
+    // onmousemove 鼠标移动事件
+    box.onmousemove = function(){
+        box.innerHTML = '鼠标正在移动';
+    }
+
+/*
+
+onclick  单点击
+ondblclick 双击
+onmouseover 移入
+onmouseout 移出
+onmouseenter 移入
+onmouseleave 移出
+onmousewheel 鼠标滚轮滚动
+onmousedown 按下
+onmouseup 弹起
+onmousemove 移动
+
+*/ 
+
+
+    //案例 。实现自动轮播
+    //需求，移入移出
+    var section = document.querySelector('section');
+    var img = document.querySelector('img ');
+    var arr = ['1.webp','2.webp','3.webp','4.webp','5.webp'];
+    var x = 0;
+    img.style.src= '../../../测试专用图/'+arr[0];
+    var timer = setInterval(fn,2000)
+function fn(){
+        x++;
+        if(x>=arr.length){
+            x=0;
+        }
+        img.src = '../../../测试专用图/'+arr[x];
+    }
+    //清除定时器
+    section.onmouseover = function(){
+        clearInterval(timer);
+    }
+    //启动定时器
+    section.onmouseout = function(){
+        clearInterval(timer);
+        timer = setInterval(fn,2000);
+    }
+
+    // var timer;
+    // //开始函数
+    // function start(){
+    //         timer = setInterval(sefl , 2000);
+    // }
+    // start();
+    // //停止函数
+    // function start( ){
+    //     clearInterval(timer);
+    // }
+    // // 移入
+    // section.onmouseenter = stop;
+    // //移除
+    // section.onmouseleave = start;
+
+//两种移入移出事件的区别
+
+
+//子元素随父元素变化
+//onmouseover ; 移入
+//onmouseout; 移出
+
+//子元素不会继承父元素的变化
+//onmouseenter ;移入
+//onmouseleave ; 移出
+
+
+//onmousemove 移动;子元素也会触发
+</script>
+</html>
+
+
+<!-- 
+
+
+
+ -->

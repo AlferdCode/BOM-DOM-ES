@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .haha {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .divBox {
+            width: 30%;
+            height: 200px;
+            background-color: #666;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>这是一段文本</p>
+    <h1>haha</h1>
+    <a href="#">百度一下，你知道</a>
+    <div></div>
+    <section></section>
+</body>
+<script>
+    //一：改变HTML元素及内容
+    var p = document.querySelector('p');
+    //innerText ：改变元素的文本内容‘不能解析标签’
+    //innerHTML；改变元素的内容”能解析标签“
+    //outerHTML ： 改变元素本身的内容及改变元素本身”能解析标签“
+    console.log(p.innerHTML);
+    console.log(p.innerText);
+    p.innerText = '<b>利用innerText</b>';//不能加标签，只改变文本内容
+    p.innerHTML = '<b>利用innerHTML</b>';//可以加标签和改变文本内容
+    p.outerHTML = '<h2><a href=\"#\">点击跳转</h2>';//可以替换本身标签和加标签，改变文本内容
+    p.textContent = '111';//不改变：原因”上面的p本身发生啦改变“
+    var h1 = document.querySelector('h1');
+    h1.textContent = '2222';
+
+
+    //清空页面
+    // document.body.innerHTML = '';
+
+    //二 ：改变HTML属性 元素.html属性 = "属性值";
+    var baidu = document.querySelectorAll('a')[1];
+    baidu.className = 'lj';//添加元素没有的属性“
+    baidu.href = 'https://www.baidu.com/';//修改”存在的属性重新赋值“
+
+
+    //三：改变css属性，元素.style.css属性 = "属性值";
+    var box = document.querySelector('div');
+    box.style.height = '100px';
+    box.style.width = '100px';
+    box.style.backgroundColor = 'pink';//驼峰命名法
+    box.style.borderRadius = "30%";
+
+    //案例
+    //循环添加案例 ， 弹性布局显示， (两行三列)
+    var section = document.querySelector('section');
+    section.innerHTML =
+        `<div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>`;
+    section.className = "haha";
+    var divBox = section.querySelectorAll('div');
+    for (var i = 0; i < divBox.length; i++) {
+        divBox[i].className = "divBox";
+    }
+</script>
+</html>

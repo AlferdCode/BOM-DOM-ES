@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="box">第1个</li>
+        <li class="box box1">第2个</li>
+        <li id="box">第3个</li>
+        <li id="box">第4个</li>
+        <li>第5个</li>
+    </ul>
+    <input type="text" name="user" >
+</body>
+<script>
+    //ES5
+    // document.getElement|sByXXX
+    //通过class获取元素
+    //返回的是一个集合，HTMLcollection(2)"类数组"
+    var className= document.getElementsByClassName('box');
+    console.log(className);
+    console.log(className instanceof Array);
+    className = Array.from(className);//转化为真正的数组
+    console.log(className);
+    console.log(className instanceof Array);
+    console.log(className[0]);//获取集合中的某个元素
+
+    //通过Id获取元素。 参数ID名
+    //元素的唯一标志，只能获取一个元素“命名重复，只能获取最上面的元素”。
+    var boxId = document.getElementById('box');
+    console.log(boxId);//Id相同时 只能获取第一个
+
+
+    //通过标签名获取元素 ， 参数HTML元素名
+    //返回一个集合 ， HTNMLcollection(2)"类数组"
+     var list = document.getElementsByTagName('li');
+     console.log(list);
+     console.log(list[4]);
+
+
+     //通过name获取元素  参数是name名
+     //返回一个集合 ， NodeList(2)"类数组"
+     var names = document.getElementsByName('user');
+     console.log(names[0]);
+
+     //嵌套使用，通过父节点获取某个子节点
+     //注意 ；通过ID选择器查找元素的方法 ， 只能通过document去调用。
+     //通过ul获取第三个li
+     var ulName = document.getElementsByTagName('ul')[0];
+    //  var newLi =ulName.getElementById('box'); 报错
+    var newLi = ulName.getElementsByTagName('li')[2];
+     console.log(ulName);
+
+
+     //ES6获取
+    //  document.querySelector|All
+    //querySelector() , 参数是css选择器， 只能返回一个元素“最上面的元素”，
+   var classBox = document.querySelector('.box');
+   console.log(classBox);
+   var hd = document.querySelector('body ul #box');
+   console.log(hd);
+
+   //querySelectorAll() , 参数是css选择器 ,返回一个集合“通过下标获取单个元素”
+   var classBox2 = document.querySelectorAll('.box');
+    console.log(classBox2[1]);
+    var idBox = document.querySelectorAll('#box');
+    console.log(idBox[1]);
+    var hd2 = document.querySelectorAll('body ul + input');
+   console.log(hd2[0]);
+
+
+   //遍历元素 
+   //需求：获取到双所有的li元素 把, 双数行的内容改变
+   var lis = document.querySelectorAll('ul li ');
+   lis = Array.from(lis);
+   console.log(lis);
+   var count = 0 ;
+   for(var i = 0 ; i<lis.length ; i++){
+       count++;
+       if(count % 2 == 0){
+           lis[i].innerHTML = '改变'+ count ;
+       }
+   }
+
+</script>
+</html>

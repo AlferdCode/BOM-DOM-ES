@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li class="box"></li>
+        <li class="box"></li>
+        <li class="box"></li>
+        <li class="box"></li>
+    </ul>
+</body>
+<script>
+        //className()
+        //classList()
+        var box = document.querySelectorAll('li')[0];
+        box.className = 'box';//添加
+        box.className = 'box1 box2';//修改
+        console.log(box.className.length);//查看class字符的长度
+        box.className = "";//删除
+
+        //classlista
+        box.classList.add('box1','box2','box3');//添加
+        box.classList.remove('box1');//删除
+        var arr = box.classList.length;
+        console.log(arr);//返回是class类名的个数
+        box.classList.toggle('aaa'); //却换 隐藏显示（有就加上，无就去掉）
+        var items = box.classList.item(2);//索引class类名
+        console.log(items);
+
+        /*
+        className 和 classList 的区别
+        1.所有的浏览器都支持className ， classList 是H5新增的对IE不兼容”IE+10支持“
+        2.className 返回一个字符串，classList返回class名的个数“”
+        3.className的返回值包含啦元素的class属性值的字符串。classList返回值是DOMTokenList类型集合“通过集合操作class属性”;
+        */
+</script>
+</html>

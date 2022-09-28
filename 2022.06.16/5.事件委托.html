@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            background-color: #ccc;
+
+        }
+        ul{
+            padding: 30px;
+        }
+        ul li {
+            list-style: none;
+            line-height: 30px;
+            background-color: aqua
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="list">
+            <li>我是第1个li</li>
+            <li>我是第2个li</li>
+            <li>我是第3个li</li>
+            <li>我是第4个li</li>
+            <li>我是第5个li</li>
+        </ul>
+    </div>
+</body>
+<script>
+    /*事件委托：
+    原理： 把子元素的事件委派给其父元素代替子元素完成事件。（冒泡机制原理）
+    1.事件委派的原理。
+    2.事件冒泡实现委派昨用
+    3.事件源对象作用用获取事件目标对象。
+    事件委派的优点
+    1.提高性能，绑定一个事件处理函数 比绑定多个号
+    2.灵活性好，不用每次添加元素时，都给添加元素事件的处理
+    3.减少对dom的操作。
+    */
+   //e.target 返回触发的事件对象
+//e.srcElement 返回触发的事件对象(IE6~8不支持)
+   var ul =document.querySelector('ul');
+
+   ul.addEventListener('click',function(e){
+    // e.target.style.backgroundColor = 'pink';
+    e.srcElement.style.backgroundColor = 'pink';
+   })
+
+
+</script>
+
+</html>

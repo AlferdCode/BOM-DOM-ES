@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="user"> 
+    <span id="txt"></span>
+</body>
+<script>
+    var user = document.getElementById('user');
+    var txt = document.getElementById('txt');
+
+    // 聚焦事件
+    user.addEventListener('focus',function(){
+        this.style.background = "#ccc";
+    })
+
+    // 失焦事件
+    user.addEventListener('blur',function(){
+        this.style.background = "";
+        if(user.value.length > 1 && user.value.length < 6){
+            txt.innerHTML = "长度不能小于6个";
+            txt.style.color = "red";
+        }else{
+            txt.innerHTML = "";
+        }
+    })
+
+    // 自动聚焦方法
+    // 例：提交信息某些表单不符合要求自动聚焦修改。
+    user.focus();
+
+
+</script>
+</html>

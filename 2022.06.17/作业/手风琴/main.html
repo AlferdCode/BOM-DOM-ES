@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+           list-style: none; 
+           height: 400px;
+           width: 100px;
+           padding: 0;
+           margin: 0;
+           float: left;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
+</body>
+<script>
+    var ul = document.querySelector('ul');
+    var arr = ['red','green','gold','pink'];
+    for(var i = 0 ; i<arr.length ; i++){
+        ul.children[i].style.backgroundColor = arr[i];
+    }
+    ul.children[0].style.width = '300px';
+    Array.from(ul.children).forEach(function(item,index){
+        item.addEventListener('click',function(e){
+            for(var i = 0 ; i<ul.children.length ; i++){
+                ul.children[i].style.width = '100px';
+            }
+            e.target.style.width = '300px';
+        })
+    })
+
+</script>
+</html>

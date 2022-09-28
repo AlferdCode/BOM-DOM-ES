@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 100%;
+            height: 200px;
+            background-color: rgb(48, 151, 185);
+        }
+/* and 要加空格分开 */
+        @media screen and (min-width: 900px) {
+            .box {
+                background-color: pink;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    //使用媒体查询怎么表示大于等于和小于等于 ， 并页面宽度大于500px并且小于800px时 ，把div的背景改为红色
+</script>
+
+</html>

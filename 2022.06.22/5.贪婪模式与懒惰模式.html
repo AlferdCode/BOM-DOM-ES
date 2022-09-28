@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 默认 ：贪婪模式
+    var p = /a{2,5}/; // {} 量词，是一个范围，总会尽可能多的匹配
+    var str = 'aaaaaaabbb';
+    console.log(p.exec(str));
+
+    var p = /a{2,5}?/;//在量词之后添加  ？ 转化为懒惰模式 ， 尽可能少的匹配
+    var str = 'aaaaaaabbb';
+    console.log(p.exec(str));
+
+    var p = /ab?/;//代表量词 ，0次或1次
+    var p = /ab??/;//代表叠词，第一个？是量词 ， 第二个？是懒惰模式
+    var str = 'abcd';
+    console.log(p.exec(str)); 
+
+    /*
+    正则表达式表示字符串重复运算符 * + ？ {} ，默认都会选择贪婪模式、如果想要改变为懒惰模式，就在“ * + ？ {}” 运算符后面加 ？ 即可、
+    贪婪模式：在所有满足条件数据中，尽可能获取最多的数据
+    懒惰模式L: 在所有满足条件的数据中，获取数据最少的那一个
+    */
+
+
+</script>
+</html>

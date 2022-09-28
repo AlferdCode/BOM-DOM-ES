@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则对象 API</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //定义
+    var reg = /abc/;//字面零创建
+
+var reg2 = new RegExp(/abc/); // 构造函数创建
+
+//第一个参数（正则格式），第二个参数(修饰符)
+var reg3 = new RegExp('abc','i');//通过内置对RegExp象创建
+console.log(reg3.test('ABcdefg'));
+
+
+//从第二个参数开始到结束参数都是（修饰符）
+var reg4 = new RegExp('abc','i','g');
+var reg4 = /abc/ig;//符合条件的字符不区分大小写，在全局字符中检测
+// console.log(reg4.test('ABcdefg'));
+console.log(reg4.exec('ABcdeAbcfgabc'));
+
+var reg5 = new RegExp('^a[0-9]{3}$');
+console.log(reg5.exec('a110'));
+
+
+//正则对象的API （打点掉的方法 都是API）
+var str = 'adgfhgjhmjhdfhghj2345tf';
+var reg6= new RegExp('w','i');
+var reg = /w/igm;
+//判读表达式中是否有修饰符，返回第一个修饰符“正则对象的第二个参数”，没有返回空字符串
+console.log(reg.flags);
+console.log(reg6.flags);
+console.log(reg.global);//判断g 正则表达式是否包含全局搜索 ，返回布尔值 
+console.log(reg.ignoreCase);//判断i  判断正则表达式是否忽略大小写 返回布尔值
+console.log(reg.multiline);//判断m 判断正则表达式是否多行匹配，返回布尔值
+
+
+//[\u4e00-\u9fa5] 中文编码范围。u4e00是一个unicode编码
+console.log(/[\u4e00-\u9fa5]/.test('中文'));
+//unicode 工具
+console.log(/[]/)
+</script>
+</html>

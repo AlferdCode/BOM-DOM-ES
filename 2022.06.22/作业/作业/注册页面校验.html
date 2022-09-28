@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            background-color: rgba(149, 153, 157, 0.66);
+        }
+        .main{
+            position: relative;
+            height: 500px;
+            width: 500px;
+            border-radius: 20px;
+            background-color: rgb(253, 253, 253);
+            margin: 100px auto;
+        }
+        .main1{
+            line-height: 100px;
+            padding: 0 0 0 50px;
+            font-weight: 900;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size:40px ;
+            height: 100px;
+            width: 100%;
+            color: rgb(40, 40, 40);
+        }
+        .main2{
+            width: 100%;
+            height: 20px;
+            padding: 0 0 0 50px;
+            color: rgb(194, 196, 197);
+        }
+        .main3{
+            width: 100%;
+            height: 80px;
+            /* background-color: aqua; */
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .main31{
+            text-align: center;
+            line-height: 80px;
+            font-size: 16px;
+            flex: 1;
+            /* background-color: azure; */
+        }
+        .main32{
+            flex: 4;
+        }
+        .main32 input{
+            width: 330px;
+            margin-top:12px ;
+            border-radius: 8px;
+            height: 40px;
+        }
+        .main4{
+            width: 80%;
+            height: 60px;
+            margin-left:45px ;
+            background-color: rgba(20, 74, 209, 0.676);
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+        }
+        .box1{
+            display: none;  
+            color: #fff;
+            text-align: left;
+            line-height: 40px;
+            padding-left: 10px;
+            /* display: inline-block; */
+            width: 300px;
+            height: 40px;
+            background-color: rgba(19, 19, 19, 0.705);
+            position: absolute;
+            left: 100px;
+            top: 65px;
+            border-radius: 10px;
+        }
+        .aa{
+            display: none;
+            position: absolute;
+            width: 0;
+            height: 0;
+            left: 140px;
+            border-style:solid ;
+            border-width: 10px 10px 15px 10px ;
+            border-color:rgba(3, 3, 3, 0.705)  transparent transparent transparent ;
+        }
+        .a1{
+            display: none;
+            top: 145px;
+        }
+        .a2{
+            display: none;
+            top: 225px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main1">欢迎注册</div>
+        <div class="main2">已有账户?</div>
+        <form action="">
+            <div class="main3">
+                <div class="main31">用户名</div>
+                <p class="box1 rr"></p><div class="aa"></div>
+                <div class="main32"><input type="text" id="zh" placeholder="请登录账号"></div>
+            </div>
+            <div class="main3">
+                <div class="main31">手机号</div>
+                <p class="box1 a1"></p><div class="aa cc"></div>
+                <div class="main32"><input type="text" id="sjh" placeholder="请登录手机号"></div>
+            </div>
+            <div class="main3">
+                <div class="main31">密码</div>
+                <p class="box1 a2"></p><div class="aa gg"></div>
+                <div class="main32"><input type="text" id="mm" placeholder="密码"></div>
+            </div>
+            <button class="main4">注册</button>
+        </form>
+    </div>
+</body>
+<script src="注册页面校验.js"></script>
+<script>
+
+    // 实现图片中注册页面校验
+    // 要求
+    // 1.输入时有文本提示状态,以及输入框的样式效果。
+    // 2.输入完成后的输入框样式改变“隐藏文本提示”。
+    // 3.提示条件使用正则表达式。
+    
+    // 用户名：中英均可，最长14个英文或7个中文。
+    // 手机号：写过
+    // 密码：以大写英文开头，可使用英文，数字下划线。
+
+</script>
+</html>

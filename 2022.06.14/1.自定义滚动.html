@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .header{
+            width: 100%;
+            height: 300px;
+
+        }
+        .banner{
+            width: 100%;
+            height: 500px;
+
+        }
+        .main{
+            width: 100%;
+            height: 500px;
+
+        }
+        span{
+            display: none;
+            position: absolute;
+            bottom:0;
+        }
+        .slider-bar{
+            width: 50px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+            right: 0px;
+            top: 500px;
+        }
+        .topApp{
+            width: 100%;
+            height: 100px;
+            background-color: pink;
+            position: fixed;
+            top: -100px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="topApp"></div>
+    <div class="header w">头部</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    
+</body>
+<script>
+    var topApp = document.querySelector('.topApp');
+    var span = document.querySelector('span');
+    var header =document.querySelector('.header');
+    var banner =document.querySelector('.banner');
+     var sliderbar = document.querySelector('.slider-bar');
+     console.log(header.offsetHeight);
+     console.log(banner.offsetHeight);
+     document.addEventListener('scroll',function(){
+        console.log(window.pageYOffset);
+        if(window.pageYOffset>=banner.offsetTop){
+            sliderbar.style.position = 'fixed';
+            sliderbar.style.top = '200px';
+            topApp.style.top = '0px';
+        }else{
+            topApp.style.top = '-100px';
+            sliderbar.style.position = 'absolute';
+            sliderbar.style.top = '500px';
+        }
+        if(window.pageYOffset > banner.offsetHeight){
+            span.style.display = 'block';
+        }else{
+            span.style.display = 'none';
+        }
+  
+        span.onclick = function(){
+            document.documentElement.scrollTop = 0;
+
+        }
+
+     })
+</script>
+</html>

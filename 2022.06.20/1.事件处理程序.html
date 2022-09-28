@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理程序</title>
+</head>
+<body>
+    <button class="btn"></button>
+</body>
+<script>
+    //DOM0 以on开头添加事件。默认只有冒泡机制
+    //DOM2 添加事件监听函数,事件可以有两种机制“捕获或冒泡”，
+var btn =document.querySelector('.btn');
+//DOM0 事件处理程序（一个事件处理程序只能执行一个事件处理函数）
+//以赋值的的形态 所以按赋值原理 只执行最后一次
+btn.onclick = function(){
+    console.log(1);
+}
+btn.onclick = function(){
+    console.log(2);
+}
+//DOM2 事件处理程序（可以给一个元素同时添加多次事件处理函数）
+//以打点掉的形式 ：是元素的一个方法属性 。可以多次掉。
+btn.addEventListener('click',function(){
+    console.log(33);
+}) 
+btn.addEventListener('click',function(){
+    console.log(44);
+})
+btn.addEventListener('click',function(){
+    console.log(55);
+})
+
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box"></div>
+    <img src="../../../大复习/轮播图/图片/喵星人.webp" alt="image">
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var img = document.querySelector('img');
+    //属性的增删改查
+    //查看：元素，属性
+    console.log(box.className);
+    //添加 修改
+    box.id = 'box1';//添加
+    box.className = 'box2';//修改
+    //删除
+    box.id = '';//删除值
+
+
+    // 方式二 ； 属性的增删改查
+    // getAttribute('html属性');获取元素的属性值
+    console.log(img.getAttribute('src'));
+    //添加 ， 修改属性
+    img.setAttribute('title','猫咪');//添加‘不存在’
+    img.setAttribute('alt' , '猫咪');//修改“存在”
+    //删除
+    img.removeAttribute('alt');
+
+    console.log('------------------')
+    //返回整个元素的属性集合 返回 NamedNodeMap 集合
+    console.log(img.attributes);
+    //遍历
+    for(var i = 0 ; i<img.attributes.length ; i++){
+        console.log(img.attributes[i]);
+        var attr = img.attributes[i];
+        //获取属性的名字 和 属性的值 
+        console.log(attr.name , attr.value);
+
+    }
+    
+
+</script>
+</html>

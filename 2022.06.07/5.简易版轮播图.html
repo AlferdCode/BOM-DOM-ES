@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+                width: 500px;
+                height: 280px;
+        }
+    </style>
+</head>
+<body>
+<img src="../../../大复习/轮播图/图片/1.webp" alt="image">
+<button class="btn">下一张</button>
+</body>
+<script>
+    /*案例分析
+    1.显示初始化图片
+    2.点击下一张，切换图片。
+    一次点击 第一张
+    二次点击 第二张
+    三次点击 第三张
+    四次点击 第一张
+    */ 
+   var btn = document.querySelector('.btn');
+   var img = document.querySelector('img');
+   var count = 0;
+   var arr = ['1.webp','2.webp','3.webp','4.webp','5.webp']
+img.src = "../../../大复习/轮播图/图片/"+arr[count];
+   btn.onclick = function(){
+       count++;
+       if(count ==4){
+           count = 0;
+       }
+       img.src = '../../../大复习/轮播图/图片/'+arr[count];
+   }
+
+</script>
+</html>

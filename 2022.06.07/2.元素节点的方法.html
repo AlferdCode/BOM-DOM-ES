@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素节点的方法</title>
+</head>
+<body>
+    <section>
+        <span>这是一个span</span>
+    </section>
+    <ul class="box">
+
+    </ul>
+</body>
+<script>
+    var sec = document.querySelector('section');
+    //1.创建节点p
+    //创建新的元素节点
+    var newNode = document.createElement('p');
+    //添加节点内容
+    newNode.innerHTML = 'DOM';
+
+    //二。插入节点 appendChild()
+    //2.1 向子元素的末尾添加
+    sec.appendChild(newNode);
+
+
+    //2.2 插入节点 insertBefore()
+    //两个参数 1.要插入的节点。 2.在那个元素之前插入。
+    console.log(sec.children);
+    var newNode1 = document.createElement('h2');
+    newNode1.innerHTML = 'JavaScript';
+    sec.insertBefore(newNode1,sec.children[0]);
+
+    //可以把第二个参数写入Null，在末尾添加新的元素“效果类似于appendChild"
+    sec.insertBefore(newNode1 , null);
+
+    //三，移除某个子节点
+    sec.removeChild(newNode);
+    sec.removeChild(sec.children[0]);
+
+    //四，替换某个子节点。
+    //两个参数 1.要替换的新节点 2.被替换的节点
+    sec.replaceChild(newNode,newNode1);
+    // 父节点.replaceChild(新节点,旧节点);
+    
+// 案例： 循环遍历添加我们的元素
+
+var box = document.querySelector('.box');
+for(var i = 1 ; i<= 5 ; i++){
+    var lis =document.createElement('li');
+    lis.innerHTML = '我是第'+i+'个li';
+    box.appendChild(lis); 
+}
+</script>
+</html>

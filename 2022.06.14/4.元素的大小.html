@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .arr{
+            /* position: relative; */
+            width: 1000px;
+            height: 500px;
+            background-color: beige;
+        }
+        .box{
+
+            border: 10px solid #ddd;
+            margin: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="arr">
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    //document 根标签
+
+    var box = document.querySelector('.box');
+    //获取窗口的宽度/高度
+console.log(window.innerHeight);
+console.log(window.innerWidth);
+//获取元素的宽/高
+console.log(box.clientWidth);
+console.log(box.clientHeight);
+//查看元素的尺寸（获取元素宽/高）
+console.log(box.offsetWidth);
+console.log(box.offsetHeight);
+
+//返回一个对象集合，对象中内容为，元素距离窗口的位置以及元素盒子的大小
+//DOMRect { x: ?, y: ?, width: ?, height: ?, top: ?, right: ?, bottom: ?, left: ? }
+console.log(box.getBoundingClientRect());
+
+
+//获取元素自身距离有定位父元素的距离，如果父元素没有定位那么就相对document的位置计算距离。
+console.log(box.offsetLeft);
+console.log(box.offsetTop);
+
+// 获取元素本身的border-left/border-top边框宽度
+console.log(box.clientLeft);
+console.log(box.clientTop);
+
+
+</script>
+</html>

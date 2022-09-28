@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间监听，清除</title>
+</head>
+
+<body>
+    <button class="btn">+</button>
+    <span>0</span>
+    <button class="main">-</button>
+</body>
+<script>
+    var main = document.querySelector('.main');
+    var btn = document.querySelector('.btn');
+    var span = document.querySelector('span');
+    var index = 0;
+    function a() {
+        index++;
+        if (index >= 4) {
+            // 移除事件  指定需要移除的事件处理函数
+            btn.removeEventListener('click', a);
+        }
+        span.innerText = index;
+    }
+    //事件监听者添加事件
+    btn.addEventListener('click', a)
+function b(){
+    index--;
+    if(index <= 0){
+        main.removeEventListener('click',b);
+    }
+    span.innerText = index;
+}
+main.addEventListener('click',b);
+</script>
+
+</html>

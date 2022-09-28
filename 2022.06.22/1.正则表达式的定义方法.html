@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则定义，方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* 
+    正则表达式：检索字符串格式，用于匹配字符串中字符组合模式。
+    作用：
+        1.主要匹配和检索字符串是否符合规则。
+        2.截取（提取）符合某种规则的字符串片段
+        3.（最常用在于）表单验证。
+    */ 
+   //一.创建
+   //字面量创建
+   var reg = /he/;
+
+   //使用构造函数创建正则表达式。
+   var reg2 = new RegExp(/world/);
+
+   //二，检测
+   var str = 'world! hello world';
+   //检测字符串中是否有符合正则规则的字符，返回布尔值，true/false
+   var res = reg.test(str);
+   console.log(res);
+
+   //如果我们的exec() 知道啦匹配的字符，会返回数组，只能找到一个“第一个” 
+   var res2 = reg2.exec(str);
+   console.log(res2);
+
+</script>
+</html>

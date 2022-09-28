@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: none;
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        p{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        section{
+            height: 500px;
+            width: 100%;
+            background-color: blanchedalmond    ;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="box">
+        可以点击<div></div>
+        <p>div的子元素p</p>
+</div>
+</section>
+</body>
+<script>
+   // addEventListener(event,fanction(){},useCaptrue)
+   //event ;事件类型
+   //function:触发事件时执行的函数
+   // useCaptrue : 布类类型，指定事件是在捕获|冒泡阶段执行
+
+   //事件捕获
+//    事件由祖级元素到子级元素传递
+   //事件冒泡
+//    事件由子级元素到祖级元素传递
+var p = document.querySelector('p');
+var box = document.querySelector('.box');
+var body = document.body;
+var html = document.documentElement;
+var section  = document.querySelector('section');
+// window.addEventListener('click',function(){alert("window-捕获");},true);
+// window.addEventListener('click',function(){alert("window-冒泡");},false);
+// document.addEventListener('click',function(){alert("document-捕获");},true);
+// document.addEventListener('click',function(){alert("document-冒泡");},false);
+
+
+// body.addEventListener('click',function(){alert('body-冒泡')},false);
+// body.addEventListener('click',function(){alert('body-捕获')},true);
+// box.addEventListener('click',function(){alert('box-冒泡')},false);
+// box.addEventListener('click',function(){alert('box-捕获')},true);
+// p.addEventListener('click',function(){alert('p-冒泡')},false);
+// p.addEventListener('click',function(){alert('p-捕获')},true);
+
+//事件执行函数，在我们的冒泡阶段执行。
+section.onclick = function(){
+box.style.display = 'block';
+}
+// 因为捕获原因，p点击的时候会发生捕获阶段，然后触发scetion的事件导致无法点击
+p.onclick = function(){
+box.style.display = 'none';
+}
+
+
+</script>
+</html>

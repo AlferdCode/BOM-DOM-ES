@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            resize: none;
+            width: 500px;
+            height: 300px;
+            font-size: 30px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 无限容纳文本框 -->
+    <textarea type="text" id="ipt" placeholder="请输入评论内容"> </textarea>
+    <p><span id="txt">0</span> / 200 <b id="ts"></b></p>
+</body>
+<script>
+    var ipt = document.getElementById('ipt');
+    var txt = document.getElementById('txt');
+    var ts = document.getElementById('ts');
+    ts.style.color = "red";
+    // input事件中，输入框内容发生改变时会触发的事件
+    ipt.addEventListener('input',function(){
+        txt.innerHTML = this.value.length;
+        if(this.value.length <= 200){
+            var a = this.value.slice(0,199);
+            this.value = a;
+        }else if(this.value.length == 200){
+            ts.innerHTML = "字数已上限";
+        }else if(this.value.length < 200 && this.value.length >= 190){
+            ts.innerHTML = "剩余" + (200 - this.value.length) + "个字";
+        }
+    });
+    
+
+    // change事件会在失去焦点时触发函数
+    ipt.onchange = function(){
+        if(this.value.length > 5){
+            console.log(1111);
+        }
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片预览</title>
+    <style>
+        #imgwrap img,#imgwrap video{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="pic" accept="image/*,video/*" multiple>  
+    <div id="imgwrap"></div>
+</body>
+<script>
+    var pic = document.getElementById('pic');
+    var imgwrap = document.getElementById('imgwrap');
+
+    pic.onchange = function(){
+        // 选择文件对象 this.files 集合
+        console.log(this.files); 
+        Array.from(this.files).forEach(function(item,index){
+            // 通过文件对象获取资源，临时访问地址。
+            var url = window.URL.createObjectURL(item);
+            // blob:null/c01e54af-5954-4771-a356-6cdd720d4388
+            if(item.type.split("/")[0] == "image"){
+                imgwrap.innerHTML += `<img src="${url}">`
+            }else{
+                imgwrap.innerHTML += `<video controls src="${url}"></video">`
+            }
+
+        })   
+        
+    }
+
+
+</script>
+</html>

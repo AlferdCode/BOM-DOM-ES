@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>懒加载</title>
+    <style>
+        div{
+            width: 100%;
+            height: 500px;
+        }
+        img{
+            display: none;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <img src="../../../测试专用图/2.webp" data-a="../../../测试专用图/1.webp" alt="">
+    <button id="btn">加载</button>
+</body>
+<script>
+//什么是懒加载（Load On Demand）
+//延迟加载 "懒加载 就是 延迟加载 ， 当对象需要调用的时候再去加载" 
+//优点：
+//能过当用户滚动页面时候自动获取更多的数据，同时减轻啦服务器的资源消耗
+
+var btn = document.querySelector('#btn');
+var img = document.querySelector('img');
+// btn.onclick = function(){
+//     img.sec = img.dataset.a;
+//     img.style.display = 'block';
+// }
+
+window.onscroll = function(){
+    //滚动高度
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    //窗口高度
+    var h = window.innerHeight;
+    //图片到顶部的偏移量
+    var offsetTop = img.offsetTop;
+    console.log('================');
+    console.log(img.loaded);
+
+
+    // if(scrollTop + h > offsetTop && img.loaded != true){ 
+    //     img.src = img.dataset.a;
+    //     img.style.display = 'true';
+    //     img.loaded = true;
+    // }
+    if(scrollTop>200){
+        img.src = img.dataset.a;
+        img.style.display = 'block';
+    }
+    if(scrollTop<200){
+        img.src = img.dataset.a;
+        img.style.display = 'none';
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// 提升用户体验，加快首屏渲染速度
+//减少无效资源的加载
+//防止并发加载的资源过多会阻塞 js 的加载
+/*
+懒加载的原理：
+
+首先将页面上的图片的 src 属性设为空字符串，而图片的真实路径则设置在 data-original 属性中，当页面滚动的时候需要去监听 scroll 事件，在 scroll 事件的回调中，判断我们的懒加载的图片是否进入可视区域，如果图片在可视区内则将图片的 src 属性设置为 data-original 的值，这样就可以实现延迟加载。
+
+*/
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+</body>
+<script>
+    var str = "干哈那?rz,弱智,bc,叫爸爸,md";
+
+    var reg = /弱智|叫爸爸|md/g;
+    var res = str.replace(reg,function(a){
+        var s = '';
+        for(var i = 0 ; i < a.length ; i++){
+            s += '*';
+        };
+        return s ;
+    }) 
+    console.log(res);
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        input{
+            display: none;
+        }
+        #s_box{
+            transition: all 1s;
+            position: relative;
+            width: 100px;
+            height: 40px;
+            padding: 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            line-height: 40px;
+            color: #999;
+            font-weight: bolder;
+            text-align: right;
+        }
+        #s_cir{
+            position: absolute;
+            left: calc(10px);
+            top: 7px;
+            width: 25px;
+            height: 25px;
+            background-color: #ccc;
+            border-radius: 50%; 
+            transition: all 3s;
+        }
+        /* 选中后的css样式表 */
+        #tab .active{
+            background-color: #5fb878;
+            border-color: #5fb878;
+            color: #fff;
+            text-align: left;
+        }
+        #tab .active #s_cir{
+            background-color: #fff;
+            left: calc(100% - 25px -10px );
+        }
+    </style>
+</head>
+
+<body>
+<!-- label -->
+    <label for="checkInp" id="tab">
+        <input type="checkbox" id="checkInp">
+        <div id="s_box">
+            <div id="s_cir"></div>
+            OFF
+        </div>
+    </label>
+</body>
+<script>
+    //3.表单事件实现切换css样式表
+    var checkInp = document.querySelector('#checkInp');
+    var s_box = document.querySelector('#s_box');
+    checkInp.onchange = function(){
+        if(this.checked){
+            s_box.className = 'active';
+            s_box.innerHTML = '<div id="s_cir"></div> ON';
+        }else{
+            s_box.className = '';
+            s_box.innerHTML = '<div id="s_cir"></div> OFF';
+        }
+    }
+</script>
+
+</html>

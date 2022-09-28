@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">前端102</h1>
+    <div id="btns">
+        <button data-c="red">红色</button>
+        <button data-c="green">绿色</button>
+        <button data-c="orange">橙色</button>
+        <button data-c="blue">蓝色</button>
+    </div>
+</body>
+<script>
+    var title = document.querySelector('#title');
+    var btns = document.querySelectorAll('#btns button');
+    // var colors = ['red','green','orange','blue'];
+    // Array.from(btns).forEach(function(item,index){
+    //     item.addEventListener('click',function(){
+    //         // title.style.color = colos[index];
+    //         title.style.color = item.dataset.c;
+    //     })
+    // })
+
+
+    //委派写法
+    var btn = document.querySelector('#btns');
+    btn.addEventListener('click',function(e){
+        console.log(e.target.nodeName);
+        if(e.target.nodeName === 'BUTTON'){
+            title.style.color = e.target.dataset.c;
+        }
+    })
+</script>
+</html>

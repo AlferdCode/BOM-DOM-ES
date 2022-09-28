@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 300px;
+            height: auto;
+            margin: 50px auto;
+        }
+        h3{
+            width: 100px;
+            border: 1px solid #6666;
+            line-height: 40px;
+            padding: 0 10px;
+            border-radius: 5px;
+
+        }
+        .list{
+            width: 100%;
+            border: 1px solid #6666;
+            padding: 5px 0;
+            display: none;
+        }
+        .item{
+            padding: 0 10px ;
+            line-height: 40px;
+
+        }
+        .item:hover{
+            background-color: #cccccc;
+        }
+        .sele{
+            color: #cccccccc;
+        }
+        .active{
+            background-color: #5fb878;
+            color: #fff;
+        }
+
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="box" tabindex="1">
+        <h3 id="title">河南省</h1>
+        <ul class="list">
+            <li class="item sele">请选择省份</li>
+            <li class="item active">河南省</li>
+            <li class="item">江苏省</li>
+            <li class="item">福建省</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload= function(){
+        var h3 = document.querySelector('#title');
+        var box = document.querySelector('.box');
+        var ul =document.querySelector('.list');
+        var lis = document.querySelectorAll('.item');
+        h3.addEventListener('click',function(){
+        ul.style.display ='block';
+    })
+    box.onblur = function(){
+        ul.style.display = 'none';
+    }
+
+    var x = 1 ;
+    for(var i = 0 ; i<lis.length ; i++){
+        lis[i].index = 1;
+        lis[i].onclick = function(){
+            lis[x].className = 'item';
+            this.className = 'item active';
+            x = this.index;
+            h3.innerHTML = this.innerHTML ;
+            ul.style.display = 'none';
+        }
+    }
+    
+    }
+
+</script>
+</html>

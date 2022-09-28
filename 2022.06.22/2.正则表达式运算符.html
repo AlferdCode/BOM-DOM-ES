@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则运算符</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = '-1adhello world! AD';
+    //1.边界符^ & 匹配开头和结尾
+    var reg = /ad/i;//表示包含字符，i 表示不区分大小写
+    var res = reg.test(str);
+    console.log(res);
+
+var reg = /^he/; // 判断开头字符
+var reg = /AD$/;//判断结尾字符
+var reg = /^ad$/i;//精准匹配"规则和内容完全一致"
+var res = reg.test(str);//false
+var res = reg.test('ad');//true
+    console.log(res);
+
+    //2.字符集 [] 表示有一系列大的字符可供选择，只要有一个匹配即可
+    var reg = /[als!]/; //判断字符串中是否包含 a || l || s||! 的字符
+    var reg = /^[-bc]/;
+    var reg = /[0-9]/;//代表0~9
+    var reg = /[a-zA-Z]/;//是否包含a-z的字符
+    var reg = /^[^0-9]/;//不以数字开头 , [] 中括号内部的^ 代表取反
+    var res = reg.test(str);
+    console.log(res);
+
+    //3.量词符号 * + ？ {}
+    var reg = /a*/;//* 表示 >= 0
+    var reg = /a+/;//+ 表示 >=1
+    var reg = /a?/;// ? 表示 1 || 0
+    var reg = /^[0-9]{2,3}$/;//{2，3} 表示范围 长度为2-3之间
+    
+    var res = reg.test(str);
+    console.log(res);
+</script>
+</html>

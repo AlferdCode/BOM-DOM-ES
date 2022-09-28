@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切换</title>
+    <style>
+
+
+.box{
+    width: 400px;
+    height: 400px;
+    background-color: skyblue;
+
+}
+    </style>
+</head>
+<body>
+<button class="btn">颜色切换</button>
+<div class="box"></div>
+    
+</body>
+<script>
+    //需求：颜色切换
+    var btn = document.querySelector('.btn');
+    var box = document.querySelector('.box');
+    var flag = 0 ;
+    var flags = true;
+    // btn.onclick = function(){
+        //我们来翻翻元素样式的族谱
+        //获取指定的css样式 getComputedStyle()
+        //参数：1.还要获取样式的元素“必须的”。2.查寻的css属性是否是伪类元素“传入使用的伪类元素”，正常元素可以忽略或传入null
+// var bjColor = document.querySelector(box,'after').content; //获取box元素的前缀after的css的属性
+
+
+
+//part1
+    //     var bjColor = getComputedStyle(box,null).backgroundColor;
+    //     if(bjColor == 'rgb(135, 206, 235)'){
+    //         box.style.backgroundColor = 'pink';
+    //     }else{
+    //         box.style.backgroundColor = 'rgb(135, 206, 235)';
+    //     }
+    // }
+
+
+
+
+//part2:
+    // if(box.style.backgroundColor == 'rgb(135, 206, 235)'){
+    //     box.style.backgroundColor = 'pink';
+    // }else{
+    //     box.style.backgroundColor = 'rgb(135, 206, 235)';
+    // }
+
+
+
+
+    //part3;
+    // if(flag == 0){
+    //     box.style.backgroundColor = 'pink';
+    //     flag = 1;
+    // }else{
+    //     box.style.backgroundColor = 'rgb(135, 206, 235)';
+    //     flag = 0;
+    // }
+
+
+    //part4:
+    // flags = !flags;
+    // box.style.backgroundColor = flags ?'rgb(135, 206, 235)':'pink';
+
+    // }
+
+    //如果做一个按钮 来回变色 可以var flag = 0; 来回变
+
+    //part5:多色
+    //三色
+    // var num = 0 ;
+    // btn.onclick = function(){
+    //     num++;
+    //     if(num>2){
+    //         num = 0;
+    //     }
+    //     if(num == 0){
+    //         box.style.backgroundColor = 'pink';
+    //     }else if(num == 1){
+    //         box.style.backgroundColor ='green';
+    //     }else if(num == 2){
+    //         box.style.backgroundColor ='rgb(135, 206, 235)';
+    //     }
+    // }
+
+
+    //part6： 多色
+    var colors = ['yellow','red', 'pink','blue', 'green', 'purple','orange'];
+    var num = 0;
+    btn.onclick = function(){
+        num++;
+        if(num == colors.length){
+            num = 0 ;
+        }
+        box.style.backgroundColor = colors[num];
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background-color: #cccccc;
+            scroll-behavior: smooth;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        .floor {
+           
+            background-color: #999;
+            margin: 30px 0;
+        }
+
+        .floor h1 {
+            text-align: center;
+            line-height: 80px;
+        }
+
+        .floor ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .floor ul li {
+            width: 23%;
+            border: 1px solid;
+            background-color: #fff;
+            margin: 8px;
+        }
+
+        .floor ul li img {
+            width: 100%;
+            height: 278px;
+        }
+
+        .floor ul li h3 {
+            line-height: 80px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .nav {
+            position: fixed;
+            top: 200px;
+            left: 15px;
+            width: 80px;
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .nav li {
+            line-height: 40px;
+        }
+
+        .nav .active {
+            background-color: lightblue;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 侧边栏 -->
+    <ul class="nav"></ul>
+    <!-- 楼层结构 -->
+    <div class="wrap"></div>
+</body>
+<script src="./data.js"></script>
+<script>
+    var nav = document.querySelector('.nav');
+    var wrap = document.querySelector('.wrap');
+
+    // 渲染侧边栏
+    data.forEach(function (typeData, index) {
+        nav.innerHTML += `<li>${typeData.type}</li>`;
+        // 拼接楼层结构
+        var listStr = "";
+        typeData.goodList.forEach(function (item, index) {
+            listStr += `
+            <li>
+                <img data-src="${item.imgUrl}" src="lazyload.gif" alt="img" class="lazy">
+                <h3>${item.title}<h3>
+            </li>
+            `;
+        })
+        wrap.innerHTML += `
+            <div class="floor">
+                <h1>${typeData.type}</h1>
+                <ul class="list">${listStr}</ul>
+            </div>
+        `;
+    });
+
+
+    // 点击侧边栏
+    var navs = document.querySelectorAll('.nav li');
+    var floors = document.querySelectorAll('.floor');
+    var x = 0;
+    // 初始化
+    navs[x].classList.add("active");
+
+    Array.from(navs).forEach(function (item, index) {
+        item.onclick = function () {
+            // 获取对应左侧导航栏的楼层块距离顶部额偏移量
+            var offsetTop = floors[index].offsetTop;
+            document.body.scrollTop = offsetTop - 100;
+            document.documentElement.scrollTop = offsetTop - 100;
+
+            navs[x].classList.remove('active');
+            this.classList.add('active');
+            x = index;
+        }
+    })
+
+    // 滚动监听
+    window.addEventListener('scroll', function () {
+        // 页面滚动的高度
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+        // 窗口高度
+        var H = window.innerHeight;
+
+        // 比对符合条件的元素
+        for (var i = 0; i < floors.length; i++) {
+            var offsetTop = floors[i].offsetTop;
+            var h = floors[i].offsetHeight;
+            // 顶部超出中线，底部低于中线。
+            if (H / 2 + scrollTop > offsetTop && H / 2 + scrollTop < offsetTop + h && i != x) {
+                navs[x].classList.remove('active');
+                navs[i].classList.add('active');
+                x = i;
+                break;
+            }
+        }
+    })
+
+
+    // 懒加载
+    var lazyImg = document.querySelectorAll('.lazy');
+
+    function lazyFun() {
+        // 获取页面滚动的高度
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        // 窗口高度
+        var H = window.innerHeight;
+        // 比对
+        Array.from(lazyImg).forEach(function(item,index){
+            if(!item.loaded){
+                // 文档顶部的偏移量
+                var offsetTop = item.offsetTop;
+                if(H / 2 + scrollTop  &&  H / 2 + scrollTop > offsetTop){
+                    // 设置真实图片的地址
+                    item.src = item.dataset.src;
+                    item.loaded = true;
+                }
+            }
+        })
+    }
+    // 初始化调用一次每次进入页面先检测一下，有些图片是否在窗口范围之内
+    lazyFun();
+
+    // 滚动加载
+    window.addEventListener('scroll',lazyFun);
+
+    var nav = document.querySelector('.nav');
+    function f(){
+        var W = window.innerWidth;
+        if(W < 1360){
+            nav.style.display = "none";
+        }else{
+            nav.style.display = "block";
+        }
+    }
+    f();
+    // window.onresize = f;
+</script>
+
+</html>

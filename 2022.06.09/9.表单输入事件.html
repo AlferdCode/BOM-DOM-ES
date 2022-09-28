@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入事件</title>
+    <style>
+        .msg{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="userName">
+    <span id="msg"></span>
+</body>
+<script>
+    var user = document.querySelector('#userName');
+    var msg = document.querySelector('#msg');
+    //输入内容触发的事件
+    user.oninput = function(){
+        // console.log(user.value.length);
+        if(user.value.length<6 && user.value.length>0){
+            msg.style.display = 'inline';
+            msg.innerHTML = '输入的内容不能小于6位';
+            msg.stylr.color = 'red';
+        }else if(user.value.length <=12 && user.value.length>=6 || user.value.length==0){
+            msg.innerHTML = 'none';
+        }else if(user.value.length > 12){
+            msg.style.display = 'inline';
+            msg.innerHTML = '请输入内容不能多余12位';
+            msg.style.color = 'red';
+            user.value = '';
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            color: aliceblue;
+        }
+        h2{
+            background-color: rgb(218, 10, 10);
+        }
+        .box ul{
+            background-color: rgb(218, 10, 10);
+            display: flex;
+            justify-content: center;
+        }
+        .box ul li{
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            margin: 20px;
+            line-height: 40px;
+        }
+        span{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <section class="box">
+        <h2>08:00秒杀 距结束</h2>
+        <ul>
+            <li><span></span></li>
+            <li><span></span></li>
+            <li><span></span></li>
+        </ul>
+    </section>
+    <script>
+        // 时分秒 计时器
+        var lis  = document.querySelectorAll('li');
+        var maxtimrer = 60*60;//一个小时的秒数
+        function timer(){
+            if(maxtimrer >=0 ){
+                maxtimrer1 =Math.floor(maxtimrer / 60/60*24);//时
+                minutes = Math.floor(maxtimrer / 60);//分
+                seconds = Math.floor(maxtimrer % 60);//秒
+                var arr = [maxtimrer1,minutes,seconds]
+                Array.from(lis).forEach(function(item,index){
+                    item = item.children[0];
+                    if(arr[index] <= 0 ){
+                        item.innerHTML = '00';
+                    }else{
+                        item.innerHTML = arr[index];
+                    }
+                   
+                })
+                --maxtimrer;
+
+            } else {
+                clearInterval(time);
+                console.log('倒计时结束')
+            }
+        }
+        timer();
+       var time = setInterval(timer , 1000);
+
+    </script>
+</body>
+</html>

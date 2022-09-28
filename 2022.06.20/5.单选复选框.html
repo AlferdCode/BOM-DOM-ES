@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" name="" id="dx">内容1
+    <input type="checkbox" name="" id="dx">内容2
+    <input type="checkbox" name="" id="dx">内容3
+ <div class="cdBtnBox">
+    <input type="checkbox" name="" id="qbx">全不选
+    <input type="checkbox" name="" id="fx">反选
+    <input type="checkbox" name="" id="qx">全选
+ </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <br>
+
+
+
+    <input type="checkbox" name="" id="cb">请选择
+    <hr>
+    <input type="radio" name="sex" id="boy" value="男的">
+    <label for="boy">男的</label>
+    <input type="radio" name="sex" id="girl" value="女的">
+    <label for="boy">女的</label>
+    <hr>
+    <button id="submit">提交</button>
+    
+</body>
+<script>
+    var sex = document.getElementsByName ('sex');
+    var btn = document.getElementById('submit');
+    cb.addEventListener('change',function(){
+        console.log(this.checked);
+    })
+
+
+    var dx = document.querySelectorAll('#dx');
+    var qx = document.querySelector('#qx');
+    var qbx = document.querySelector('#qbx');
+    var fx = document.querySelector('#fx');
+    qx.onclick = function(){
+        for(var i = 0 ; i< dx.length ; i++){
+            dx[i].checked =  qx.checked ; 
+        }
+    }
+    qbx.onclick = function(){
+        for(var i = 0 ;i<dx.length ; i++){
+            dx[i].checked = !qbx.checked ;
+}
+    }
+    fx.onclick = function(){
+        for(var i = 0 ; i< dx.length ; i++){
+            dx[i].checked = !dx[i].checked;
+        }
+    }
+    //单选框
+
+    var sexRes = '';
+    Array.from(sex).forEach(function(item,index){
+        item.onchange = function(){
+            if(this.checked){
+            sexRes = this.value;
+        }
+        }
+    })
+    btn.onclick = function(){
+        alert(sexRes);
+    }
+</script>
+</html>

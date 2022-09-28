@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+
+<body>
+    <div class="box">hello</div>
+
+</body>
+<script>
+    /*
+    this:js的关键词，是一个代词‘指代不明’，需要代码执行过程中根据上下文判断this的指向
+    */
+    //par1:全局域下，this指向window
+    var a = 0;
+    console.log(this.a);
+    function func() {
+        console.log(this);//指向this
+    }
+    func();
+
+    (function () {
+        console.log(this);//指向window
+    })();
+
+    //par2:对象调用对象函数，谁调用函数this指向谁。
+    var obj = {
+        name: '张三',
+        age: 30,
+        say: function say() {
+            console.log(this);//obj
+            var that = this;
+            setTimeout(function () {
+                console.log('-------------');
+                console.log(that);//obj
+            }, 1000);
+        }
+    };
+    obj.say();
+
+    //part3:事件处理函数中 this指向事件源对象
+    var box = document.querySelector('.box');
+    box.onclick = function () {
+        console.log(this);
+    }
+    //part4:定时器处理函数，this指向事件源
+    // setTimeout(function () {
+    //     console.log(this);//
+    // }, 1000)
+    //改变this指向
+
+    var obj1 = {
+        name: 'LILI',
+        age: 18,
+        py: 'TOM',
+        tc: '唱歌',
+        say: function () {
+            console.log("HI,我叫" + this.name);//this指向obj
+            //使用变量保存当前的this
+            var that = this;//改变this指向
+            setTimeout(function () {
+                console.log('我' + that.age + '岁了');
+            }, 1000);
+        },
+        friend: function () {
+            setTimeout(function (a) {
+                console.log('我朋友叫' + this.py + '他喜欢' + a);
+            }.bind(this, "跳舞",1111), 1000)//加.bind(this)方法可以改变this指向 // bind()是个函数 可以传两个参数-----------
+        },
+        aihao: function () {
+            setTimeout(function (b, c) {
+                console.log('我的爱好' + this.tc + b + c);
+                //4.call() 函数改变this 
+            }.call(this, '英文歌', '五音不全'), 1000);
+        },
+        cha:function(){
+            setTimeout(function(b,c){
+                console.log('我的性格'+this.xg + b + c);
+                //5.apply()函数改变this 后面是数组
+            }.apply(this,['小心翼翼','哈哈哈哈']),1000);
+        }
+
+    }
+
+    obj1.say();
+    obj1.friend();
+    obj1.aihao();
+    //使用call()函数：参数1：this指向的对象”如果不写或者null表示window“ 参数2~参数n ：”原函数的固化值“
+
+
+    // 箭头函数
+    var func = () => {
+        console.log(this);
+    }
+    func();
+    //使用箭头函数改变了事件函数的this指向
+    //当我们使用箭头函数的时候，箭头函数会默认帮我们绑定外层 this 的值，所以在箭头函数中 this 的值和外层的 this 是一样的。
+    box.onclick = () => {
+        console.log(this);
+    }
+    // (参数1, 参数2, …, 参数N) => 表达式(单一)
+// 相当于：(参数1, 参数2, …, 参数N) =>{ return 表达式; }
+
+</script>
+
+</html>

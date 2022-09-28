@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .dt{
+            top: 60px;
+            background-image: url(../拼图/作业.jpg);
+            background-size: 100% 100%;
+            position: relative;
+            margin: 0 auto;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgb(3, 3, 3);
+        }
+        .xt{
+            /* pointer-events: none; */
+            /* background-color: aqua; */
+            width:200px ;
+            height: 200px;
+            position: absolute;
+            border: 1px solid rgb(3, 3, 3);
+        }
+        .a1{
+            top: 0;
+            left: 0;
+            background-color: rgb(239, 81, 29);
+        }
+        .a2{
+            top: 0;
+            left: 200px;
+            background-color: rgb(217, 203, 0);
+        }
+        .a3{
+            top: 0;
+            left: 400px;
+            background-color: rgb(7, 186, 0);
+        }
+        .a4{
+            top: 200px;
+            left: 0;
+            background-color: rgb(0, 200, 170);
+        }
+        .a5{
+            top: 200px;
+            left: 200px;
+            background-color: rgb(6, 37, 162);
+        }
+        .a6{
+            top: 200px;
+            left: 400px;
+            background-color: rgb(39, 35, 51);
+        }
+        .a7{
+            top: 400px;
+            left: 0;
+            background-color: rgb(186, 0, 228);
+        }
+        .a8{
+            top: 400px;
+            left: 200px;
+            background-color: rgb(215, 4, 71);
+        }
+        .a9{
+            top: 400px;
+            left: 400px;
+            background-color: rgb(110, 54, 54);
+        }
+    </style>
+</head>
+<body>
+<div class="dt">
+    <div class="xt a1" data-index="0"></div>
+    <div class="xt a2" data-index="1"></div>
+    <div class="xt a3" data-index="2"></div>
+    <div class="xt a4" data-index="3"></div>
+    <div class="xt a5" data-index="4"></div>
+    <div class="xt a6" data-index="5"></div>
+    <div class="xt a7" data-index="6"></div>
+    <div class="xt a8" data-index="7"></div>
+    <div class="xt a9" data-index="8"></div>
+
+</div>
+</body>
+<script>
+    var dt = document.querySelector('.dt');
+    var x ,y;
+    var index ;
+    var flag = false ;
+    dt.addEventListener('mousedown',function(e){
+        flag = true ;
+         index = e.target.dataset.index;
+    })
+dt.addEventListener('mousemove',function(e){
+        dt.children[index].style.top = e.offsetY-30+ 'px';
+        dt.children[index].style.left = e.offsetX -30+ 'px';
+    })
+    dt.addEventListener('mouseup',function(e){
+        flag = false ;
+        for(var i = 0 ; i < 9 ;i++){
+            if(e.offsetY >= dt.children[i].style.top && e.offsetY < dt.children[i].style.top+dt.children[i].innerHeight){
+                dt.children[index].style.top = dt.children[i].style.top+'px';
+}
+if(e.offsetX >= dt.children[i].style.left && e.offsetY < dt.children[i].style.left +dt.children[i].innerHeight){
+                dt.children[index].style.left = dt.children[i].style.left+'px';
+}
+        }
+    })
+</script>
+</html>

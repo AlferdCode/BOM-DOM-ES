@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>笑脸评分</title>
+    <style>
+        li{
+            width: 6px;
+            height: 6px;
+            padding: 4px;
+            margin: 6px 3px;
+            background-color: rgb(160, 181, 172);
+        border-radius: 20px;
+        float: left;
+        list-style: none;
+        }
+        </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    var li = document.querySelectorAll('li');
+    var ul =document.querySelector('ul');
+    Array.from(li).forEach(function(item,index,li){
+        item.addEventListener('mouseover',function(){
+            for(var i = 0 ; i<= index ; i++){
+                li[i].style.backgroundColor = 'pink';
+            }
+            for(var i = index+1 ; i <li.length ;i++){
+                li[i].style.backgroundColor = 'rgb(160, 181, 172)';
+            }
+            item.style.backgroundColor = 'pink';
+        })
+        item.addEventListener('mouseout',function(){
+            for(var i = 0 ; i<= index ; i++){
+                li[i].style.backgroundColor = 'pink';
+            }
+            for(var i = index+1 ; i <li.length ;i++){
+                li[i].style.backgroundColor = 'rgb(160, 181, 172)';
+            }
+            
+        })
+    })
+        
+</script>
+</html>

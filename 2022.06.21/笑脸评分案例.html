@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font_mhvh8gbr2h/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .evaluate {
+            width: 1000px;
+            height: 100px;
+            margin: 50px auto;
+            border: 1px solid;
+        }
+
+        .evaluate .score {
+            display: flex;
+            list-style: none;
+            padding: 30px;
+        }
+
+        .score li {
+            margin-right: 5px;
+        }
+
+        .score li .iconfont {
+            display: block;
+            color: #c6d1de;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.2s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="evaluate">
+        <ul class="score">
+            <li><i class="iconfont icon-pingjiazhongping"></i></li>
+            <li><i class="iconfont icon-pingjiazhongping"></i></li>
+            <li><i class="iconfont icon-pingjiazhongping"></i></li>
+            <li><i class="iconfont icon-pingjiazhongping"></i></li>
+            <li><i class="iconfont icon-pingjiazhongping"></i></li>
+        </ul>
+    </section>
+</body>
+<script>
+    /*案例分析：
+    JS部分：
+        1.获取元素“5个笑脸”
+        2.事件“移入，移出，点击”
+        3.图片切换
+    */
+    var scoreBox = document.querySelector('.score');
+    var icons = document.querySelectorAll('.iconfont');
+
+    var onOff; //记录下标
+    Array.from(icons).forEach(function (item, index) {
+        item.onmouseover = function () {
+            moveIn(index);
+        }
+        
+        item.onclick = function(){
+            onOff = index;
+        }
+    })
+
+    // 移入事件函数
+    function moveIn(x) {
+        var count = 0;
+        for (var i = 0; i <= x; i++) {
+            count++;
+            icons[i].style.transform = 'scale(1.1)';
+            // 改变图片路径
+            if (i < 2) {
+                for (var j = 0; j < count; j++) {
+                    icons[j].className = "iconfont icon-chaping1";
+                    icons[j].style.color = "#999";
+                }
+            } else if (i < 3 && i > 1) {
+                for (var j = 0; j < count; j++) {
+                    icons[j].className = "iconfont icon-pingjiazhongping";
+                    icons[j].style.color = "#f7ba2a";
+                }
+            } else if (i >= 3) {
+                for (var j = 0; j < count; j++) {
+                    icons[j].className = "iconfont icon-pingjiahaoping";
+                    icons[j].style.color = "orange";
+                }
+            }
+        }
+        // 后面的图标为初始化状态
+        for (var i = x + 1; i < 5; i++) {
+            icons[i].className = "iconfont icon-pingjiazhongping";
+            icons[i].style.color = "#c6d1de";
+        }
+    }
+
+    // 移出函数
+    function moveOut(){
+        // 把所有的图标恢复默认状态
+        for(var i =0;i<icons.length;i++){
+            icons[i].className = "iconfont icon-pingjiazhongping";
+            icons[i].style.color = "#c6d1de";
+        }
+    }
+
+
+    // 移出
+    scoreBox.onmouseout = function(){
+        if(onOff != undefined){
+            moveIn(onOff);
+        }else{
+            moveOut();
+        }
+    }
+
+
+ 
+</script>
+
+</html>

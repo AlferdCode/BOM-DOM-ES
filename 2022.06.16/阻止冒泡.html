@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+                *{
+            padding: 0;
+            margin: 0;
+        }
+        .warp{
+            width: 600px;
+            height: 600px;
+            background-color: rgba(0, 255, 255, 0.5);
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            background-color: rgba(222, 98, 84, 0.292);
+        }
+        .btn{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 255, 0.13);
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <div class="box">
+            <div class="btn"></div>
+        </div>
+    </div>
+</body>
+<script>
+    //注意。一个元素对象，绑定一个事件只有一个事件机制”捕获 或 冒泡“
+
+var warp = document.querySelector('.warp');
+var box = document.querySelector('.box');
+var btn = document.querySelector('.btn');
+
+//封装事件函数
+function addEvent(el,type,handle,bool){
+    if(el.addEventListener){
+        el.addEventListener(type,handle,bool);
+    }else if(el.addEvent){
+        el.addEvent('on'+type,handle,bool);
+    }else{
+        el['on'+type] = hanle;
+    }
+}
+addEvent(warp,'click',function(e){
+    console.log(3);
+},false);
+addEvent(box,'click',function(e){
+    console.log(2);
+},false);
+addEvent(btn,'click',function(e){
+    console.log(1);
+},true);
+//阻止冒泡
+function stopMp(e){
+    e=e||window.event;
+    if(e.stopPropagation){
+        e.stopPropagation(box);
+    }else{
+        //这里的e = window。event
+        //阻止默认事件冒泡， true为阻止， false为不阻止
+        e.canceBubble = true;
+    }
+}
+</script>
+</html>

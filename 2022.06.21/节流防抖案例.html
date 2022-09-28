@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+</body>
+<script>
+    var box = document.querySelector('.box');
+    document.onmousemove = function(e){
+        box.style.left = e.clientX - 50 + 'px';
+        box.style.top = e.clientY - 50 + 'px';
+        console.log('移动');
+    }
+    //节流
+    // var flag = true ;
+    // document.onmousemove = function(e){
+    //     if(flag){
+    //         flag = false ;
+    //         box.style.left = e.clientX - 50 + 'px';
+    //     box.style.top = e.clientY - 50 + 'px';
+    //     console.log('移动');
+    //     setTimeout(function(){
+    //         flag = true ;
+    //     },100);
+    //     }
+    // }
+    //防抖
+    var timer ; 
+    document.onmousemove = function(e){
+        clearTimeout(timer );
+        timer = setTimeout(function(){
+            box.style.left = e.clientX - 50 + 'px';
+        box.style.top = e.clientY - 50 + 'px';
+        console.log('移动');
+        },10)
+    }
+    
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p style="width: 300px; height:100px; border:1px solid; ">请按下ctrl+x,查看下信息</p>
+</body>
+<script>
+    // 键盘被按下
+    window.onkeydown = function(ev){
+        console.log('键盘被按下');
+        console.log(ev.key);//获取按键的字符
+        console.log(ev.keyCode);//获取按键的字符代码
+        console.log(ev.ctrlKey);//按下ctrl时true 其他键为false 返回的是布尔值 boolean
+        if(ev.ctrlKey ===true && ev.key == 'a'){
+            console.log('执行啦ctrl+a键');
+        }
+    }
+    //键盘弹起时
+    window.onkeyup = function(ev){
+        console.log('键盘弹起');
+        console.log(ev.key);//获取按键的字符
+    }
+    // 非功能键按下
+    window.onkeypress = function(ev){
+console.log('我只能按下非功能键');
+console.log(ev.key);//获取非功能键字符
+console.log(ev.keyCode);//获取按键的字符代码
+    }
+
+    //案例 ：按下某键查看信息.松开时消失
+    var ptext = document.querySelector('p');
+    window.onkeydown = function(ev){
+        if(ev.ctrlKey && ev.key == 'x'){
+            window.onkeyup = function(){
+        ptext.innerHTML = '你个傻子';
+    }
+            ptext.innerHTML = '哈哈哈哈哈哈';
+        }else {
+            ptext.innerHTML = 'ctrl+x 看不懂 你个傻子';
+        }
+    }
+
+    
+    /*
+    onkeydown 键盘按下
+    onkeyup 键盘弹起
+    onkeypress 非功能键按下
+     
+     event 事件  e.target 返回触发对象
+    windo.onkeydown = function(e){
+        e.key  // 返回键盘按键被按下的字符
+        e.keyCode //返回键盘按键按下时的字符代码
+        e.ctrlkey //按下ctrl时返回true 其他为false
+        xonsole.log(e.keyCode);
+    }
+
+    
+    */ 
+</script>
+</html>

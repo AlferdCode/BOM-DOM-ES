@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/放大镜.css">
+</head>
+<body>
+    <div class="box">
+        <!-- 中 -->
+        <div class="content">
+            <ul class="content-cent">
+                <li><img src="../../../../../../测试专用图/1.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/2.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/3.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/4.jpg" alt="image"></li>
+            </ul>
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+        </div>
+        <!-- 大 -->
+        <div class="big">
+            <ul class="big-cent">
+                <li><img src="../../../../../../测试专用图/1.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/2.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/3.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/4.jpg" alt="image"></li>
+            </ul>
+        </div>
+        <!-- 小 -->
+        <div class="small">
+            <ul class="small-cent">
+                <li><img src="../../../../../../测试专用图/1.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/2.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/3.jpg" alt="image"></li>
+                <li><img src="../../../../../../测试专用图/4.jpg" alt="image"></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 加减 -->
+    <div class="box1">
+        <button class="lt">-</button>
+        <span class="num">0</span>
+        <button class="rt">+</button>
+    </div>
+</body>
+<script>
+
+    var ul = document.querySelector('.content-cent');
+    var lis = ul.querySelectorAll('li');
+    var ul1 = document.querySelector('.small-cent');
+    var lis1 = ul1.querySelectorAll('li');
+    var big = document.querySelector('.big');
+    var ul2 = document.querySelector('.big-cent');
+    var lis2 = ul2.querySelectorAll('li');
+    var mask = document.querySelector('.mask');
+    var img = document.querySelectorAll('.big-cent img')
+
+    Array.from(lis1).forEach(function(item,index){
+        item.onmouseover = function(){
+            ul.style.left = -index*400 + "px";
+            ul2.style.left = -index*400 + "px";
+        }
+    })
+    // 显示
+    ul.onmouseover = function(){
+        mask.style.display = "block";
+        big.style.display = "block";
+
+    }
+    // 隐藏
+    ul.onmouseout = function(){
+        mask.style.display = "none";
+        big.style.display = "none";
+    }
+    // 鼠标
+    ul.parentNode.onmousemove = function(ev){
+        var x = ev.pageX;
+        var y = ev.pageY;
+
+        if(x <= 100){
+            x = 100;
+        }if(x >= 300){
+            x = 300;
+        }if(y <=100){
+            y = 100;
+        }if(y >= 300){
+            y = 300;
+        }
+
+        mask.style.left = x - 100 + "px";
+        mask.style.top = y - 100 + "px";
+
+        Array.from(img).forEach(function(item,index){
+            item.style.marginLeft = -x*2 + 100*2 + "px";
+            item.style.marginTop = -y*2 + 100*2 + "px";
+        })
+
+
+    }
+
+
+    // 加减
+    var reduce = document.querySelector(".lt");
+    var num = document.querySelector(".num");
+    var add = document.querySelector(".rt");
+    var x = 0;
+    reduce.onclick = function(){
+        x--;
+        if(x < 0){
+            num.innerHTML = "0";
+            x = 0;
+        }else{
+            num.innerHTML = x;
+        }
+    }
+    add.onclick = function(){
+        x++;
+        num.innerHTML = x;
+    }
+
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件流机制</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .warp{
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: rgba(222, 98, 84, 0.927);
+        }
+        .dd{
+            width: 600px;
+            height: 600px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="dd">3
+    <section class="warp">2
+        <div class="box">1</div>
+    </section>
+</div>
+</body>
+<script>
+    //DOM事件流
+    //DOM是一个树形结构，一个HTML元素产生一个事件时该事件会在元素节点与根节点之间按照特定的顺序传播，路径所经过的节点都会收到该事件，这个传播的过程称为”事件流“
+    //事件顺序有两种类型：事件捕获 和 事件冒泡
+
+    // 事件流会先捕获——>目标——>捕获： 
+
+var warp = document.querySelector('.warp');
+var box = document.querySelector('.box');
+var dd = document.querySelector('.dd');
+warp.addEventListener('click',function(e){
+    console.log(2);
+    console.log(e.target);
+},true);
+
+//注意 不添加第三个参数 默认为false为冒泡阶段 ， true捕获阶段
+box.addEventListener('click',function(e){
+    console.log(1);
+    console.log(e.target);
+},true);
+dd.addEventListener('click',function(e){
+    console.log(3);
+    console.log(e.target);
+},true);
+</script>
+</html>

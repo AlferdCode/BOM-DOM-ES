@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+
+        }
+        .box{
+            margin: 30px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+</body>
+<script>
+   /*screeX / screeY 获取鼠标位置，从浏览器到左边/上边的距离(屏幕边) ， 单位px
+   
+   clinetX / clientY 获取鼠标位置，事件触发的坐标到浏览器窗口 左边/上边的距离， 单位 px
+   pageX / pageY 获取鼠标的位置，从事件触发的坐标 到 html页面左上角的距离 单位px
+
+   offsetX  / offsetY 获取鼠标位置 ， 从事件触发的坐标到触发事件元素的 左边/上边 的距离 单位px
+
+   */ 
+   var box = document.querySelector('.box');
+//    document.addEventListener('click',function(e){
+//     console.log(e.screenX,e.screenY);
+//    },false);
+   box.addEventListener('click',function(e){
+    console.log(e.screenX,e.screenY);
+    console.log(e.clientX,e.clientY);
+    console.log(e.offsetX,e.offsetY);
+    console.log(e.pageX,e.pageY);
+},false);
+
+</script>
+</html>

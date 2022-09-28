@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="渲染弹窗.css">
+</head>
+<body>
+    <header>
+        <span id="citName">全国</span>
+    </header>
+    <!-- 弹框 -->
+    <div id="wrap">
+        <div class="content-wrap">
+            <div class="header">
+                <h2>选择城市</h2>
+                <div class="closeBtn"></div>
+            </div>
+            <ul class="content">
+                <li>
+                    <p>#</p>
+                    <div><span><i class="active">全国</i></span></div>
+                <li>
+            </ul>
+            <div class="tools">
+                <button id="ok">确定<tton>
+                <button class="no">取消<tton>
+            </div>
+            <ul id="left-wrap">
+                <li>#<li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="渲染.js"></script>
+<script>
+    var leftWrap = document.querySelector('#left-wrap')
+    var content = document.querySelector('.content')
+
+    // 左侧
+    var leftWrapStr = '';
+    // 主题区域
+    var contentStr = '';
+
+    for (var k in cityObj) {
+        leftWrapStr += `<li>${k}<>`
+        var str = '';
+        cityObj[k].forEach(function (item) {
+            str += `<span><i data-id="${item.cityId}">${item.name}</i></span>`
+        })
+        contentStr += `<li><p>${k}</p><div>${str}</div><>`
+    }
+    leftWrap.innerHTML += leftWrapStr;
+    content.innerHTML += contentStr;
+
+//给每个地区添加点击事件
+    var cityBtns = content.getElementsByTagName('i');
+    Array.from(cityBtns).forEach(function(item){
+        item.onclick = function(){
+            var id = this.dataset.id;
+            alert(id);
+        }
+    })
+    //给左侧的导航栏添加点击跟踪对应元素
+    Array.from(leftWrap.children).forEach(function(item,index){
+        item.onclick = function(){
+            //获取内容部分所有li距离父元素顶部的距离
+            var ofTop = content.chlidren[index].offsetTop;
+            //滚动条距离顶部的距离“滚动的距离”
+            content.scrollTop = ofTop;
+        }
+    })
+
+
+</script>
+</html>

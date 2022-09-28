@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        form表单有两种请求方式 get 和 post
+        get从服务器端获取数据 查询
+        post向服务提交数据 ， 添加 
+     -->
+    <form action="" id="forml" method="post">
+        <label for="email">邮箱：</label><input type="text" id="email"><br>
+        <label for="tel">手机号：</label><input type="text" id="tel"><br>
+        <label for="user">账号：</label><input type="text" id="user"><br>
+        <label for="pws">密码：</label><input type="text" id="pws"><br>
+        <button  id="btnLogin">登录</button>
+    </form>
+    
+</body>
+<script>
+    var forml = document.querySelector('#forml');
+    var tel = document.querySelector('#tel');
+    var user = document.querySelector('#user');
+    var pws = document.querySelector('#pws');
+    var btnLogin = document.querySelector('#btnLogin');
+    forml.onsubmit = function(e){
+        e.preventDefault();
+        //邮箱验证
+        var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(.[a-zA-Z]+)+$/;
+        if(!emailReg.test(email.value)){
+            alert('邮箱格式不对');
+            return;
+        }
+        //手机验证
+        var phoneReg = /^1[3-9][0-9]{9}$/;
+        if(!phoneReg.test(tel.value)){
+            alert('手机号有误');
+            return;
+        }
+        //账号验证
+        var accReg = /^[a-zA-Z0-9_]{6,15}/;
+        var dig = /^(?!\d).*$/ ;//开头不能为数字 否则返回false
+        if(!accReg.test(user.value || !dig.test(user.value))){
+            alert('请输入正确的账号,包含数字,字母,下划线,长度在6-15之间,且不能以数字开头');
+            return;
+        }
+        //密码验证
+        var pwdReg = /^[a-zA-Z0-9_]{6,12}$/;
+        if(!pwdReg.test(pws.value)){
+            alert('请输入正确的密码,包含数字,字母,下划线,长度在6-12之间');
+            return;
+        }
+        btnLogin.onclick = function(e){
+            e.preventDefault();
+            location.href = "https://www.baidu.com/";  
+        }
+    }
+</script>
+</html>

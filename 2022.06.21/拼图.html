@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 550px;
+            margin: 0 auto;
+        }
+
+        .box table {
+            width: 540px;
+        }
+
+        .box table td {
+            width: 168px;
+            height: 168px;
+            background-image: url(./all.jpg);
+            background-repeat: no-repeat;
+        }
+
+        .box table td.img0 {
+            background-position: 0 0;
+        }
+
+        .box table td.img1 {
+            background-position: -168px 0;
+        }
+
+        .box table td.img2 {
+            background-position: -336px 0;
+        }
+
+        .box table td.img3 {
+            background-position: 0 -168px;
+        }
+
+        .box table td.img4 {
+            background-position: -168px -168px;
+        }
+
+        .box table td.img5 {
+            background-position: -336px -168px;
+        }
+
+        .box table td.img6 {
+            background-position: 0 -336px;
+        }
+
+        .box table td.img7 {
+            background-position: -168px -336px;
+        }
+
+        .box table td.img8 {
+            background-position: -336px -336px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <table>
+            <tr id="tr1">
+                <td class="img0" draggable="true"></td>
+                <td class="img1" draggable="true"></td>
+                <td class="img2" draggable="true"></td>
+            </tr>
+            <tr id="tr2">
+                <td class="img3" draggable="true"></td>
+                <td class="img4" draggable="true"></td>
+                <td class="img5" draggable="true"></td>
+            </tr>
+            <tr id="tr3">
+                <td class="img6" draggable="true"></td>
+                <td class="img7" draggable="true"></td>
+                <td class="img8" draggable="true"></td>
+            </tr>
+        </table>
+        <button id="btnStart">开始游戏</button>
+        <button id="btnReset">重新开始</button>
+    </div>
+</body>
+<script>
+    // 被拖拽在某个元素上 ondragstart  在容器上 ondragover ondrop
+    // 被拖拽的元素
+    var tds = document.querySelectorAll('td');
+    var tr1 = document.querySelector('#tr1');
+    var tr2 = document.querySelector('#tr2');
+    var tr3 = document.querySelector('#tr3');
+    var btnStart = document.querySelector('#btnStart');
+    var btnReset = document.querySelector('#btnReset');
+
+    // 拖拽元素放到容器上时，让容器能够接收。
+    tr1.ondragover = tr2.ondragover = tr3.ondragover = function (ev) {
+        ev.preventDefault(); //阻止默认事件
+    }
+
+    tr1.ondrop = tr2.ondrop = tr3.ondrop = function (ev) {
+        ev.preventDefault(); //阻止默认事件
+        // 获取拖拽元素的类名，通过类名得到拖拽的元素
+        var className = ev.dataTransfer.getData('class');
+        
+        // var className = ev.target.className;
+        console.log(className);
+        // 获取拖拽到的元素
+        var dragImg = document.getElementsByClassName(className)[0];
+
+        console.log(dragImg);
+        //获取拖拽元素的下一个元素，作为参照物
+        var dragImgNextElement = dragImg.nextElementSibling;
+
+        // 获取被拖拽的元素的父元素
+        var dragImgParent = dragImg.parentElement;
+
+        // 获取目标元素的父级元素 tr
+        var targetParent = ev.target.parentElement;
+
+        // dragImgParent.id === targetParent.id  判断是佛是同一行元素之间进行拖动
+        // dragImgNextElement  判断拖动的是否是最后一列的图片 （为了保证下个条件能正常执行）
+        // dragImgNextElement.className === ev.target.className 判断拖动的元素和目标元素是否为同一行相邻的两个元素
+        if (dragImgParent.id === targetParent.id && dragImgNextElement && dragImgNextElement.className === ev.target.className) {
+            // 把目标元素插入到拖动元素之前
+            this.insertBefore(ev.target, dragImg);
+        } else {
+            this.insertBefore(dragImg, ev.target);
+        }
+
+        // 把目标元素插入到拖动的下一个元素之前
+        dragImgParent.insertBefore(ev.target, dragImgNextElement);
+
+        // 判断是否成功
+        if (success()) {
+            alert("完成游戏");
+        }
+    }
+    // 定义一个数组，用来存储t所需要的；类名，通过类名控制背景图。
+    let arrImg = ['img0', 'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'img7', 'img8'];
+    function randomImg() {
+        arrImg.sort(function () {
+           return Math.random() > 0.5 ? -1 : 1;
+        })
+        for (var i = 0; i < tds.length; i++) {
+            var td = tds[i];
+            td.removeAttribute('class');
+            td.setAttribute('class', arrImg[i]);
+            td.ondragstart = function (ev) {
+                console.log(ev);
+                ev.dataTransfer.setData('class', ev.target.className)
+            }
+        }
+    }
+
+    btnStart.addEventListener('click', function () {
+        randomImg();
+    })
+    btnReset.addEventListener('click', function () {
+        randomImg();
+    })
+
+    function success() {
+        var result = false;
+        var oldArr = ['img0', 'img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'img7', 'img8'];
+        var tds = document.querySelectorAll('td');
+        var newArr = Array.from(tds).map(function (td) {
+            return td.className;
+        })
+        result = equal(newArr, oldArr);
+        return result;
+    }
+    function equal(arr1, arr2) {
+        for (var i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
+
+</script>
+
+</html>

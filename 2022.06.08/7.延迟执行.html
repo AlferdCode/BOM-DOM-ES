@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button class="btn">停止</button>
+<p>关闭</p>
+    
+</body>
+<script>
+    //计时事件（定时器） 只执行一次 
+    var p = document.querySelector('p');
+    var times = setTimeout(function(){
+        console.log('定时器2222');
+    },6000);
+    
+    function text(){
+        console.log('定时器');
+    }
+    //注意 ：在方法内部调用外部函数 ， 不能添加() 否则无效
+    setTimeout(text,3000);
+
+
+    // setInterval() 在多少毫秒之后执行函数， 重复执行函数
+
+     var timer = setInterval(function(){
+        console.log('我是计时器111');
+    },2000);
+
+
+
+    //清除计时器
+    var btn = document.querySelector('.btn');
+    btn.onclick = function(){
+        clearInterval(timer);
+    }
+    p.onclick = function(){
+        clearTimeout(times);
+    }
+
+</script>
+</html>

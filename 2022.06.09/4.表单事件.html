@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="myForm" id="myForm">
+        <input type="text" name="" id="userName" placeholder="请输入账号"><br>
+    <input type="password" name="" id="psw" placeholder="请输入密码"><br>
+    <input type="submit" name="" id="btn">
+    <input type="reset" name="" id="btns">
+    </form>
+    
+</body>
+<script>
+    var myform = document.querySelector('#myForm');
+    var uname = document.querySelector('#userName');
+    var btn = document.querySelector('#btn');
+
+    // onsubmit 提交
+    myform.onsubmit = function(){
+        //在表单提交之前，先验证表单信息格式
+        var username = uname.value;//value 获取用户输入的内容
+        console.log(username);
+        if(username.length<6 && username.length >12){
+            alert('格式错误');
+            return;
+        }else{
+            alert('成功');
+        }
+    }
+    // onreset 表单重置事件
+    myform.onreset = function(){
+        console.log('重置表单');
+        return false ;//禁止重复
+    }
+
+    /*
+    表单事件
+    onsubmit 提交事件
+    onreset 重置
+
+
+    */ 
+
+
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            margin: 0;
+        }
+        #box{
+            position: fixed;
+            top: 200px;
+            left: 200px;
+            width: 120px;
+            height: 200px;
+            border: 1px solid;
+            user-select: none;
+        }
+        #title{
+            height: 60px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom: 1px solid;
+            cursor: move;
+        }
+        #content{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="title">目录</div>
+        <div id="content">内容</div>
+    </div>
+    
+</body>
+<script>
+    var title = document.querySelector('#title');
+    var box = document.querySelector('#box');
+    var startX,starY,elestartX,elestartY;
+    var flag = false ;
+    //鼠标按下
+    title.onmousedown = function(e){
+        flag = true;
+        //鼠标按下时的坐标
+        startX = e.clientX;
+        startY = e.clientY;
+        //获取元素的偏移量
+        elestartX = box.offsetLeft;
+        elestartY = box.offsetTop;
+    }
+    //鼠标移动
+    var moveW,moveH ;
+    document.onmousemove = function(e){
+        //鼠标移动的距离(鼠标移动的坐标-鼠标按下时的坐标)
+        moveW = e.clientX - startX;
+        moveH = e.clientY - startY;
+        if(flag){
+            var x = elestartX + moveW;
+            var y = elestartY + moveH;
+            //判断box的x,y轴接近边界停留
+            if(x<=0){
+                x=0;
+            }
+            if(y <=0){
+                y =0;
+            }
+            if(x>=window.innerWidth - box.offsetWidth - 20){
+                x = window.innerWidth - box.offsetWidth;
+            }
+            if(y>= window.innerHeight - box.offsetHeight){
+                y = window.innerHeight - box.offsetHeight;
+            }
+            box.style.left = x+'px';
+            box.style.top = y + 'px';
+        }
+        
+    }
+    document.onmouseup = function(){
+        flag = false ;  
+    }
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+padding: 0;
+border: 0;
+}
+html,body{
+    height: 100%;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+aside{
+width: 300px;
+height: 100%;
+background-color: skyblue;
+}
+aside img{
+    width: 100%;
+}
+section{
+    background-image:url(../../../测试专用图/1.webp) ;
+    background-size: 100% 100%;
+     position: absolute;
+    margin-left: 300px;
+    height: 900px;
+    width: 1500px;
+    /* background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F8d%2F8c%2Fe3%2F8d8ce3db01813140baeb1712a10aabe3.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1657253404&t=2ae5e4f5658a66867be630f65458e4bc); */
+    
+}
+    </style>
+</head>
+<body>
+    <main>
+        <aside>
+            <img src="../../../测试专用图/1.webp" alt="">
+            <img src="../../../测试专用图/2.webp" alt="">
+            <img src="../../../测试专用图/3.webp" alt="">
+            <img src="../../../测试专用图/4.webp" alt="">
+            <img src="../../../测试专用图/5.webp" alt="">
+        </aside>
+        <section>
+            <h1>66666666</h1>
+        </section>
+    </main>
+</body>
+<script>
+var section = document.querySelector('section');
+var imgAll = document.querySelectorAll('aside img');
+Array.from(imgAll).forEach(function(item , index , imgAll){
+    item.onclick = function(){
+        section.style.backgroundImage = 'url(../../../测试专用图/'+(index+1)+'.webp)';
+    }
+})
+</script>
+</html>

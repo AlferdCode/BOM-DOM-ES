@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(221, 217, 217);
+}
+li{
+    list-style: none;
+}
+.main{
+    width: 800px;
+    height: 1100px;
+    margin: 0 auto;
+    background-color: rgb(229, 234, 234);
+}
+.main .top {
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.main .top .top-left, .top-center, .top-right{
+    width: 15%;
+    height: 100%;
+}
+.main .top .top-left{
+        padding-left: 30px;
+        line-height: 40px;
+}
+.main .top .top-center {
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.main .top .top-right{
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 800;
+    color: #fff;
+    background-color: rgb(218, 109, 76);
+    border-radius: 20px;
+}
+/* 开头部分结束 */
+/* 介绍部分 */
+.box{
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+
+}
+.box .recommend{
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    line-height: 100px;
+}
+.box .star {
+    width: 800px;
+    height: 100px;
+    background-color: #fff;
+    display: flex;
+}
+.box .star .star-1{
+flex: 1;
+width: 200px;
+font-weight: 600;
+color: rgb(87, 85, 85);
+text-align: center;
+line-height: 100px;
+font-size: 20px;
+}
+.box .star .star-2{
+
+    flex: 3;
+}
+.box .star .star-2 ul {
+    display: flex;
+    width: 600px;
+    height: 100%;
+}
+.box .star .star-2 ul li {
+flex: auto;
+text-align: left;
+line-height: 90px;
+font-size: 50px;
+color: rgb(197, 191, 191);
+/* 手指 */
+cursor:pointer;
+}
+.star-3{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:#fff;
+    width: 800px;
+    height: 130px;
+} 
+.star-3 div{
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(92, 90, 90);
+    
+}
+.star-3 li{
+    background-color: rgba(192, 188, 188, 0.605);
+    margin-top: 10px;
+    margin-right: 20px;
+    border-radius: 26px;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    margin-left: 30px;
+    cursor:pointer;
+
+}
+
+.star-4 .pj{
+    width: 800px;
+    border: 0;
+    /* 固定大小 */
+    resize:none;
+    /*  获取焦点时 边框不显示默认 */
+    outline:none;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}

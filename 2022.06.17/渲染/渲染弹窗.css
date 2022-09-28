@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    width: 1220px;
+    line-height: 8px;
+    margin: 0 auto;
+}
+li{
+    list-style: none;
+}
+#wrap{
+    position: fixed;
+    top: 0;left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}
+.content-wrap{
+    width: 900px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -350px 0 0 -450px;
+    background-color: #fff;
+}
+.header{
+    line-height: 60px;
+    text-align: center;
+}
+.header h2{
+    
+    font-weight: normal;
+}
+.header .closeBtn{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    width: 15px;
+    height: 30px;
+    background-color: blue;
+    cursor: pointer;
+}
+#left-wrap{
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    height: 600px;
+    background-color: #fff;
+}
+#left-wrap li{
+    line-height: 25px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+}
+.content{
+    height: 500px;
+    padding-left: 30px;
+    overflow: auto;
+    background-color: #ececec;
+    color: #333;
+    position: relative;
+    scroll-behavior: smooth;
+}
+.content p{
+    padding-left: 10px;
+}
+.content li{
+    margin: 5px 0;
+}
+.content div{
+    background-color: #fff;
+    padding: 15px 0;
+    overflow: hidden;
+}
+.content span{
+    float: left;
+    width: 260px;
+    line-height: 30px;
+    text-indent: 10px;
+}
+.content i{
+    font-style: normal;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.active{
+    color: blue;
+    background-color: aquamarine;
+}
+.tools{
+    line-height: 60px;
+    background-color: #fff;
+    box-shadow:  0 -1px 10px #cccccc;
+    position: relative;
+    z-index: 1;
+}
+.tools button{
+    width: 80px;
+    height: 40px;
+    outline: 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+#ok{
+    background-color: #999;
+    color: #fff;
+    border: none;
+    margin-left: 400px;
+}
+#no{
+    border: 2px solid #ccc;
+    color: #999;
+}

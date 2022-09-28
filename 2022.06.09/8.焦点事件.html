@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            border: 1px solid rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <!-- tabindex: 给能够获取焦点的元素添加下标，使用tab键切换元素，按照从小到大的顺序切换 -->
+    <a href="javascript:;" tabindex="2">2</a>
+    <!-- tabindex="0" 代表没有添加 tabindex 按照正常顺序  -->
+    <a href="javascript:;" tabindex="0">0</a>
+    <a href="javascript:;" tabindex="3">3</a>
+    <a href="javascript:;">111</a>
+    <input type="text " id="user">
+    <!-- tab键获取焦点的显示顺序 -->
+    <!--添加 tabindex 可以给我们的普通元素拥有焦点事件 -->
+    <div class="btm" tabindex="1">请选择城市</div>
+</body>
+<script>
+    var btm = document.querySelector('.btm');
+    var user = document.querySelector('#user');
+    //获取焦点 onfocus 
+user.addEventListener('focus',function(){
+    console.log('获取焦点');
+})
+    //失去焦点 onblur
+    user.addEventListener('blur',function(){
+    console.log('失去焦点');
+})
+btm.onfocus = function(){
+    console.log('div是我,我被获取焦点啦');
+}
+btm.onblur = function(){
+    console.log('div是我,我被失去焦点啦')
+}
+</script>
+</html>

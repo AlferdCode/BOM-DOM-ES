@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<style type="text/css">
+    div {
+        width: 183.3333px;
+        height: 183.3333px;
+
+    }
+
+    .tu {
+        background-image: url(./作业.jpg);
+    }
+
+    /* 利用background-position给每个div添加不同的图片；即9个div组成一幅完成的图片; */
+    #z-1 {
+        background-position: 0px 0px;
+    }
+
+    #z-2 {
+        background-position: -183.3333px 0px;
+    }
+
+    #z-3 {
+        background-position: -366.6666px 0px;
+    }
+
+    #z-4 {
+        background-position: 0 -183.3333px;
+    }
+
+    #z-5 {
+        background-position: -183.3333px -183.3333px;
+    }
+
+    #z-6 {
+        background-position: -366.6666px -183.3333px;
+    }
+
+    #z-7 {
+        background-position: 0px -366.6666px;
+    }
+
+    #z-8 {
+        background-position: -183.3333px -366.6666px;
+    }
+
+    #z-9 {
+        background-position: -366.6666px -366.6666px;
+    }
+</style>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>
+                <div id="f-1" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-1" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-2" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-2" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-3" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-3" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="f-4" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-4" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-5" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-5" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-6" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-6" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="f-7" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-7" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-8" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-8" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+            <td>
+                <div id="f-9" ondragover="over(event)" ondrop="drop(event)">
+                    <div id="z-9" class="tu" draggable="true" ondragstart="drag(event)"></div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    <input type="button" value="打乱" onclick="daluan()">
+</body>
+<script>
+    //完成两个图片拖拽后的互换;
+    function over(e) {
+        e.preventDefault();//阻止默认
+    }
+    //抓起
+    function drag(e) {
+        var id = e.target.id;
+        // console.log(e.target.id);
+        e.dataTransfer.setData("id", id);//设置传输的是被抓id；
+    }
+    //经过
+    function drop(e) {
+        var beizhuaId = e.dataTransfer.getData("id");//接受被抓id;
+        // console.log(beizhuaId);//被抓ID
+        var fangID = e.target.id;//所放位置的id;
+        var beizhua = document.getElementById(beizhuaId);//获取被抓对象;
+        var fang = document.getElementById(fangID);//获取放的对象；        
+        var f_beizhua = beizhua.parentNode;//分别找到对应的父节点
+        var f_fang = fang.parentNode;
+        //互换儿子
+        f_beizhua.appendChild(fang);
+        f_fang.appendChild(beizhua);
+        win();
+    }
+    //判断赢得方法；每个父和子id名字序号相同，循环 ,累加count;
+    function win() {
+        var tus = document.getElementsByClassName('tu');
+        var count = 0;
+        for (var i = 0; i < tus.length; i++) {
+            var tu = tus[i];
+            var fu = tu.parentNode;
+            var tu_id = tu.getAttribute("id");
+            var fu_id = fu.getAttribute("id");
+            if (tu_id.replace("z-", "") == fu_id.replace("f-", "")) {
+                count++;
+                console.log(count);
+            } else {
+                return;
+            }
+        }
+
+        if (count == 9) {
+            alert("你完成了游戏！");
+        }
+
+    }
+    //打乱按钮；通过生成随机数；appenChild方法去多次互换，则为打乱；
+    function daluan() {
+        for (var i = 0; i < 100; i++) {
+            var tus = document.getElementsByClassName('tu');
+            var m = parseInt(Math.random() * 9);
+            var n = parseInt(Math.random() * 9);
+            var tusmp = tus[m].parentNode;
+            var tusnp = tus[n].parentNode;
+            tusmp.appendChild(tus[n]);
+            tusnp.appendChild(tus[m]);
+        }
+    }
+</script>
+
+</html>

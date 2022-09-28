@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素节点</title>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>第1行</li>
+            <li>第2行</li>
+            <li>第3行</li>
+            <li>第4行</li>
+            <li>第5行</li>
+        </ul>
+    </div>
+</body>
+<script>
+    //一，元素的遍历
+    var ul = document.querySelector('ul');
+    //1.1 向上遍历，获取父节点，可以多层使用，未找到返回null
+    var ulf = ul.parentElement;//获取父级元素
+    var uld = ul.parentNode;//获取父节点
+    console.log(uld);
+    console.log(ulf);
+
+
+    //1.2 向下遍历 ，获取子元素
+    var ulSon = ul.children;//获取所有子元素
+
+
+    //获取子元素的数量
+    console.log(ul.childElementCount);
+    console.log(ul.children.length);
+
+
+    console.log(ul.firstChild);//返回第一个元素的文本节点
+
+    //获取第一个子元素
+    console.log(ul.firstElementChild);
+    console.log(ul.children[0]);
+
+    // 获取最后一个子元素 
+    console.log(ul.listElementChild);
+    console.log(ul.children[ul.children.length - 1]);
+    console.log(ul.children[ul.childElementCount - 1]);
+
+    //1.3 同级之间的遍历 ， 获取同胞元素
+    var bro = ul.children[2];
+    //上一个相邻同胞元素
+    console.log(bro.previousElementSibling);
+    //下一个相邻的同胞元素
+    console.log(bro.nextElementSibling);
+
+
+
+    //二，节点的操作，获取的节点 可能包含注释 ，元素 ，文本
+    //2.1 从当前的节点开始向上查找节点
+    console.log(ul.parentNode);
+
+    //2.2 从当前节点开始向下查找节点
+    console.log(ul.childNodes);//获取所有的子节点 ， 注释 ， 元素节点 文本节点 
+    console.log(ul.children.length);//获取节点的长度
+    console.log(ul.childNodes[4]);//通过下标获取节点
+    console.log(ul.firstChild);//获取第一个子子节点
+    console.log(ul.lastChild);//获取最后一个子节点
+
+
+    //遍历节点
+    // for . foreach
+    // 遍历所有的子元素
+    for (var i = 0; i < ul.children.length; i++) {
+        console.log(ul.children[i]);
+    }
+    for (var i = 0; i < ul.childElementCount; i++) {
+        console.log(ul.children[i]);
+    }
+
+
+    //遍历所有的子节点
+    Array.from(ul.childNodes).forEach(function (item, index) {
+        console.log(item);;
+    });
+    
+</script>
+
+</html>

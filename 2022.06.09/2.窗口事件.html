@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style=" height:2000px;"></div>
+    
+</body>
+<script>
+    //窗口事件 ：window事件
+    //只要打开窗口 。不管该窗口是否打开网页 ， 只要遇到body/frame等···元素 都会自动建立window对象的实例。
+    //window 表示浏览器窗口对象。
+
+    //1.onload事件 ； 所有的网页和图片都被加载完成
+    window.onload = function(){
+        console.log('页面加载完成');
+    }
+    //2.DOMContentLoaded  ,DOM加载完毕
+    window.DOMContentLoaded = function(){
+        console.log('监听DOM加载完毕');
+    }
+    //3. onbeforeunload 页面被卸载或者更新的时候会被触发
+    window.onbeforeunload = function(){
+        console.log('页面被刷新啦');
+    }
+    // onscroll 滚动条事件
+    window.onscroll = function(){
+        console.log('滚动条开始滚动');
+    }
+    //5.onresize 页面尺寸发生变化触发
+    window.onresize = function(){
+        console,log('浏览器窗口大小发生改变')
+    }
+
+    
+    
+    /*
+    鼠标事件
+    onclick 单点击
+    ondblclick 双击
+    onmouseover 鼠标移入（会触发默认事件） 
+    onmouseout 鼠标移出
+    onmouseleave 移出
+    onmousernter 移入
+    onmousewheel 鼠标滚轮滚动
+    onmousemove 移动
+    onmouseup 弹起
+    onmousedown 按下
+    
+    窗口事件
+onload 页面文档图片等全加载完毕触发
+DOMContentLoaded 文档加载完毕触发
+onbeforeunload 页面被卸载或者被刷新时触发
+onresize 页面尺寸变化时触发
+onscroll 页面滚动时触发
+    */
+
+</script>
+</html>

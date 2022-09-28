@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button1">停止</button>
+    <button class="button2">开启</button>
+</body>
+<script>
+    var button1 = document.querySelector('.button1');
+    var button2 = document.querySelector('.button2');
+    var timer = setInterval(fn,1000);
+     function fn(){
+        console.log('我是定时器');
+    }
+    button1.onclick = function(){
+        clearInterval(timer);
+    }
+    button2.onclick = function(){
+        clearInterval(timer)
+       timer = setInterval(fn,1000);
+    }
+</script>
+</html>

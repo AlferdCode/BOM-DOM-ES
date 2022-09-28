@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: rgba(129, 126, 126, 0.487);
+        }
+
+        div {
+            overflow: hidden;
+            width: 600px;
+            height: 500px;
+            background-color: #fff;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>选择城市</h2>
+        <ul>
+            <li>
+                <span></span>
+                <a href="#"></a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./渲染.js"></script>
+<script>
+    var ul = document.querySelector('ul');
+    for(var k in cityObj){
+        var li = document.createElement('li');
+            li.innerHTML = `<span>${k}</span>`;
+            ul.appendChild(li);
+        cityObj[k].forEach(function(item,index){
+            var a = document.createElement('a');
+            a.innerHTML = `${item.name}`;
+            li.appendChild(a);
+
+        })
+    }
+</script>
+
+</html>

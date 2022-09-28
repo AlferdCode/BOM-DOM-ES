@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 300px;
+            width: 100%;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">点击触发函数</div>
+    
+</body>
+<script>
+    
+    var box = document.querySelector('.box');
+    //e :event对象，要作为事件触发的函数的参数使用
+    box.onclick = function(e){
+        console.log(e.target);//获取到触发事件的元素
+        console.log(e.button);//返回被触发的函数的鼠标被点击的下标，
+
+        
+        console.log(e.clientX);//触发的是鼠标水平方向的指针，距离网页窗口
+        console.log(e.clientY);
+
+        console.log(e.screenX);//获取鼠标水平方向的指针，距离电脑
+        console.log(e.screenY);
+     }
+
+</script>
+</html>

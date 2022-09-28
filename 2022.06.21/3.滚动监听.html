@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动监听</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .floor {
+            line-height: 800px;
+            text-align: center;
+            font-size: 3cm;
+            font-weight: bold;
+        }
+
+        #box {
+            position: fixed;
+            left: 50px;
+            top: 100px;
+            background-color: lightblue;
+            padding: 10px;
+            width: 50px;
+        }
+
+        #box li {
+            line-height: 40px;
+            text-align: center;
+            list-style: none;
+        }
+
+        #box .active {
+            background-color: orange;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="floor" style="background-color: olivedrab;">1</div>
+    <div class="floor" style="background-color: orange;">2</div>
+    <div class="floor" style="background-color: orangered;">3</div>
+    <div class="floor" style="background-color: orchid;">4</div>
+    <div class="floor" style="background-color: lightcoral;">5</div>
+</body>
+<script>
+    var boxs = document.querySelectorAll('#box li');
+    var floors = document.querySelectorAll('.floor');
+    var x = 0;
+    // 点击导航让页面滚动至指定位置
+    Array.from(boxs).forEach(function (item, index) {
+        item.onclick = function () {
+            boxs[x].classList.remove('active');
+            item.classList.add('active');
+            x = index;
+
+            // 页面内容跟随滚动
+            document.body.scrollTop = document.documentElement.scrollTop = floors[index].offsetTop;
+        }
+    })
+
+    // 滚动窗口时触发
+    window.onscroll = function () {
+        var st = document.body.scrollTop || document.documentElement.scrollTop;
+        var H = window.innerHeight;
+
+        for (var i = 0; i < floors.length; i++) {
+            var floor = floors[i];
+            var h = floor.offsetHeight;
+            var offsetTop = floor.offsetTop;
+
+            if (H / 2 + st > offsetTop && H / 2 + st < offsetTop + h && i != x) {
+                console.log('找到了' + i);
+                boxs[x].classList.remove('active');
+                boxs[i].classList.add('active');
+                x = i;
+                floor.innerHTML = "hello!";
+                break;
+            }
+        }
+
+
+    }
+
+
+</script>
+
+</html>

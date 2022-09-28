@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box{
+    position: relative;
+}
+.content{
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+    border: 1px solid red;
+}
+.content .content-cent li img{
+    width: 400px;
+    height: 400px;
+}
+.content .content-cent{
+    width: 400%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+.small{
+    position: absolute;
+    top: 400px;
+    left: 380px;
+    width: 30px;
+    height: 60px;
+    border: 1px solid red;
+}
+.small .small-cent {
+    display: flex;
+    justify-content: space-around;
+}
+.small-cent img{
+    width: 200px;
+    height: 200px;
+}
+.big{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 470px;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+    border: 1px solid red;
+    display: none;
+}
+.big .big-cent li img{
+    width: 800px;
+    height: 800px;
+}
+.big .big-cent{
+    height: 100%;
+    width: 400%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+.mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(124, 238, 244, 0.253);
+    display: none;
+    pointer-events: none;
+}
+.box1{
+    position: absolute;
+    left: 1200px;
+
+}
+button,span{
+    vertical-align: middle;
+}
+.num{
+    margin: 0 5px;
+}
