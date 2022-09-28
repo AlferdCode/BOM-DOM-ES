@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //闭包；能够读取其他函数内部变量，的函数 
+    function f1(){
+        var a = 100;
+        function f2(){
+            return a ;
+      z  }
+        //返回f2本身，返回值是函数
+        //不加小括号返回的是函数体 
+        return f2;
+    }
+    //把f2()执行的结果当成f1() 返回值是函数执行的结果
+    // var res = f1();
+    // console.log(res);//结果函数体
+    // console.log(res());//返回的是 结果100
+
+    //执行函数体里面的函数体
+    //第一个小括号代表调用外层函数f1 , 第二个小括号代表调用内层函数f2
+    var res = f1()(); 
+console.log(res);
+
+//onbeforeunload 页面刷新或者关闭的时候 触发事件
+//把一个变量设置成null，就是告诉GO此变量不再使用，回收变量。
+window.onbeforeunload = function(){
+    // console.log(res);
+    res = null;
+    console.log(res);
+}
+
+
+</script>
+</html>

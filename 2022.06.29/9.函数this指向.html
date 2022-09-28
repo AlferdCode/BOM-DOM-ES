@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数this指向</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1.JS中this指向具有不确定性。
+    // 全局作用域中的this，一般都指向window对象。
+    var a = 10;
+    console.log(this.a);
+    console.log(window.a);
+
+    // 2.函数中this指向，谁调用了函数，函数中的this指向谁。
+    function func1(){
+        console.log(this);
+    }
+    window.func1(); //window/直接在全局域中调用，都指向window
+
+    // 3.对象方法中this，具有不确定性。
+    // 3.1谁调用了对象的方法，方法中this指向谁。
+    // 3.2计时器中的函数，this指向window。
+    // 3.3对象方法中，箭头函数this指向window。
+    var obj = {
+        name:'LISA',
+        age:18,
+        sayHi:function(){
+            console.log(this);
+            console.log(this.name);
+        },
+        sayHello:function(){
+            setTimeout(function(){
+                console.log(this.age);
+            }.call(this),1000) //call / bind / apply 方法改变this指向
+        },
+        eat:function(){
+            var that = this;//改变下面计时器中的this指向
+            (()=>{
+                console.log(that);
+            })();
+        }
+    }
+    obj.sayHi();
+    obj.sayHello();
+    obj.eat();
+
+    // 4.构造函数中的this (本质上还是在函数中)
+    function Animal(name,age){
+        this.name = name;
+        this.age = age; 
+        console.log(this); //Animal对象
+    }
+    var sz = new Animal('狮子',6);
+    console.log(sz.name);
+
+    function Person(name,age,sex){
+        Animal.apply(this,[name,age]); //继承父类的
+        this.sex = sex; //自己扩展的
+    }
+    var zs = new Person('张三',30,'男');
+    console.log(zs);
+
+
+    // 5.箭头函数中的this指向
+    // 箭头函数中的this指向具有确定性，永远跟随父作用域中的this指向“父作用域中的this指向谁，箭头函数的this就指向谁”,不需要bind,call,aply来改变this。
+    // 箭头函数在代码编译阶段“定义时”就已经确定了this指向。
+
+    setTimeout(()=>{
+        console.log(this);
+    },1000)
+
+    var obj2 = {
+        name:'zs',
+        sayHi:()=>{
+            console.log(this);
+        },
+        obj3:{
+            eat:function(){
+                console.log(this);
+            },
+            sayHello:function(){
+                console.log(this);
+                (()=>{
+                    console.log(this);
+                })();
+            }
+        }
+    }
+    obj2.sayHi();
+    obj2.obj3.eat();
+    obj2.obj3.sayHello();
+
+    function foo(){
+        console.log(this.id);
+        setTimeout(()=>{
+            console.log('id',this.id);
+        },1000);
+    }
+    var id = 21;
+    foo.call({id:45});
+
+    //改变this指向
+    //1. var 变量 = this;
+    //2. call(this)
+    //3.bind(this)
+    //4.apply(this)
+    
+</script>
+</html>

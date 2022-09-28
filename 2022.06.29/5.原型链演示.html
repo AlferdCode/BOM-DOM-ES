@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链演示</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 构造函数
+    function Foo(){};
+    // f1实例
+    var f1 = new Foo();
+    // __proto__ 是所有普通对象的原型。prototype是函数对象的原型。
+    console.log(f1.__proto__ === Foo.prototype); //true
+    console.log(Foo); //函数对象
+    console.log(typeof Foo.prototype); //objec 普通对象
+    console.log(Foo.prototype.__proto__.__proto__); //null 形成原型链
+
+
+    var ol = new Object({name:'张三'});
+    ol.age = 30;
+
+    console.log(ol); //普通对象
+    console.log(ol.__proto__ === Object.prototype); //true
+    console.log(Object.prototype.constructor === Object); //true
+
+    // Object对象继承于Function对象
+    console.log(Object.__proto__ === Function.prototype); //true
+    console.log(Object.__proto__);//ƒ () { [native code] }  空函数
+    console.log(Function.prototype);//ƒ () { [native code] } 空函数
+
+    var foo2 = new Function();
+    console.log(foo2.__proto__ === Function.prototype); //true
+    console.log(Function.prototype.constructor === Function); //true
+
+</script>
+</html>

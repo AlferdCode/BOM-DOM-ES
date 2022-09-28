@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类和继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // ES6中class关键字用来定义类对象。
+    // 定义一个类，类名建议首字母大写
+
+    class Animal{
+        // 类的构造函数，一般在类构造函数中定义类的属性
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        // 定义方法
+        eat(food){
+            console.log(this.name + "喜欢吃" + food);
+        }
+
+    }
+
+    let th = new Animal('老虎',6);
+    console.log(th);
+    th.eat('肉');
+
+    // 类继承 extends继承
+    class Person extends Animal{
+        constructor(name,age,sex){
+            // 去调用父类的构造函数，让父类帮子类进行初始化。
+            super(name,age);
+            // 扩展的属性
+            this.sex = sex;
+        }
+        // 扩展的方法
+        sleep(){}
+        // 扩展的方法，如果和继承的方法名称相同，会优先使用本类中方法，这种做法叫做“重写”override。
+        eat(food){
+            console.log(this.name + "喜欢吃" + food + "~我是Person");
+        }
+    }
+
+    let zs = new Person('张三',30,'男');
+    console.log(zs);
+    zs.eat('菜');
+
+</script>
+</html>

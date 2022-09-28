@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编码和解码</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 编码
+    console.log(escape("/?三次握手/")); // /%3F%u4E09%u6B21%u63E1%u624B/
+
+    // 解码
+    console.log(unescape('/%3F%u4E09%u6B21%u63E1%u624B/')); // /?三次握手/
+
+
+    // 建议使用encodeURI | decodeURI
+    // 编码
+    console.log(encodeURI("/?三次握手/")); // /?%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/
+
+    // 解码
+    console.log(decodeURI('/?%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/')); 
+
+    /*由于cookie中一般保存的数都是英文,而encodeURI对英文和数字不会编码,所以使用编码的方式让cookie更安全,没有实际意义,建议使用加密算法*/ 
+
+    var account = encodeURI('管理员');
+    console.log(account);//%E7%AE%A1%E7%90%86%E5%91%98
+    
+    document.cookie = encodeURI(`account=${account};max-age=100`);
+    console.log(document.cookie);//account=%25E7%25AE%25A1%25E7%2590%2586%25E5%2591%2598
+
+    // account=管理员
+    console.log(decodeURI(decodeURI("account=%25E7%25AE%25A1%25E7%2590%2586%25E5%2591%2598")));
+</script>
+</html>

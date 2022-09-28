@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加密和解密</title>
+</head>
+<body>
+    <h2>待加密的字符</h2>
+    <div>
+        <span>加密前：</span>
+        <span id="txt">管理员admin123?</span>
+    </div>
+    <div>
+        <span>加密后：</span>
+        <span id="encrytxt"></span>
+    </div>
+    <button id="btn">加密</button>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
+<script src="./base64-encry.js"></script>
+<script>
+    var txt = document.getElementById('txt');
+    var btn = document.getElementById('btn');
+    var encrytxt = document.getElementById('encrytxt');
+
+    btn.onclick = function(){
+        // md5() 是MD5.js插件提供的方法，返回32为字符串。
+        encrytxt.textContent = md5(txt.textContent.length); //使用md5解密网返回12
+
+        // 解密 https://www.cmd5.com/ 
+        var result = $$.base64encode('hello'); // aGVsbG8=
+
+        console.log(result);
+
+    }
+
+    
+
+</script>
+</html>

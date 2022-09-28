@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie实现登录</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="logo">
+            <img src="img/logo.jpg" alt="logo">
+            <h2>Sign in to GitHub</h2>
+        </div>
+        <div class="login">
+            <div class="row">
+                <label for="acc">Username or email address</label>
+                <input type="text" id="acc">
+            </div>
+            <div class="row">
+                <label for="pwd">Password</label>
+                <input type="password" id="pwd">
+                <a href="#" class="forget">Forgot password?</a>
+            </div>
+            <div class="row">
+                <button id="btnLogin">Sign in</button>
+            </div>
+        </div>
+        <div class="register">
+            New to GitHub? <a href="#">Create an account</a>.
+        </div>
+    </div>
+
+    <script src="./js/cookie.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>

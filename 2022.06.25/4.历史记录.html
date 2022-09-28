@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin:0;
+
+        }
+        
+        #list,#empty{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <button id="rearch">搜索</button>
+    <hr>
+    <div id="wrap"></div>
+    <ul id="list">
+
+    </ul>
+    <p id="empty">暂无数据</p>
+</body>
+<script>
+        var txt = document.querySelector('#txt');
+    var rearch = document.querySelector('#rearch');
+    var empty = document.querySelector('#empty');
+    var list = document.querySelector('#list');
+    var arr = [];
+    var books = localStorage.getItem('books');
+    if(books){
+        arr = JSON.parse(books);
+    }
+    if(arr.length){
+        arr.forEach(function(item,index){
+            list.innerHTML += `<li><span>${item}</span>--------<button>删除</button></li>`;
+            list.style.display = 'block';
+        })
+    }else{
+        empty.style.display = 'block';
+    }
+
+    rearch.onclick = function(){
+        //检索数据
+        // .some 返回一个符合条件的
+        var res = arr.some(function(item){
+            return item  == txt.value;
+        })
+        if(!res){
+            list.innerHTML += `<li><span>${txt.value}</span>--------<button>删除</button></li>`;
+            list.style.display = 'block';
+            empty.style.display = 'none';
+            //更新数据
+            arr.push(txt.value);
+            localStorage.setItem('words',JSON.stringify(arr));
+        }
+    }
+    // 删除历史数据
+    var btns = list.getElementBsTagName('button');
+    list.onclick = function(e){
+        if(e.target.nodeName == "BUTTON"){
+            list.removeChild(e.target.parentNode);
+            //重新编号
+            // Array.from(list.children).forEach(function(item,index){
+            //     item.children[0].innerHTML = item.children[index+1].innerHTML;
+            // })
+            //更新数据
+            var i = Array.from(btns).findIndex(function(item){
+                return item == e.target;
+            })
+            arr.splice(i,1);
+            localStorage.setItem('words',JSON.stringify(arr));
+            if(arr.length == 0){
+                empty.style.display = 'block';
+                list.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</html>

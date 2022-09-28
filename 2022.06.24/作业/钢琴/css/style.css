@@ -1,0 +1,143 @@
+/* 设置css样式的编码方式：使用utf-8 */
+
+/* @charset "utf-8"; */
+
+/* @font-face @keyframes */
+html,
+body {
+    height: 100%;
+
+}
+
+body {
+    background-image: url('https://img2.woyaogexing.com/2020/09/06/4ed46f424cd74d4981a0dd8470b2f626!1242x9999.jpeg');
+    background-size: 50%;
+}
+
+#all {
+    width: 600px;
+    height: 520px;
+    padding: 5px;
+    border: 1px solid #666;
+    margin: 20px auto;
+    font-size: 12px;
+    user-select: none;
+}
+
+#all h1 {
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+}
+
+#main {
+    width: 600px;
+    height: 370px;
+    position: relative;
+}
+
+div.key {
+    position: absolute;
+    top: 0;
+
+    float: left;
+
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+
+div.whiteKey {
+    width: 60px;
+    height: 360px;
+    color: #666;
+    background-color: #eee;
+    border: 2px solid #999;
+    background-image: url(../img/key_back_white.png);
+}
+
+div.blackKey {
+    width: 36px;
+    height: 200px;
+    color: #ccc;
+    background-color: #666;
+    border: 2px solid #666;
+    background-image: url("../img/key_back_black.png");
+}
+
+div.whiteKey span {
+    background-color: #444;
+    position: relative;
+    top: 500px;
+}
+
+div.blackKey span {
+    position: relative;
+    top: -50px;
+}
+
+#key60 {
+    left: 70px;
+}
+
+#key62 {
+    left: 130px;
+}
+
+#key64 {
+    left: 190px;
+}
+
+#key65 {
+    left: 250px;
+}
+
+#key67 {
+    left: 310px;
+}
+
+#key69 {
+    left: 370px;
+}
+
+#key71 {
+    left: 430px;
+}
+
+#key72 {
+    left: 490px;
+}
+
+#key61 {
+    left: 110px;
+}
+
+#key63 {
+    left: 175px;
+}
+
+#key66 {
+    left: 290px;
+}
+
+#key68 {
+    left: 352px;
+}
+
+#key70 {
+    left: 415px;
+}
+
+#comment {
+    font-size: 12px;
+    line-height: 18px;
+    padding-left: 20px;
+}
+
+#comment h3 {
+    color: #690;
+    font-size: 12px;
+}

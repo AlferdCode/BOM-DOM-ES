@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 动物构造函数
+    function Animal(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.eat = function(){
+            console.log("构造函数中的eat");
+        }
+    }
+    
+    Animal.prototype.eat = function(){
+        console.log("原型上的eat");
+    }
+    Animal.prototype.sleep = function(hour){
+        console.log(this.name + `每天睡“${hour}小时”`);
+    }
+    Animal.prototype.run = function(k){
+        console.log(this.name + `每天pao“${k}km”`);
+    }
+
+    var sz = new Animal('狮子',5,'雄');
+    console.log(sz);
+    sz.eat(); //构造函数中的eat
+
+    // 构造函数继承：让一个构造函数继承另一个构造函数的属性和方法
+    // Person子类，子对象，派生类。 站在子类的角度：子类继承了父类。
+    // Animal父类，父对象，超类。   站在父类的角度：父类派生了父类。
+    function Person(name,age,sex,height){
+
+        /*Animal.apply：this去呼叫Animal，说我没有[name,age,sex]属性，你给我吧。
+        帮我去初始化一下name,age,sex我就有这些属性了“让this去调用父类Animal的构造函数帮助this进行初始化操作”
+        也叫“对象冒充”，子类冒充父类调用父类的构造函数。
+        */ 
+        // Animal.apply(this,[name,age,sex]);
+
+        // Person独有的属性（扩展的）。
+        this.height = height;
+    }
+    
+    var zs = new Person('张三',30,'男',180);
+    console.log(zs);
+    // zs.eat();
+
+
+    function Cat(name,age,sex,height,color){
+        // 可继承多个构造函数
+        Person.apply(this,[name,age,sex,height]);
+        Animal.apply(this,[name,age,sex]);
+        this.color = color;
+    }
+    var cat = new Cat('小橘',3,'女',20,"橙色");
+    console.log(cat);
+    cat.eat();
+
+    // 构造函数的继承问题：无法继承父类的原型，原型链不正确。
+</script>
+</html>

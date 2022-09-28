@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Animal(name,age){
+        this.name = name;
+        this.age = age;
+        this.run = function(){
+            console.log('构造函数内方法');
+        }
+    }
+    Animal.prototype.eat = function(){
+        console.log('原型上方法eat');
+    }
+
+    var sz = new Animal('狮子',6);
+    console.log(sz.name); //构造函数内属性“创建函数的时候，在函数内部添加属性”。
+    sz.run(); //构造函数内属性“方法”。
+    sz.eat(); //构造函数原型上的方法。
+
+    console.log(Animal.prototype.constructor); //构造函数本身“对象在原型上的构造函数”。
+    console.log(Animal.prototype.constructor === Animal);//true
+    console.log(Animal.prototype.__proto__ === Object.prototype);//true
+
+</script>
+</html>

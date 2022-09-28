@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b</title>
+</head>
+
+<body>
+    <h2>我是B页面</h2>
+    <div id="main"></div>
+</body>
+<script>
+    var main = document.getElementById('main');
+
+    // main.innerHTML = window.localStorage.getItem('content');
+
+    
+    main.innerHTML = window.sessionStorage.getItem('name');
+    window.sessionStorage.setItem('ages','100');
+
+</script>
+
+</html>

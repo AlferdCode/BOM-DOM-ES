@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 构造函数：一个抽象对象（类对象）。
+    function Person(name, age) {
+        // 定义属性 
+        this.name = name;
+        this.age = age;
+        this.sayHi = function (content) {
+            console.log(this.name + "说" + content);
+        };
+        this.run = function(running){
+            console.log(this.name + "每天跑步" + running + 'km');
+        }
+    }
+    console.log(Person.prototype);
+
+    // 原型上的方法
+    Person.prototype.sleep = function(hour){
+        console.log(this.name + `每天睡${hour}小时`);
+    }
+    Person.prototype.eat = function(food){
+        console.log(this.name + `喜欢吃“${food}”`);
+    }
+
+    var ls = new Person('LSIA',18);
+    ls.sayHi('天天向上');
+    ls.sleep(10);
+    ls.eat('汉堡包');
+</script>
+
+</html>

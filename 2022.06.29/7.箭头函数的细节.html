@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数细节</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 箭头函数只有一个形参时，形参列表的()可以省略。形参列表个数为0或1个以上必须添加()。
+    var arr = ['hello',100,true];
+    arr.forEach(item => {
+        console.log(item);
+    });
+    arr.forEach((item,index) => {
+        console.log(item);
+    });
+
+    // 箭头函数体中如果只有一条语句时，{}可以省略，箭头函数可以用来精简代码。
+    arr.forEach( item => console.log(item));
+
+    // findIndex 返回符合条件的元素下标
+    // 箭头函数体中只有一条语句，且回调函数有返回值，return必须去掉。
+    var index = arr.findIndex(item => item === true);
+    console.log(index);
+</script>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../20220317/img/baidu.ico" type="img/x-ico">
+    <style>
+         *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+        .box {
+            width: 654px;
+            height: auto;
+            /* background-color: pink; */
+            margin: 200px auto;
+        }
+
+        .box div {
+            display: inline-block;
+            /* 中线对齐 */
+            vertical-align: middle;
+        }
+
+        .box .lt {
+            width: 550px;
+            height: 44px;
+            /* background-color: powderblue; */
+            border: 1px solid #c4c7c1;
+            box-sizing: border-box;
+            /* 上右下左 */
+            border-radius: 5px 0 0 5px;
+
+        }
+
+        .box .rt {
+            width: 108px;
+            height: 44px;
+            background-color: #4e6ef2;
+            margin-left: -9px;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+            color: #fff;
+            /* 文本垂直居中 */
+            text-align: center;
+            /* 行高，和 rt 块元素高度保持一致 */
+            line-height: 45px;
+            margin-top: -4px;
+        }
+       
+            nav{
+                width: 100%;
+                height: auto;
+            }
+            nav .nav_lt{
+                height: 60px;
+                line-height: 60px;
+                padding:0 0 0  14.5px;
+            }
+            nav .nav_lt a{
+                font-size: 14px;
+                color: #222222;
+                /* 文本装饰
+                值：none 定义无，清除。underline 下划线。overline 上划线。line-through 删除线。
+                 */
+                text-decoration:none;
+                margin: 0 9.5px;
+            }
+            .list{
+                width: 551px;
+                height: 280px;
+                border: 1px solid #4e6ef2;
+                position: absolute;
+                /* background-color: #fff; */
+                margin-left: -1px;
+                display: none;
+            }   
+            .list .off{
+                position: absolute;
+                top: 257px;
+                left: 509px;
+                width: 40px;
+                height: 20px;
+                text-align: center;
+                line-height: 20px;
+                background-color: rgba(100, 99, 99, 0.436);
+                border-radius: 20px;
+            }  
+            .list .off a{
+                text-align: center;
+                text-decoration: none;
+                color: #fff;
+            }      
+            #empty{
+                display: none;
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- 左侧块 -->
+        <div class="nav_lt">
+            <a href="https://news.baidu.com"target="—blanck">新闻</a>
+            <a href="https://hao123.com"target="—blanck">hao123</a>
+            <a href="https://map.baidu.com"target="—blanck">地图</a>
+            <a href="https://tieba.baidu.com"target="—blanck">贴吧</a>   
+            <a href="http://v.baidu.com"target="—blanck">视频</a>
+            <a href="https://image.baidu.com"target="-blanck">图片</a>   
+            <a href="https://pan.baidu.com"target="—blanck">网盘</a>  
+            <a href="https://baidu.com/more">更多></a> 
+        </div>
+    </nav>
+
+     <div class="box">
+        <input type="text" class="lt">
+        <div class="rt">百度一下</div>
+        <ul class="list">
+            <p class="off"> <a href="">关闭</a> </p>
+        </ul>
+        <p id="empty">暂无数据</p>
+    </div>
+</body>
+<script>
+    var lt = document.querySelector('.lt');
+    var list = document.querySelector('.list');
+    var rt = document.querySelector('.rt');
+    var empty = document.getElementById('empty');
+    var off = document.querySelector('.off a');
+
+    off.addEventListener('click',function(e){
+        list.style.display = "none";
+        e.stopPropagation(true);
+
+        
+    })
+
+    var arr = [];
+    var books = localStorage.getItem('books');
+    if(books){
+        arr = JSON.parse(books);
+    }
+
+    if(arr.length){
+        arr.forEach(function(item,index){
+            list.innerHTML += `<li><span>${lt.value}</span></li>`;
+                list.style.display = 'block';
+        })
+    }else{
+        empty.style.display = "none";
+    }
+
+    rt.onclick = function(){
+        // 检索数据
+        // some  返回一个符合条件的
+        var res = arr.some(function(item){
+            return item == lt.value;
+        })
+        if(!res){
+            list.innerHTML += `<li><span>${lt.value}</span></li>`;
+            // list.style.display = 'block';
+            empty.style.display = "none";
+            
+            // 更新数据
+            arr.push(lt.value);
+            localStorage.setItem('words',JSON.stringify(arr));
+        }
+    }
+
+
+    lt.onclick = function(){
+        var res = arr.some(function(item){
+            return item == lt.value;
+        })
+        if(!res){
+            list.innerHTML += `<li><span>${lt.value}</span></li>`;
+            list.style.display = 'block';
+            empty.style.display = "none";
+            
+            arr.push(lt.value);
+            localStorage.setItem('words',JSON.stringify(arr));
+        }
+    }
+
+
+    // 删除历史数据
+    var btns = list.getElementsByTagName('button');
+    list.onclick = function(e){
+        if(e.target.nodeName == 'BUTTON'){
+            list.removeChild(e.target.parentNode);
+            // // 重新编号
+            // Array.from(list.children).forEach(function(item,index){
+            //     item.children[0].innerHTML = item.children[index+1].innerHTML;
+            // })
+            // 更新数据
+            var i = Array.from(btns).findIndex(function(item){
+                return item == e.target;
+            })
+            arr.splice(i,1);
+            localStorage.setItem('words',JSON.stringify(arr));
+            if(arr.length == 0){
+                empty.style.display = 'none';
+                list.style.display = "none";
+            }
+        }
+    }
+
+</script>
+</html>

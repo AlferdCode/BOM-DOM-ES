@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取歌首</title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+</body>
+<script>
+    var list = document.querySelector('#list');
+    //发送请求
+    var url = 'http://101.43.173.17:9090/api/www/artist/artistInfo?category=0&pn=1&rn=100';
+    // 异步写法
+    fetch(url)
+    .then(r=>r.json())//解析后盾返回的json数据  等同于 JSON.paser()
+    .then(res=>{
+        console.log(res);
+        var data = res.data.artistList;//获取到数组
+        data.forEach(function(item,index){
+            var li = document.createElement('li');
+            li.innerHTML = `${item.name}`;
+            list.appendChild(li);
+        })
+
+    })
+</script>
+</html>

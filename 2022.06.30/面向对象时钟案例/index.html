@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    
+</body>
+<script src="./js/bigCircle.js"></script>
+<script src="./js/smallCircle.js"></script>
+<script src="./js/box.js"></script>
+<script src="./js/num.js"></script>
+<script src="./js/dot.js"></script>
+<script src="./js/line.js"></script>
+<script src="./js/run.js"></script>
+<script>
+    // 使用对象对象实现时钟
+    // 需求：实现一个时钟：大圈对象，小圈对象，时钟周围12个数字对象，时钟中心点对象，时钟的秒针，分针，时针对象。
+
+    var big = new BigCircle('outer');
+    big.render();   
+
+    var small = new SmallCircle('inner');
+    small.render();
+
+    var box = new Box('box');
+    box.render();
+
+    for(var i = 1; i<=12; i++){
+        var num = new Num('num',i);
+        num.render();
+    }
+    // 数字布局
+    var numAll = document.querySelectorAll('.num');
+    var x = 90;
+    Array.from(numAll).forEach(function(item,index){
+        x+=30;
+        item.style.transform = `rotate(${x}deg)`;
+        item.children[0].style.transform = `rotate(${-x}deg)`;
+    })
+
+    var dot = new Dot('dot');
+    dot.render();
+
+    var second = new Line('second line');
+    second.render();
+
+    var minute = new Line('minute line');
+    minute.render();
+
+    var hour = new Line('hour line');
+    hour.render();
+
+    var s = document.querySelector('.second');
+    var m = document.querySelector('.minute');
+    var h = document.querySelector('.hour');
+    var run = new Run(s,m,h);
+    run.rotate();
+    
+    var timer = setInterval("run.rotate()", 1000);
+    window.onunload = function(){
+        clearInterval(timer);
+    }
+</script>
+</html>

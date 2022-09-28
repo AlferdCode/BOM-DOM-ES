@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #wrap {
+            margin: 0 auto;
+            width: 1200px;
+
+        }
+
+        #cates {
+            font-size: 14px;
+        }
+
+        #cates span,
+        #prefixWrap span {
+            display: inline-block;
+            margin: 5px;
+            padding: 0 20px;
+            border-radius: 15px;
+            background-color: #cccccc;
+        }
+
+        #cates .active ,   #prefixWrap .active{
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        #list {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            align-content: space-evenly;
+        }
+
+        #list li {
+            width: 180px;
+            margin: 5px 10px;
+            text-align: center;
+            list-style: none;
+        }
+
+        #list li img {
+            width: 100%;
+            display: block;
+            border-radius: 50%;
+        }
+
+        #list li p {
+            font-size: 18px;
+            color: rgb(68, 67, 67);
+            margin: 5px 0;
+        }
+
+        #list li span {
+            font-size: 13px;
+            color: rgb(68, 67, 67);
+        }
+
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(77, 76, 76, 0.616);
+            text-align: center;
+            line-height: 100vh;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- 头部 -->
+        <div id="cates">
+            <span class="active">全部</span>
+            <span>华语男</span>
+            <span>华语女</span>
+            <span>华语组合</span>
+            <span>日韩男</span>
+            <span>日韩女</span>
+            <span>日韩组合</span>
+            <span>欧美男</span>
+            <span>欧美女</span>
+            <span>欧美组合</span>
+            <span>其他</span>
+        </div>
+        <div id="prefixWrap">
+            <span class="active">热门</span>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+            <span>D</span>
+            <span>E</span>
+            <span>F</span>
+            <span>G</span>
+            <span>H</span>
+            <span>I</span>
+            <span>J</span>
+            <span>K</span>
+            <span>H</span>
+            <span>I</span>
+            <span>J</span>
+            <span>K</span>
+            <span>L</span>
+            <span>M</span>
+            <span>N</span>
+            <span>O</span>
+            <span>P</span>
+            <span>Q</span>
+            <span>R</span>
+            <span>S</span>
+            <span>T</span>
+            <span>O</span>
+            <span>V</span>
+            <span>W</span>
+            <span>X</span>
+            <span>Y</span>
+            <span>Z</span>
+        </div>
+        <ul id="list">
+            <!-- <li>
+            <img src="" alt="">
+            <p></p>
+            <span></span>
+        </li> -->
+        </ul>
+    </div>
+    <div id="loading">加载中......</div>
+</body>
+<script>
+    //id 可以不需要获取直接用
+    var cates = document.querySelectorAll('#cates span');
+    var prefixs = document.querySelectorAll('#prefixWrap span');
+    var x = 0;
+
+    var prefix = '';
+    function getList() {
+        loading.style.display = 'block';
+        var url = `http://101.43.173.17:9090/api/www/artist/artistInfo?category=${x}&pn=1&rn=100&prefix=${prefix}`;
+        fetch(url).then(r => r.json()).then(res => {
+            //隐藏loading
+            loading.style.display = 'none';
+            //拿到渲染数据
+            console.log(res);
+
+            var data = res.data.artistList;
+
+            list.innerHTML = ''; //清空列表
+            data.forEach(function (item) {
+                list.innerHTML += `
+                <li>
+            <img src="${item.pic300}" alt="">
+            <p>${item.name}</p>
+            <span>${item.musicNum + '首歌曲'}</span>
+        </li>
+                `;
+            })
+        })
+    }
+    getList();
+
+    // 点击按钮变色
+    Array.from(cates).forEach((item, index) => {
+        item.onclick = function () {
+            cates[x].classList.remove('active');
+            item.classList.add('active');
+            x = index;
+            getList();
+        }
+    })
+    //按照字母分类
+    Array.from(prefixs).forEach(function (item, index) {
+        item.onclick = function () {
+            prefixs[x].classList.remove('active');
+            item.classList.add('active');
+            
+            prefix = item.innerHTML == '热门' ? '' : item.innerHTML;
+            x = index;
+            getList();
+        }
+    })
+</script>
+
+</html>

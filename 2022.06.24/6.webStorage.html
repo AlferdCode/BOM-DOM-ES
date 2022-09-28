@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* 本地存储 localStroage
+    优点：
+        存储数据量大  ，可以长期存储数据，不会随着http请求一起发送，在同一个浏览器不同的窗口页面操作的是同一个localStroage。
+    缺点：
+        不同的窗口下数据不能独立，相互干扰。
+
+
+    localStroage存储对象：
+    1. 现将待存储对象，转换成JSON 字符串 stringify()。
+    2. 将转换成JSON 字符串 存到 localStroage 中。
+    3. 从localStroage获取到该数据，再转化为JSON对象 parse()。
+    注：sessionStroage 同理可证。
+    */
+
+    // 语法
+
+    // 1.设置，一般建议使用字符串类型。如果是其他类型可以转换成字符串。
+    localStorage.setItem('name','张鹏飞');
+    localStorage.setItem('age',21);//如果是数字会自动转换为字符串
+    localStorage.setItem('sex','男');
+
+    // 如果要在localStorage里面存储对象，数组引用数据类型时，必须先转换为字符串 JSON.stringify()
+    var person = {
+        name:'薛银虎',
+        age:21,
+        sex:'男',
+        birthday:new Date(),
+        fav:['学习','打游戏']
+    }
+    localStorage.setItem('xyh',JSON.stringify(person));
+
+    // 2.长度
+    console.log(window.localStorage.length);
+    
+    // 3.获取
+    console.log(localStorage.getItem('name'));
+    console.log(localStorage.getItem('xyh'));
+
+    // 4.删除
+    localStorage.removeItem('sex');
+    console.log(localStorage.getItem('sex')); //null
+    console.log(window.localStorage);
+
+    // 5.清空
+    localStorage.clear();
+    console.log(window.localStorage);
+
+
+    /* sessionStorage对象
+    特点：
+    1.存储数据，存入相同属性的数据以最后一次赋值为准。
+    2.如果浏览器一直不关闭，数据一直缓存，会导致其他页面中有一些不需要的数据(占用内存，可能会成为脏数据)。
+
+    优点：不同的窗口下的sessionStorage存储互相独立，互不干扰。
+
+    缺点：有效期短，有效期在页面关闭之前的时间段。
+    */
+
+
+    // 注意：sessionStorage对象和localStorage对象的API用法一致。
+</script>
+</html>

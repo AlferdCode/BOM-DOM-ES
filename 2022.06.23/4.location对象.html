@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location对象</title>
+</head>
+<body>
+    <button id="btn">点击跳转</button>
+    <button id="btnGetUrl">获取URL各个部分</button>
+    <P id="p1"></P>
+    <div style="height:1000px"></div>
+    <p>文档底部</p>
+</body>
+<script>
+    var btn = document.querySelector("#btn");
+    var btnGetUrl = document.querySelector("#btnGetUrl");
+    var p1 = document.querySelector("#p1");
+
+    // location对象 
+    // 获取URL信息
+    console.log(location.href);
+
+    // 跳转
+    btn.addEventListener('click',function(){
+         = "https://www.baidu.com";
+    });
+    // 获取URL各部分数据
+    btnGetUrl.addEventListener('click',function(){
+
+        // origin原始地址，只包含协议名，服务器地址（IP，域名），端口号
+        console.log(location.origin); // 原始地址
+
+        console.log(location.protocol);// 协议名
+
+        console.log(location.host);// 主机（包含端口号）
+
+        console.log(location.hostname);// 主机名（包含端口号）
+
+        console.log(location.port);// 端口号
+
+        console.log(location.pathname);// path路径
+
+        console.log(location.search);// 查询字符串 
+
+        console.log(location.hash);// hash值，锚点
+
+        // http://127.0.0.1:5500/3.history对象.html?name=sh&age=12&sex=男;
+    });
+
+
+    // 获取数据信息
+    var arr = [
+        {name:'张三',age:30,sex:'男'},
+        {name:'李四',age:31,sex:'男'},
+        {name:'王五',age:12,sex:'男'}
+    ];
+
+    function getUser(name){
+        var newArr = arr.filter(function(user){
+            return user.name === name;
+        })
+        console.log(newArr)
+        if(newArr.length === 1){
+            var user = newArr[0];
+            console.log(user);
+            p1.innerHTML = `姓名：${user.name}<br>
+            年龄：${user.age}<br>
+            性别：${user.sex}<br>
+            `
+        }else{
+            console.log("没有查找到用户");
+        }
+    }
+    getUser('王五');
+
+    // 从当前的url地址中获取到name形参，如何获取查看字符串中的值?（很重要）
+    function getParmeter(key){
+        // var path = location.search.substring(1);
+        var path = "name='张三'&age=12&sex=男";
+        var arr = path.split('&');
+        for(var i=0;i<arr.length;i++){
+            var ele = arr[i];
+            var index = ele.split('=');
+            if(index[0] == key){
+                return index[1];
+            }
+        }
+        return undefined;
+    }
+
+    var key = getParmeter('age');
+    console.log(key);
+
+</script>
+</html>

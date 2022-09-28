@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie存储</title>
+</head>
+<body>
+    <button id="txt">0</button>
+    <button id="add">+</button>
+    <button id="save">保存</button>
+    <button id="read">读取</button>
+</body>
+<script>
+    var txt = document.querySelector('#txt');
+    var add = document.querySelector('#add');
+    var save = document.querySelector('#save');
+    var read = document.querySelector('#read');
+
+    add.addEventListener('click',function(){
+        var num = txt.innerHTML * 1 + 1;
+        txt.innerHTML = num;
+    });
+
+    // 会话级cookie，会随着浏览器的关闭而删除。
+    save.addEventListener('click',function(){
+        // 设置 cookie 是以 “键 = 值”的形式存储
+        document.cookie = `num = ${txt.innerHTML}`;
+
+    })
+
+    // 读取cookie
+    read.addEventListener('click',function(){
+        console.log(document.cookie);
+    })
+
+
+</script>
+</html>

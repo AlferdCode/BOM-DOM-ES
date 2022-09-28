@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="">404 Not Found</a>
+</body>
+<script>
+
+    var xhr;
+    if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest();
+    }else{
+        // ActiveXObject对，IE支持，Microsoft.XMLHttp 是一种COM组件
+        xhr = new ActiveXObject("Microsoft.XMLHttp"); //针对IE浏览器的兼容性处理
+    }
+
+    xhr.open('GET','data2.json');
+
+    xhr.send();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            // console.log(xhr.responseText);
+            var obj = xhr.responseText;
+            JSON.parse(obj);
+        }
+    }
+
+
+</script>
+</html>

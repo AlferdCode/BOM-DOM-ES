@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // rest参数，又叫剩余参数，参数的个数不固定。
+    function func(x,y){
+        console.log(x,y);
+        console.log(arguments);
+    }
+    func(10,20,30,40);
+
+    // rest返回一个数组，根据传入的实参保存。可通过下标获取实参。
+    /*在普通函数中，获取函数的实参有三种方法:
+        1. 直接通过形参接收实参。
+        2. 通过arguments对象。
+        3. 通过rest参数数组。
+    */ 
+    function func2(...rest){
+        console.log(arguments);
+        console.log(rest);
+        console.log(rest[0]);
+    }
+    func2(10,20,30,40);
+
+    // 报错 ：Uncaught SyntaxError: Rest parameter must be last formal parameter
+    // function func3(...rest,x,y){}
+
+    // rest参数必须是函数的最后一个参数，否则报错。
+    function func3(x,y,...rest){
+        console.log(x,y);
+        console.log(rest); //接收的是剩余的实参
+    }
+    func3(10,20,30,40);
+
+ 
+    // 参数列表没有添加...rest  报错
+    // function func4(a,b){
+    //     console.log(rest); //报错 rest is not defined 
+    // }
+
+    function func4(a,b,...rest){
+        console.log(rest); //返回空数组
+    }
+    func4();
+
+    
+</script>
+</html>

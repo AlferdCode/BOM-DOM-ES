@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* 去默认 */
+.top{
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(97, 97, 97, 0.347);
+}
+video{
+    position: absolute;
+    /* display: none; */
+    width: 420px;
+    height: 420px;
+    background-color: rgb(0, 0, 0);
+}
+.slideshow{
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    margin: 0px auto;
+    width: 420px;
+    height: 490px;
+}
+.top_img{
+    /* pointer-events: none; */
+    position: relative;
+    overflow: hidden;
+    width: 420px;
+    height: 420px; 
+}
+.slideshow .imgMax{
+    /* display: none; */
+    position: absolute;
+        /* top: 0;
+        left: 0 ; */
+    width: 420px;
+    height: 420px;
+}
+.minDH{
+    overflow: hidden;
+    bottom: 0;
+    left: 33px;
+    position: absolute;
+    width: 387px;
+    height: 63px;
+
+}
+.minDH ul li img {
+    width: 62px;
+    height: 62px;
+}
+.slideshow ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 420px;
+    height: 62px;
+}
+.slideshow ul li{
+    margin: 0 4px;
+    width: 62px;
+    height: 62px;
+}
+span {
+    z-index: 999;
+    position: absolute;
+    display: inline-block;
+    bottom: 0px;
+    width: 30px;
+    height: 62px;
+    text-align: center;
+    line-height: 62px;
+    color: #fff;
+    font-weight: 900;
+    background-color: rgba(36, 35, 35, 0.251);
+}
+span:hover{
+    background-color: rgba(36, 35, 35, 0.578);
+}
+ .right{
+    right: 0px;
+ }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function func(){
+        console.log(1111);
+    }
+    func()
+    console.log(func.prototype);
+    console.log(typeof func);
+    console.log(func instanceof Function);
+
+    var arr = [1,2,3,4];
+    console.log(arr.prototype); //undefined
+    console.log(arr.__proto__); 
+    
+    var obj = {
+        name:'张三',
+        age:30
+    }
+    console.log(obj.prototype); //undefined
+    console.log(obj.__proto__);
+
+
+    function Animal(name,age){
+        this.mz = name;
+        this.nl = age;
+    }
+
+    var ani = new Animal('张三',30);
+    console.log(ani.mz);
+    console.log(ani.nl);
+
+</script>
+</html>

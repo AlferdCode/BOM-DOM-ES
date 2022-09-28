@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window</title>
+    <script src="封装弹框.js"></script>
+</head>
+
+<body>
+    <button id="btnAlert">弹出</button>
+    <button id="btnDelet">删除</button>
+    <button id="btnPrm">提示用户输入</button>
+    <button id="btnOpen">打开一个窗口</button>
+    <button id="btnResize">更改窗口宽高</button>
+    <button id="btnClose">关闭窗口</button>
+
+</body>
+<script>
+    console.log(window);
+    var btnAll = document.querySelectorAll('button');
+    // 弹出框，有阻塞行为。
+    Array.from(btnAll).forEach(function (item, index) {
+        item.addEventListener('click', function () {
+            if (item.id == 'btnAlert') {
+                window.alert('弹框');
+            } else if (item.id == 'btnDelet') {
+                var result = confirm('你确定要删除吗？');
+                if (result) {
+                    console.log('删除数据');
+                } else {
+                    console.log("反悔了");
+                }
+            } else if (item.id == 'btnPrm') {
+                var result = prompt('请输入一个数字', '100');
+                var dataType = Number(result);//转换为数值型
+                if (isNaN(dataType)) {
+                    console.log("不是一个数字");
+                } else {
+                    console.log(result);
+                }
+            } else if (item.id == "btnOpen") {
+                // 获取屏幕信息
+                var w = screen.availWidth; //宽
+                var h = screen.availHeight; //高
+                var left = (w - 300) / 2;
+                var top = (h - 200 - 60) / 2;
+
+                window.open("index.html", '我是新的窗口', 'height=200,width=300,"left="+left+",top="+top +",resizeble=no"');
+
+            } else if (item.id == "btnResize") {
+
+                var ckSize = window.open("index.html", '', 'width=500,height=500');
+                ckSize.resizeTo(300, 200);
+
+            } else if (item.id == 'btnClose') {
+                window.close();
+            }
+        })
+    })
+
+
+</script>
+
+</html>

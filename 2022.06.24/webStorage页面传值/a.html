@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a</title>
+</head>
+<body>
+    <button id="btn1">跳转到b页面传值进入b页面</button>
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+
+    
+    // window.localStorage.setItem('content','Hello');
+
+    var str = "LISA";
+    window.sessionStorage.setItem('name',str);
+
+    btn1.onclick = function(){
+        window.location.href = "b.html";
+    }
+</script>
+</html>

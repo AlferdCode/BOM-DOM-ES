@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /* 同步代码：按照顺序执行，造成代码阻塞，用户体验不太好。
+
+    alert("不点击确定，下方大代码不会执行，一直等着");
+
+    for(var i = 0; i<10000; i++){
+        console.log('执行了10000次for'+i);
+    }
+    console.log("此代码要等到上面的for执行完毕后。才能执行，是同步的");
+    */
+
+    
+    // 异步代码：执行没有先后顺序，不会阻塞，用户体验好
+
+    setTimeout(() => {
+        console.log('等待1秒中以后，执行此代码');
+    }, 1000);
+
+    setTimeout(() => {
+        console.log('等待0.8秒中以后，执行此代码');
+    }, 800);
+    console.log("此代码不会等待setTimeout执行完毕载执行，setTimeout是异步的");
+
+    /*
+    原生异步方式：setTimeout setInterval。
+    要学习的AJAX也是异步的。
+    */ 
+</script>
+</html>

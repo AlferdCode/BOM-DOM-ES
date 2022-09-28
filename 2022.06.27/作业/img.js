@@ -1,0 +1,2 @@
+var imgA = ['https://www.omegawatches.cn/media/wysiwyg/cn/ZK11-module1-large.jpg','https://www.omegawatches.cn/media/wysiwyg/cn/visuel-home-KG15-large.jpg','https://www.omegawatches.cn/media/wysiwyg/cn/SH11-module1-large.jpg'];
+var imgB = ['https://www.omegawatches.cn/media/wysiwyg/cn/watch-13110286060002.png','https://www.omegawatches.cn/media/wysiwyg/cn/watch-42855366099003.png','https://www.omegawatches.cn/media/wysiwyg/cn/watch-13158292099006.png'];

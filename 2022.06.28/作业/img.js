@@ -1,0 +1,9 @@
+var LBimg = [
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1217/4/6000f5d4-8681-4d5d-867a-d57cc1cc43cf_525x525_90.jpg',
+    middleSrc:'https://1251962819.vod2.myqcloud.com/54067453vodtransgzp1251962819/1f8de29f387702296508816756/v.f30.mp4'},
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1217/4/6000f5d4-8681-4d5d-867a-d57cc1cc43cf_525x525_90.jpg',
+    middleSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1217/4/6000f5d4-8681-4d5d-867a-d57cc1cc43cf.jpg'},
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1217/85/09171672-3aa9-4eb3-b092-053f231764a4_525x525_90.jpg',middleSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1217/85/09171672-3aa9-4eb3-b092-053f231764a4.jpg'},
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/39/599a896f-f773-4483-a2cf-c4949d819bbd_525x525_90.jpg',middleSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/39/599a896f-f773-4483-a2cf-c4949d819bbd.jpg'},
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/135/bb372a0e-65e7-406c-8f6f-1f52cf5fdae9_525x525_90.jpg',middleSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/135/bb372a0e-65e7-406c-8f6f-1f52cf5fdae9.jpg'},
+    {minSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/7/0727020d-3319-4af3-8159-d74952588325_525x525_90.jpg',middleSrc:'https://h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/630041/2021/1221/7/0727020d-3319-4af3-8159-d74952588325.jpg'}]

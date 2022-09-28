@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+<body>
+    
+</body>
+<script>
+        var name = 'The Window';
+    var obj = {
+        name :'LISA',
+        getNameFun:function(){
+            return function(){
+                return this.name ;
+            };
+        }
+    };
+//让obj去调用内层函数，内层函数中的this就执行obj，call()立即执行函数
+    var res = obj.getNameFun().call(obj);
+
+    var res = obj.getNameFun().bind(obj)();
+    console.log(res);
+</script>
+</html>

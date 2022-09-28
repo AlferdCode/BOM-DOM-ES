@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="saveBtn">储存用户</button>
+    <button id="updatUser">修改用户名</button>
+    <button id="updaraPws">修改密码</button>
+    <script>
+        var saveBtn = document.querySelector('#saveBtn');
+        var updatUser = document.querySelector('#updatUser');
+        var updaraPws = document.querySelector('#updaraPws');
+        //储存
+        saveBtn.onclick = function(){
+            localStorage.setItem('user',JSON.stringify({username:'张腾飞',pwd:'123456'}));
+        }
+        //修改
+        updatUser.onclick = function(){
+          var user =  localStorage.getItem('user');
+          console.log(user);
+          if(user){
+            user = JSON.parse(user);//转换为JSON对象
+            console.log(user);
+            user.username = '薛银虎';
+            //再次存入
+            localStorage.setItem('user',JSON.stringify(user));
+          }
+        }
+        //修改密码
+        updaraPws.onclick = function(){
+            localStorage.setItem('user',JSON.stringify({username:'张腾飞',pwd:'123456'}));//在本地储存获取user里的信息，再用JSON把字符串转换为对象
+        }
+        //修改
+        updatUser.onclick = function(){
+          var user =  localStorage.getItem('user');
+          console.log(user);
+          if(user){
+            user = JSON.parse(user);//转换为JSON对象
+            console.log(user);
+            user.username = '薛银虎';
+            //再次存入
+            localStorage.setItem('user',JSON.stringify(user));
+          }
+        }
+    </script>
+    
+</body>
+</html>

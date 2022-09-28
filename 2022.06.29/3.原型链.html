@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Animal{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        eat(){}
+    }
+    class Person extends Animal{
+
+    }
+    var zs = new Person('张三',30);
+    console.log(zs);
+
+    // 判断类的原型constructor构造函数是否指向自己
+    console.log(Person.prototype.constructor === Person);
+
+    var obj = new Object();  //普通对象，个体，实例 
+    console.log(typeof obj); // object
+    console.log(obj.__proto__); // 查看obj的原型
+
+
+    // 凡是返回function关键字的，都是使用new Function()来创建
+    console.log(typeof Object); //Object内置对象“构造函数”，function
+    console.log(Object.prototype); //查看Object的原型
+    console.log(typeof Date); //function函数对象
+    console.log(typeof Array); //function函数对象
+    console.log(typeof Number); //function函数对象
+    console.log(typeof String); //function函数对象
+    console.log(typeof Boolean); //function函数对象
+    console.log(typeof RegExp); //function函数对象
+    console.log(typeof "abc"); //string普通对象
+    console.log(typeof true); //boolean普通对象
+    console.log(typeof null); //object普通对象
+    console.log(typeof undefined); //undefined普通对象
+
+    // 万物皆对象（Object对象），但Object来源于Function对象，但是很少使用“Function”
+
+    // Function对象，是JS中的一等公民。
+    var fun = new Function('a','b','c','return a + b + c');
+    console.log(fun(10,20,30));
+    
+    // 原型对象
+    // 在JS中没定义一个对象(函数)的时候，对象中都会包含一些预定义的属性，其中函数对象的一个属性就是“原型对象prototype”
+    // 普通对象没有prototype，但是有__proto__属性。
+    var Person1 = function (name){
+        this.name = name;
+    }
+    Person1.prototype.getName = function(){
+        return this.name;
+    }
+
+    var why = new Person1('zzy');
+    console.log(why.getName());
+    console.log(typeof why); //object 普通对象
+    console.log(why.__proto__);
+
+    // 原型链
+    // JS在创建对象（不论是普通对像还是函数对象）都有一个叫做__proto__的内置属性。用于指向创建它的函数对象的原型对象prototype
+
+    console.log(why.__proto__ === Person1.prototype); //true
+    
+    // 同样Person1.prototype对象也有__proto__属性，它指向创建它的函数对象Object的prototype
+    console.log(Person1.prototype.__proto__ === Object.prototype);//true
+    console.log(Person1.prototype); //原型方法： f(name){}
+    console.log(Person1.prototype.__proto__); //原型方法： f Object(){}
+    console.log(Object.prototype); //原型方法： f Object(){}
+
+    // Object.prototype对象也有__proto__属性，但是返回null
+    console.log(Object.prototype.__proto__); //null
+
+    
+    // 我们把这个有__proto__穿起来直到Object.prototype.__proto__为null的链叫做原型链
+    console.log(Person1.prototype.__proto__.__proto__); //null
+</script>
+</html>

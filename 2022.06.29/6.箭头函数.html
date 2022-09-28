@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 箭头函数：本质上就是一个函数。和普通函数相比只是编写的格式不一样，this的指向不一样，没有arguments。
+    // 格式：()=>{}
+
+
+    // 普通函数，函数字面量创建。
+    function fun1(){
+        console.log(arguments);
+    }
+
+    // 函数表达式
+    var fun2 = function(){
+        console.log(arguments);
+    };
+
+    // 构造函数
+    function Fun3(){
+        console.log(arguments);
+    };
+
+    // 普通函数，函数表达式，构造函数都可以使用arguments对象来获取参数列表。
+    fun1(100,50,6);
+    fun2(100,50,6);
+    var func3 = new Fun3(100,50,6);
+
+    // ES6新提供的定义函数的方法 , 也称匿名函数。
+    // 使用场景1：定义一个函数表达式。
+    // 函数内没有arguments对象，使用报错。
+    var fun4 = (a,b,c)=>{
+        // console.log(arguments); 报错，arguments is not defined
+        console.log(a,b,c);
+    }
+    // 调用和普通函数一样
+    fun4(100,50,6);
+
+
+    var arr = ['a','b','c'];
+
+
+    // 使用场景2；一般箭头函数会作为另一个函数的回调函数使用。
+    // 普通函数使用forEach回调函数
+    arr.forEach(function(item){
+        console.log(item);
+    });
+    // 使用箭头函数作为回调函数
+    arr.forEach(item=>{
+        console.log(item);
+    });
+
+
+    // 使用场景3：立即执行函数中使用。
+    (() => {
+        console.log("立即执行函数中使用箭头函数");
+    })();
+
+    // 使用场景4：对象中使用。
+    var obj = {
+        name:'LISA',
+        age:18,
+        sayHi:function(){
+            console.log(this);
+            console.log('HI,my name is ' + this.name);
+        },
+        sayHello:()=>{
+            console.log(`我今年 ${obj.age} 岁了`);
+        }
+    }
+    obj.sayHi();
+    obj.sayHello();
+    
+    /*
+        1.箭头函数的定义方式
+        2.使用场景 ：表达式，回调，立即执行，对象方法
+        3.与普通函数的区别 ：格式不同，没有arguments，this指向不同
+    */ 
+
+</script>
+</html>

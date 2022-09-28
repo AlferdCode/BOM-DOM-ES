@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie插件</title>
+</head>
+
+<body>
+    <button id="btnAdd1">添加name</button>
+    <button id="btnAdd2">添加age</button>
+    <button id="btnDelete">删除name</button>
+    <button id="btnClear">清空cookie</button>
+</body>
+<script src="./cookie.js"></script>
+<script>
+    var btnadd1 = document.getElementById('btnAdd1');
+    var btnAdd2 = document.getElementById('btnAdd2');
+    var btnDelete = document.getElementById('btnDelete');
+    var btnClear = document.getElementById('btnClear');
+
+    btnadd1.onclick = function () {
+        cookie.setCookie('name','李四');
+    };
+    btnAdd2.onclick = function () {
+        $.setCookie('age','30',10*60);
+    };
+    btnDelete.onclick = function () {
+        cookie.removeCookie('name');
+    };
+    btnClear.onclick = function () {
+        cookie.clearCookie();
+    };
+</script>
+
+</html>

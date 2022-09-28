@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取歌手歌曲清单</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">搜索</button>
+    <hr>
+    <ul id="list">
+
+    </ul>
+</body>
+<script>
+    var ipt = document.querySelector('#ipt');
+    var btn = document.querySelector('#btn');
+    var list = document.querySelector('#list');
+
+    //需求：点击搜索按钮，根据输入框的内容请求数据
+    btn.onclick = function(){
+        list.innerHTML = '';//清空上一次搜索记录
+        var url = `http://101.43.173.17:9090/api/www/search/searchMvBykeyWord?key=${encodeURIComponent(ipt.value)}`;
+        // console.log(url);
+        //发送请求
+        fetch(url).then(r => r.json()).then(res => {
+            console.log(res);
+
+            var data = res.data.mvlist;
+
+            data.forEach(function(item){
+                var li = document.createElement('li');
+                li.innerHTML = `${item.name}`;
+                list.appendChild(li);
+            })
+        })
+    }
+
+
+
+</script>
+</html>

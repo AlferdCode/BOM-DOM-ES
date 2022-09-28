@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btnRefresh">刷新页面</button>
+    <button id="btnRed">跳转页面</button>
+</body>
+<script>
+    var btnRefresh = document.getElementById('btnRefresh');
+    var btnRed = document.getElementById('btnred');
+    btnRefresh.onclick = function(){
+        //reload() 重新加载 ， 刷新页面
+        location.reload();//页面刷新
+    }
+    btnRed.onclick = function(){
+                //assign赋值，把url地址设置成新值，相当于location.href, 可以退回到上一个页面“会有历史操作记录”
+        // location.href = "https://www.baidu.com";
+        // location.assign('https://www.baidu.com');
+
+        location.replace('https://www.baidu.com');
+
+    }
+var url = purl();
+console.log(url);
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 父类
+    function Animal(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.eat = function(){
+            console.log('构造函数eat');
+        }
+    }
+    Animal.prototype.eat = function(){
+        console.log('原型上eat');
+    }
+    Animal.prototype.run = function(){
+        console.log('原型上跑步');
+    }
+
+    // 子类
+    function Person(name,age,sex,height){
+        // 继承父类构造函数内方法
+        Animal.apply(this,[name,age,sex]);
+        this.height = height;
+    }
+    Person.prototype.sleep1 = function(){
+        console.log(this.name + "喜欢睡觉1");
+    }
+    var sz = new Animal('狮子',6,'公');
+
+    // 继承父类原型上的方法
+    Person.prototype = Object.create(Animal.prototype); //给子类原型赋值为父类原型
+    Person.prototype.constructor = Person; //改变子类原型上的构造函数“指向自身”
+
+    Person.prototype.sleep2 = function(){
+        console.log(this.name + "喜欢睡觉2");
+    }
+    Animal.prototype.eat2 = function(){
+        console.log(this.name + "喜欢吃糖果");
+    }
+    var zs = new Person('张三',30,'男',180);
+    zs.eat();
+    zs.run();
+    // zs.sleep1(); 报错，原因:当前Person的原型指向父类。
+    zs.sleep2();
+    zs.eat2();
+
+    sz.eat2();
+    // zs.sleep2(); 报错，原因：leep2是对Person的原型“父类临时对象”
+</script>
+</html>

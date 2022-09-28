@@ -1,0 +1,19 @@
+{
+    "books":[
+        {
+            "id":1,
+            "name":"javascript",
+            "price":888
+        },
+        {
+            "id":2,
+            "name":"HTML",
+            "price":666
+        },
+        {
+            "id":3,
+            "name":"CSS",
+            "price":555
+        }
+    ]
+}

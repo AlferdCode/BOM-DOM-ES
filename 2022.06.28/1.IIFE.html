@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/module1.js"></script>
+<script src="./js/module2.js"></script>
+<script src="./js/module3.js"></script>
+<script>
+    // 立即执行函数IIFE(Imdiately Invoked function Expression),一个在定义的时候就立即执行的函数。
+    // IIFE是为了解决作用域缺陷而诞生的，带来的好处有哪些？
+    // 1.不必为函数命名，避免了污染全局变量。
+    // 2.IIFE内部形成了单独作用域，可以封住外部无法读取的私有变量。
+
+    // 创建方式 ，匿名的
+    (function(){
+        var names = '张三';
+        console.log("IIFE");
+    })();
+
+    console.dir(module1.f1());
+    console.dir(module1);
+    console.dir(module2);
+    module1.f3();
+    console.dir(module3);
+
+</script>
+</html>

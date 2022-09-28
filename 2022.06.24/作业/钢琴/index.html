@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹钢琴</title>
+    <link rel="shortcut icon" href="./img/钢琴.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- type设置的媒体类型MIME -->
+    <style type="text/css">
+
+    </style>
+
+    <script type="text/javascript"></script>
+</head>
+
+<body>
+    <!-- 
+    1.通过html+css设置样式。
+    2.引入base64的编码音频流 js文件，每个音都有对应的属性名称，使用对象[]调用它然后通过audio标签播放
+    3.封装音乐播放方法
+    3.获取元素main，通过委托事调用方法件获取下标作为音乐的属性名称,调用方法
+    4.通过键盘按下事件，也可以调用方法
+ -->
+
+    <div id="all">
+
+        <h1 style="width:100%;text-align:center;">
+            html5 Web钢琴;使用鼠标左键或键盘进行弹奏
+        </h1>
+
+        <!--主要代码-->
+        <div id="main">
+            <!-- id的编号 和 声音文件的编号 一致。 -->
+            <div id="key60" class="key whiteKey">q<br>a<br>z</div>
+            <div id="key62" class="key whiteKey"><br>s<br>x</div>
+            <div id="key64" class="key whiteKey"><br>d<br>c</div>
+            <div id="key65" class="key whiteKey">r<br>f<br>v</div>
+            <div id="key67" class="key whiteKey"><br>g<br>b</div>
+            <div id="key69" class="key whiteKey"><br>h<br>n</div>
+            <div id="key71" class="key whiteKey"><br>j<br>m</div>
+            <div id="key72" class="key whiteKey">i<br>k<br>,</div>
+            <div id="key61" class="key blackKey">w</div>
+            <div id="key63" class="key blackKey">e</div>
+            <div id="key66" class="key blackKey">t</div>
+            <div id="key68" class="key blackKey">y</div>
+            <div id="key70" class="key blackKey">u</div>
+        </div>
+
+        <div id="comment">
+            <h3>弹奏方法</h3>
+            <p>使用鼠标左键点击钢琴键，或者键入钢琴键上输入的键盘文字。</p>
+            <p>支持浏览器:IE 9以上、Firefox 10以上、Chrome 17以上</p>
+        </div>
+    </div>
+    <!-- 
+        sounds.js放到index.js上边，目的保证在执行index.js中的业务逻辑时，声音资源必须加载完成。 
+    -->
+    <script src="js/sounds.js"></script>
+    <script src="js/index.js"></script>
+
+
+    <!-- <script>
+        var oggSound = {
+            sound60: "fjdslfjldsjfldsjfljfkldsjfl",
+            sound61: "fjdlsjfldsjfldjlsfjlkdjf"
+        }
+    </script> -->
+</body>
+
+</html>

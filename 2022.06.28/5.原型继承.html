@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Animal(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.eat = function(){
+            console.log("构造函数内eat");
+        }
+        this.sayhello = function(){
+            console.log('我不认识张三');
+        }
+    }
+
+    var sz = new Animal('狮子',8,'公');
+    sz.eat();
+    Animal.prototype.eat = function(){
+        console.log('原型中eat');
+    }
+
+    function Person(name,age,sex,height){
+        this.name = name;
+    }
+    // 原型继承：只能继承原型上的方法，无法再继承父类构造函数中属性和方法
+    // 用父类的原型创建一个“临时对象”，目的让子类的原型和父类的原型“脱钩”。
+    Person.prototype = Object.create(Animal.prototype); //Person得到了Animal原型上的方法
+
+    // 纠正子类的构造函数属性constructor指向自己。
+    Person.prototype.constructor = Person; 
+
+    // 给Person的原型添加方法
+    Person.prototype.run = function(){
+        console.log(this.name + "正在跑步");
+    }
+
+    Animal.prototype.sayHi = function(){
+        console.log('我是狮子');
+    }
+    sz.sayHi(); //Animal 原型新增的方法
+
+    var zs = new Person('张三',20,'男',180);
+    console.log(Person.prototype);
+    zs.eat();
+    zs.run();
+    zs.sayHi();  //Animal 原型新增的方法
+    // zs.sayHello(); //Animal构造函数的方法, zs.sayHello is not a function
+    
+</script>
+</html>

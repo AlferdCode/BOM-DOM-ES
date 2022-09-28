@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    background-color: #000000;
+}
+body,.inner,.box,.dot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.outer{
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 20px;
+}
+.inner{
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 30px #999999 inset;
+}
+.box{
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    position: relative;
+}
+.num,.dot,.line{
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+.num span{
+    display: inline-block;
+    width: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+.dot span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border-radius: 50%;
+}
+.line{
+    display: flex;
+    align-items: center;
+}
+.line span{
+    width: calc(50% - 50px);
+    background-color: #000;
+    border-radius: 5px;
+}
+.second span{
+    width: calc(50% - 50px);
+    height: 2px;
+    margin-left: 50px;
+
+}
+.minute span{
+    width: calc(50% - 70px);
+    height: 4px;
+    margin-left: 70px;
+    
+}
+.hour span{
+    width: calc(50% - 90px);
+    height: 8px;
+    margin-left: 90px;
+}
+
+

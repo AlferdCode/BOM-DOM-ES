@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史记录</title>
+    <style>
+        #wrap{
+            font-size: 12px;
+        }
+        #wrap span {
+            display: inline-block;
+            padding: 2px 10px;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: #999999;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt">
+    <button id="rearch">搜索</button>
+    <hr>
+    <div id="wrap"></div>
+    
+</body>
+<script>
+    var txt = document.querySelector('#txt');
+    var rearch = document.querySelector('#rearch');
+    var wrap = document.querySelector('#wrap');
+
+    var word = [];//历史记录
+     var res =  localStorage.getItem('wrods');
+     if(res){
+        word = JSON.parse(res);
+        word.forEach(function(item,index){
+            wrap.innerHTML += `<span>${item}</span>`;
+        });
+        
+    }
+    rearch.onclick = function(){
+        //检索数据
+        // .some 返回一个符合条件的
+        var res = Array.from(wrap.children).some(function(item){
+            return item.innerHTML == txt.value;
+        })
+        if(!res){
+            wrap.innerHTML += `<span>${txt.value}</span>`;
+            word.push(txt.value);
+            //储存
+            localStorage.setItem('words',JSON.stringify(word));
+        }
+    }
+    
+    //事件委托 给词条添加事件
+    wrap.onclick = function(e){
+        if(e.target.nodeName == 'SPAN'){
+            txt.value = e.target.innerHTML ;
+            
+        }
+    }
+    
+</script>
+</html>

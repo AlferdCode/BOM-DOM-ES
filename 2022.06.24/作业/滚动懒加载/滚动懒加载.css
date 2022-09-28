@@ -1,0 +1,334 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* 清楚元素默认的内边距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 让所有斜体 不斜体 */
+em,
+i {
+    font-size: normal;
+}
+
+/* 去掉列表前面的小点 */
+li {
+    list-style: none;
+}
+
+/* 图片没有边框 去掉图片底侧的空白缝隙 */
+img {
+    border: 0;
+    /*ie6 */
+    vertical-align: middle;
+}
+
+/* 让button 按钮 变成小手 */
+button {
+    cursor: pointer;
+}
+
+/* 取消链接的下划线 */
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e33333;
+}
+
+
+
+
+/*  */
+h3{
+    margin-top: 30px;
+}
+.btnBox{
+    display: inline-block;
+    border-radius: 6px;
+    /* background-color: rgba(123, 120, 120, 0.281); */
+    border: 1px solid rgba(142, 141, 141, 0.354);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+.btnBox button{
+    color: #868686;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid rgba(173, 171, 171, 0.404);
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+}
+.jinxian{
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    color: #868686;
+    font-size: 13px;
+    line-height: 60px;
+    text-align: center;
+    display: inline-block;
+    
+}
+.payBox{
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(165, 164, 164, 0.516);
+}
+.payBox p{
+    display: inline;
+}
+.payBox div{
+    display: inline-block;
+    border: 1px solid #ccc;
+    width: 40%;
+    height: 90px;
+    line-height: 90px;
+    border-radius: 4px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 15px;
+
+}
+ins{
+    text-decoration: none;
+}
+h4{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: inline;
+    border-right: 1px solid rgba(126, 125, 125, 0.491);
+    padding-right: 20px;
+}
+ span{
+    display: inline-block;
+    width: 200px;
+    height: 90px;
+    text-align: center;
+    line-height: 90px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 6px;
+    margin-left: 20px;
+
+}
+.js{
+    display: inline-block;
+    line-height: 46px;
+    text-align: center;
+    font-size: 18px;
+    width: 170px;
+    height: 46px;
+    margin-right: 40px;
+    background-color: #242933;
+    border-radius: 20px;
+    color: #fff;
+
+}
+.fk{
+    display: inline-block;
+    line-height: 46px;
+    text-align: center;
+    font-size: 18px;
+    width: 170px;
+    height: 46px;
+    margin-right: 40px;
+    background-color: rgba(220, 49, 49, 0.792);
+    border-radius: 20px;
+    color: #fff;
+    
+}
+.xatc{
+    width: 510px;
+    height: 39px;
+    font-size: 12px;
+}
+
+
+/*  */
+body{
+    height: 5000px;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.toutou{
+    width: 100%;
+    height: 40px;
+    background-color: #242933;
+}
+.topbu{
+width: 100%;
+height: 86px;
+background-color: #f7f7f7;
+}
+.main{
+position:relative;
+    width: 1200px;
+    height: 2036px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.location{
+    position: relative;
+    overflow: hidden;
+width: 515px;
+height: 723px;
+}
+/* 定位 _ 轮播图 */
+ .location_1{
+    /* transition: all 1s; */
+position: absolute;
+top: 0;
+left: 0;
+    display: flex;
+    width: 500%;
+    height: 515px;
+}
+ .location_1 li{
+    transition: all 2s;
+    width: 515px;
+    height: 515px;
+}
+ .location_1 li img{
+    width: 515px;
+    height: 515px;
+}
+/* 定位 _ max轮播图 结束 */
+/* 定位 _ min轮播图 */
+.append {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin: 515px auto;
+    width: 340px;
+    height: 85px;
+}
+.location_2 {
+    z-index: 999;
+    transition: all 1s;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    display: flex;
+    width: 340px;
+    height: 85px;
+}
+.location_2 li img {
+    width: 85px;
+    height: 85px;
+}
+/* 定位 _ min轮播图 结束 */
+/* 按钮 */
+.location span{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: rgba(100, 100, 99, 0.562);
+    border-radius: 50%;
+    border: 1px solid rgba(75, 73, 73, 0.429);
+    text-align: center;
+    line-height: 40px;
+    /* 调节按钮高度 */
+    bottom: 143px;
+}
+.location_2_left{
+        left: 40px;
+}
+.location_2_right{
+    right: 40px;
+}
+/* 按钮结束 */
+/*  <!-- 滚动 --> */
+.roll{
+    position: absolute;
+    right: 0px;
+    width: 510px;
+    height: 2036px;
+}
+.roll .roll_top{
+    margin: 10px 0 0 0 ;
+    width: 510px;
+    border-bottom:1px solid rgba(113, 111, 111, 0.256) ;
+}
+.roll_1{
+    border-bottom:1px solid rgba(113, 111, 111, 0.256) ;
+    width: 100%;
+    height: 190px;
+    display: flex;
+}
+.roll_1_left{
+    flex: 1;
+}
+.roll_1_left p{
+    font-family:"\65B9\6B63\60A0\9ED1\7B80\4F53_\7EA4",Microsoft YaHei,Arial;
+    font-size: 40px;
+line-height: 190px;
+ text-align: center;
+ color: #f51200;
+} 
+
+.roll_1_right{
+    text-align: center;
+    flex: 1;
+    padding: 40px 0;
+}
+.roll_1_right img {
+    border-left: 1px solid rgba(113, 111, 111, 0.256);
+    width: 255px;
+}
+/*  <!-- 滚动 结束 --> */
+.img3{
+    width: 100%;
+}
+.img4{
+    width:100%;
+}
+/* 价格 选择改变 */
+.banben{
+    font-weight: 500;
+    line-height: 40px;
+    font-size: 20px;
+    width: 100%;
+    height: 40px;
+}
+.banben_1 {
+    display: flex;
+    width: 515px;
+    height: 72px;
+}
+.banben_1 li{
+    text-align: center;
+    line-height: 57px;
+    border-radius: 6px;
+    margin-right: 20px;
+    width: 240px;
+    height: 57px;
+    font-family: "\65B9\6B63\60A0\9ED1\7B80\4F53_\7EA4",Microsoft YaHei,Arial;
+    border: 1px solid rgba(143, 143, 143, 0.523);
+}
+.banben_1 .left{
+    border: 1px solid #f51200;
+    color: #f51200;
+}
+.banben_1 .right{
+    color: #868686;
+}
+.banben_1 .right:hover{
+    color: #f51200;  
+}
+
+/* 价格结束 */

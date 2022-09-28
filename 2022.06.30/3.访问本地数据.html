@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1.实例化
+    var xhr = new XMLHttpRequest();
+
+    // 2.打开连接
+    xhr.open('GET',"data1.xml");
+
+    // 3.发送数据
+    xhr.send();
+
+    // 4.监听响应
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            // responseText 返回的是纯文本格式。
+            // console.log(xhr.responseText);
+
+            // responseXML 返回XML格式的数据，可以通过DOM操作数据。
+            console.log(xhr.responseXML.querySelector('form'));
+
+            // 选择/本地的请求的URL信息
+            console.log(xhr.responseURL);
+
+            // 响应的类型
+            console.log(xhr.responseType);
+
+            // 响应的对象
+            console.log(xhr.response);
+        }
+    }
+</script>
+</html>

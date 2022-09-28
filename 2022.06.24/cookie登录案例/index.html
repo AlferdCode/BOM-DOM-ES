@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+</head>
+
+<body>
+    <span id="success">
+        欢迎<span id="acc">XXX</span> 登录成功！
+        <a href="javascript:;" id="logout">退出</a>
+    </span>
+    <span id="error">
+        <a href="login.html">登录</a>
+    </span>
+
+    <script src="./js/cookie.js"></script>
+    <script>
+        var loginName = document.querySelector('#acc');
+        var success = document.querySelector("#success");
+        var error = document.querySelector("#error");
+
+        var acc = $.getCookie('account');
+        if (acc) { // 登录
+            loginName.textContent = acc;
+            success.style.display = "block";
+            error.style.display = "none";
+        } else { // 没登录
+            // location.href = "login.html";
+            success.style.display = "none";
+            error.style.display = "block";
+        }
+
+        var logout = document.querySelector("#logout");
+        logout.addEventListener('click', function () {
+            // 清除cookie,并跳转到login.html
+            $.removeCookie('account');
+            location.href = 'login.html';
+        })
+    </script>
+</body>
+
+</html>

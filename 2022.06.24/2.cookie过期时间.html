@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie过期时间</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <button id="btn">持久储存</button>
+</body>
+<script>
+    var btn = document.querySelector('#btn');
+    var uname = document.querySelector('#username');
+    btn.onclick = function(){
+        // 获取当前的日期
+        var d = new Date();
+        // 获取 60s 后的日期时间对象
+        d.setTime(d.getTime() + 60 * 1000);
+        console.log(d);
+        // 将日期对象转换为日期字符串,toUTCString()把date转换为日期字符串，使用的是世界时间(UTC)与GMT"格林尼治"时间一致。
+        var dataStr = d.toUTCString();
+        console.log(dataStr);
+
+        // 设置cookie 添加 expires字段
+        document.cookie = 'uname=' + uname.value + ';expires =' + dataStr;
+    }
+    console.log(document.cookie);
+</script>
+</html>

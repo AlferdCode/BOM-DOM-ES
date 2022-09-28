@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator对象</title>
+    <style>
+        .IE{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="IE"></div> 
+</body>
+<script>
+    // navigator  浏览器本身的信息
+    console.log(navigator);
+    console.log(navigator.userAgent); //用户代理
+
+    function checkBrower(){
+        var userAgent = navigator.userAgent;
+        if(userAgent.indexOf('Chrome') !== -1){
+            return "Chrome";
+        }else if(userAgent.indexOf('Firefox') !== -1){
+            return "Firefox";
+        }else if(userAgent.indexOf('Trident') !== -1){
+            return "IE";
+        }else{
+            return "杂牌浏览器";
+        }
+    }
+    var brower = checkBrower();
+    console.log(brower);
+    if(brower == 'IE'){
+        document.querySelector('.IE').innerText = "我们的网站不再支持IE浏览器，请换成Chrome";
+    }else if(brower == 'Chrome'){
+        document.querySelector('.IE').innerText = "欢迎使用 " + brower;
+    }
+
+
+</script>
+</html>

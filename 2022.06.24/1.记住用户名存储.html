@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记住用户名</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" id="remember"><label for="remember">记住用户名</label>
+    <br>
+    <input type="password" id="psw"><br>
+    <button type="submit" id="btn">提交</button>
+</body>
+<script>
+    var username = document.getElementById('username');
+    var remember = document.getElementById('remember');
+    var psw = document.getElementById('psw');
+    var submit = document.getElementById('btn');
+
+    submit.onclick = function () {
+        if (remember.checked) {
+            console.log(username.value);
+
+            // 设置cookie
+            document.cookie = "username=" + username.value;
+            document.cookie = "password=" + psw.value;
+        }
+    };
+    console.log(document.cookie);
+    // password:123456; username=921024317; password=666666
+    
+    if (document.cookie) {
+        var arr = document.cookie.split(";");
+        var obj = {};
+
+        for (var i = 0; i < arr.length; i++) {
+            var item = arr[i].trim().split('=');
+            obj[item[0]] = item[1];
+        }
+
+        if (obj.username == '921024317' && obj.password == '123456') {
+            location.href = "https://www.baidu.com";
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,82 @@
+/* 去除默认 */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* 去除默认结束 */
+/* 滚动监听 */
+.hide{
+    z-index: 999;
+    transition: all 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    box-shadow: 0 5px 1px rgba(134, 132, 132, 0.068);
+}
+/* 滚动监听结束 */
+/* <!-- 轮播图 --> */
+.slideshow{
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    height: 750px;
+    display: flex;
+}
+.slideshow .slideshow_left{
+    overflow: hidden;
+    flex: 2;
+}
+.slideshow .slideshow_left img {
+    opacity: 1;
+    transition: all 3s;
+    border:0 ;
+    height: 100%;
+    width:1012.8px;
+}
+.slideshow .slideshow_right{
+    overflow: hidden;
+    flex: 1;
+}
+.slideshow .slideshow_right img {
+    transition: all 3s;
+    border: 0;
+    height: 100%;
+    width: 506.4px;
+}
+.slideshow ul{
+    bottom: 20px;
+    right: 45%;
+    display: flex;
+    position: absolute;
+}
+.slideshow ul li {
+    margin:0 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(87, 86, 86, 0.39);
+    border: 1px solid rgba(87, 86, 86, 0.39);
+}
+.slideshow ul span {
+    margin-right: 10px;
+    text-align: center;
+    margin-top: -5px;
+    padding:0 6px;
+    font-weight: 900;
+    
+}
+.slideshow ul span:hover {
+    color: red;
+}
+
+/* <!-- 轮播图结束 --> */
