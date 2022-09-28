@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历数据</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            width: 1000px;
+            height: auto;
+            margin: 50px auto;
+        }
+        ul li{
+            width: 230px;
+            height: 300px;
+            box-shadow: 0px 5px 15px #cccccc;
+            text-align: center;
+            transition: all 0.15s linear;
+        }
+        ul li p{
+            width: 200px;
+            margin: 10px auto;
+            font-size: 12px;
+            color: #666666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        ul li span{
+            font-size: 14px;
+            color: #ff6700;
+        }
+        ul li:hover{
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px #999;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <ul>
+        <li>
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+        </li>
+        <li>
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+        </li>
+        <li>
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+        </li>
+        <li>
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+        </li>
+    </ul> -->
+</body>
+<script>
+    // 创建对象，编辑渲染数据
+    // var product = {
+    //     // 图片的路径
+    //     imgUrl: '1.jpg',
+    //     // 产品名
+    //     name: 'Xiaomi Civi 1S',
+    //     // 产品描述
+    //     desc: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+    //     // 产品价格
+    //     price: 2299
+    // }
+    // console.dir(product);
+
+    // 数组中数据为对象
+    var proList = [
+        {
+            imgUrl: './img/1.webp',
+            name: 'Xiaomi Civi 1S',
+            desc: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+            price: 2000
+        },
+        {
+            imgUrl: './img/1.webp',
+            name: 'Xiaomi Civi 1S',
+            desc: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+            price: 2100
+        },
+        {
+            imgUrl: './img/1.webp',
+            name: 'Xiaomi Civi 1S',
+            desc: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+            price: 2200
+        },
+        {
+            imgUrl: './img/1.webp',
+            name: 'Xiaomi Civi 1S',
+            desc: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+            price: 2299
+        }
+    ];
+    // 在页面中输入ul标签
+    document.write("<ul>");
+    for (var i = 0; i < proList.length; i++) {
+        var obj = proList[i];
+        // console.log(obj.name);
+        document.write(`
+            <li>
+                <img src="${obj.imgUrl}" alt="iamge"> 
+                <h3>${obj.name}</h3>
+                <p>${obj.desc}</p>
+                <span>${obj.price+"元起"}</span>
+            </li>
+            `);
+    }
+    
+    document.write("</ul>");
+
+
+</script>
+
+</html>

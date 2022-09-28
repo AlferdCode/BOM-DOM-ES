@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+</head>
+<body>
+    <script>
+        /*
+        运算符：完成一系列操作的符号。
+        运算符应用：可以一个或多个结合使用，结合数据使用。     
+        运算符 加 数据（操作符）形成表达式   
+        
+        */ 
+       var my_name = 'cxy';
+       my_name = 'cxy' + 001;
+       console.log(my_name);
+
+
+       //—————————————————————— 1.数学运算符 ——————————————————————
+       // =  赋值时使用 
+       //  + - * / %
+       var x = 10, y = 3, z = 5;
+       console.log( x + y );//相加
+       console.log( x - z );//相减
+       console.log( y * z );//相乘
+       console.log( x / z );//相除
+       console.log( x % y );//取余（两数相除取余数）
+
+
+       //—————————————————————— 2.增量，减量 ——————————————————————
+       // ++ 自增,每执行一次 +1 ，++在前，先+1，后运算，++在后，先运算，后+1
+       // -- 自减,每执行一次 -1 ，--在前，先-1，后运算，--在后，先运算，后-1
+       var x = 10, y = 3;
+       console.log(++x);//11 
+       console.log(x++);//11 
+       console.log(x);//12
+
+       console.log(--y);//2 
+       console.log(y--);//2 
+       console.log(y);//1
+
+       // 赋值运算符
+       console.log(x += y);// 相当于 x = x + y ，x =12 + 1 ，x = 13
+       console.log(x -= y);// 相当于 x = x - y ，x =13 - 1 ，x = 12
+       console.log(x *= y);// 相当于 x = x * y ，x =12 * 1 ，x = 12
+       console.log(x /= y);// 相当于 x = x / y ，x =12 / 1 ，x = 12
+
+       console.log( ( 100 + 5 ) / 5);
+
+       //—————————————————————— 3.比价运算符 ——————————————————————
+       // ==   双等 , 判断左右两边的数据是否一致，不区分数据类型（不同的数据类型进行比较，会存在隐式转换），返回布尔值 true / false。
+       // ===  全等 ， 左右两边数据，包括数据类型必须完全一致，才返回true,否则返回false
+       // 隐式转换：将不同的数据类型转化为相同的数据类型，在进行比较。
+       var num =100;
+       var str ='100';
+       console.log(num == str);//true
+       console.log(true == 1);//true
+       console.log(num === str);//false
+       console.log(num === 50 + 50);//true
+
+       //—————————————————————— 4.逻辑运算符 ——————————————————————
+       // 逻辑运算符:通常都使用在条件语句中。
+       // > < >= <= != ，返回布尔值 true / false
+       console.log(num < 50);//小于
+       console.log(num > 50);//大于
+       console.log(num <= 50);//小于等于
+       console.log(num >= 50);//大于等于
+       console.log(num != 50);//不等于      
+       //  ||  或 ，左右两边只要有一侧满足条件，就返回true，全部都不满足返回false。
+       //  &&  与 ，左右两边只要有一侧不满足条件，就返回fasle，全部都满足返回true
+       //  !   非 ，取反。
+
+       console.log(50 + 50 == 100 || '50' + 50 === 100);//true || fasle ,true 
+       console.log(50 + 50 == 100 && '50' + 50 === 100);//true || fasle ,fasle  
+       console.log(!(100 === '100'));//!fales , true`
+    </script>
+</body> 
+</html>

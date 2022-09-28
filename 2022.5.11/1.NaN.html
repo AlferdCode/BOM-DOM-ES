@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*NaN  Not a Number  不是一个数字
+    当运算无法返回正确的数值时，就会返回NaN
+    NaN 值非常特殊，“因为它不是一个数字，但是数字类型的”
+    任何的数据跟NaN都不相等，甚至NaN不等其本身。
+    */ 
+    console.log(Number("中国")); 
+    // typeof 用来判断数据类型,常用来判断基本数据类型数据
+    console.log(typeof 100); //number
+    console.log(typeof '100'); // string
+    console.log(typeof true); //boolean
+    console.log(typeof null); //object
+    console.log(typeof undefined); //undefined
+    console.log(typeof {}); //object
+    console.log(typeof []); //object
+    console.log(typeof NaN); //number
+    var num = 10;
+    console.log(num == num);//true
+    var str = 'hello';
+    console.log(str == str);//true
+    console.log(NaN == NaN);//false
+    console.log(NaN == num);//false
+    console.log(NaN == str);//false
+
+
+    // isNaN()函数，用来判断一个值是否是NaN
+    // isNaN会先将传递给它的参数转化为数字类型，再判断。
+    console.log(isNaN(1));//false
+    console.log(isNaN(true));//false
+    console.log(isNaN('100'));//false
+    console.log(isNaN('中国'));//true “对于不是数字字符串，则无法转化为数字类型，会返回NaN”
+
+
+    // Number.isNaN() 该方法不会强制将参数转换为数字类型，只有参数是真正的数字类型的时候，且值为NaN的时候才返回true
+    console.log(Number.isNaN(1));//false
+    console.log(Number.isNaN(true));//false
+    console.log(Number.isNaN('100'));//false
+    console.log(Number.isNaN('中国'));//false
+    console.log(Number.isNaN(NaN));//true
+
+    // 案例
+    var str1 = Number('中国');
+    console.log(str1); //NaN
+    console.log(typeof str1); //number
+    console.log(Number.isNaN(str1)); //true
+
+
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组排序</title>
+</head>
+<body>
+    
+</body>
+<script>
+var arr = [1 , 100 , 20 , 3 ];
+// 冒泡排序
+// 规则：使用两两比较的方式，找出一个最大或最小数组，移至数组的后面。
+
+// 外层循环负责，对比的轮数
+for(var i=0; i<arr.length-1; i++){ 
+    // 遍历数组中所有的数据，两两对比的次数
+    for(var j=0; j<arr.length-1; j++){
+        if(arr[j] > arr[j+1]){ // 1.例如：arr[1] > arr[2]  == 100 > 20
+            // 存放的是大的值
+            var temp = arr[j]; // 2.接收大值：temp = arr[j] = 100
+            // 把前面的数据 换为 后面的数据
+            arr[j] = arr[j+1]; // 3.先换前面数据的值：arr[j] = arr[2] = 30
+            // 把后面的数据 换为存放的最大值
+            arr[j+1] = temp; // 4.再换后面数据的值：arr[j+1] = temp = 100
+            
+        }
+    }
+}
+console.log(arr);
+
+// sort()方法排序，遵循冒泡排序的规则进行排序。
+// 参数为函数，函数内部shiyongx，y进行计算，根据返回值判断是否调整位置“返回负值/等于0，不换。 返回正值，换”
+var arr = [1 , 100 , 20 , 3 ];
+arr.sort(function(x,y){
+    return x - y;
+});
+console.log(arr);
+
+
+// 选择排序
+// 规则：将第一位数依次与后面的数据进行比较，找出最大会最小数移至数组的前面
+var arr = [1 , 100 , 20 , 3 ];
+// 外层循环，指定和后面额数据对比大的 数。
+for(var i = 0; i<arr.length-1; i++){
+    var min = arr[i]; //假定一个最小值
+    var minIndex = i; //最小值的下标
+    // 遍历数组后面的数据
+    for(var j =i+1;j<arr.length; j++){
+        if(min > arr[j]){ //判断min是否是真正的最小值，不是则换位
+            min = arr[j]; 
+            minIndex = j;
+            arr[minIndex] = arr[i];
+            arr[i] = min;
+        }
+    }
+    
+}
+console.log(arr);
+
+</script>
+</html>

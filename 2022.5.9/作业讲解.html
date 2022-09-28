@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 1226px;
+            height: auto;
+            margin: 100px auto;
+            position: relative;
+        }
+        .box .lbt{
+            width: 100%;
+            height: 460px;
+            background-image: url(./img/bj.webp);
+        }
+        .box .cbl{
+            width: 234px;
+            height: 460px;
+            background-color: rgba(105,101,101,.6);
+            position: absolute;
+            top: 0;
+            padding: 20px 0;
+        }
+        .box .cbl li a{
+            display: block;
+            width: 100%;
+            height: 42px;
+            padding-left: 30px;
+            font-size: 14px;
+            color: #fff;
+            line-height: 42px;
+        }
+        .box .cbl li:hover{
+            background-color: #ff6700;
+        }
+        .box .cbl li .hiddenBox{
+            visibility: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            width: calc(1226px - 234px);
+            height: 460px;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 234px;
+            box-shadow: 0 0 20px #cccccc;
+        }
+        .box .cbl li .hiddenBox div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25%;
+            height: calc(460px / 6);
+            line-height: calc(460px / 6);
+            font-size: 14px;
+        }
+        .box .cbl li .hiddenBox div img{
+            margin-right: 10px;
+        }
+        .box .cbl li .hiddenBox div span:hover{
+            color: #ff6700;
+        }
+        .box .cbl li:hover .hiddenBox{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <section class="box">
+        <div class="lbt"></div>
+        <ul class="cbl">
+            <li>
+                <a href="#">手机</a>
+                <div class="hiddenBox"></div>
+            </li>
+            <li><a href="#">电视</a></li>
+            <li><a href="#">笔记本</a></li>
+            <li><a href="#">家电</a></li>
+            <li><a href="#">出行</a></li>
+            <li><a href="#">智能</a></li>
+            <li><a href="#">电源</a></li>
+            <li><a href="#">健康</a></li>
+            <li><a href="#">耳机</a></li>
+            <li><a href="#">生活</a></li>
+        </ul>
+    </section>
+</body>
+<script>
+ // 2.互不相同且⽆重复数字的三位数
+    // 有数字1、2、3、4，能组成多少个互不相同且⽆重复数字的三位数？都是多少？
+    
+    // var count = 0;
+    // for(var i = 1; i<5; i++){ 
+    //     for(var j = 1; j<=4; j++){ 
+    //         for(var k = 1;k <=4; k++){
+    //             if(i != j && i != k && j != k){
+    //                 document.write('' + i + j + k + "<br>");
+    //                 count++;
+    //             }
+    //         }
+    //     }
+    // }
+    // console.log("有" + count + "个不重复的三位数");
+    
+
+    // 9.完成小米官网
+    // 需求：1.首页基础布局。 2.使用数组套对象的方式将数据渲染到页面中指定区域内容
+    // 例题：获取某个块使用
+    // 创建的数组对象
+    var arrObj = [
+        {
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        },{
+            imgUrl:'./img/sj.webp',
+            name:'Xiaomi Civi 1S'
+        }
+    ]
+    // 获取要渲染数据的块
+    var box = document.getElementsByClassName('hiddenBox')[0];
+    console.log(box);
+    
+    // 遍历数组对象获取每一条数据
+    for(var i = 0;i<arrObj.length;i++){
+        // 创建一个新的div元素
+        var newBox = document.createElement('div');
+        // 在创建的div块内添加标签及数据
+        newBox.innerHTML = `
+            <img src="${arrObj[i].imgUrl}" alt="image">
+            <span>${arrObj[i].name}</span>
+        `
+        // 把创建的标签放在box块内
+        box.insertBefore(newBox,null);
+    }
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输出方式</title>
+</head>
+<body>
+    <p id="text"></p>
+</body>
+<script>
+        // 在控制台输出
+        console.log("hei");// 直接输出内容
+        var num = 100;
+        console.log(num);// 参数为变量，则输出变量的值
+        console.log(num + 10);// 参数为表达式，输出的是表达式的结果
+        // 在控制台输出，一般用在输出引用数据类型时使用。
+        console.dir(1 + 1);
+
+        // 弹出一个对话框，alert的执行是阻塞的“阻塞行为”，当alert未被点掉之前其下面的代码将不会被执行。
+        alert("hello world!");
+
+        // 弹出一个询问对话框，返回一个布尔值“true , fasle”，confirm的执行是阻塞的“阻塞行为”。
+        var isSingleDog = confirm("你是单身狗！！！");
+        console.log(isSingleDog);
+
+        // 弹出一个可输入的对话框，输入的内容未string类型，prompt的执行是阻塞的“阻塞行为”。
+        var content = prompt("请输入你的姓名");  
+
+        console.log(content);
+
+        // 在页面中输出
+        document.writeln("哈哈哈哈哈哈");// 在页面中输出，会在尾部加一个回车。
+        document.write("hello");// 纯文本输出。
+        document.write("<h2> hello world! </h2>");//在指定的标签内输出。
+
+        // 在指定的元素内输出
+        var text = document.getElementById("text");
+        text.innerHTMLl = "我是p标签";
+
+    </script>
+</html>

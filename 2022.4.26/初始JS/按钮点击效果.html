@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮后具体执行的操作“执行代码块”</title>
+    <style>
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius: 15px;
+
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+</body>
+<script>
+   //1.获取button按钮元素
+   var btn = document.getElementById("btn");
+   console.log(btn)
+
+   //2.给按钮添加点击事件
+   btn.onclick = function(){
+       // 点击按钮后具体执行的操作“执行代码块”
+       alert("hello world!");
+       this.style.backgroundColor = "pink";
+
+   }
+
+   /*
+    以上代码涉及的 JS 内容
+    1.JS基础语法（变量，函数）
+    2.JS中的DOM（获取元素，事件触发，改变HTML元素的CSS样式）
+   */
+</script>
+</html>

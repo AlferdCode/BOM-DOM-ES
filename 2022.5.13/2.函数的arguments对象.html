@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arguments对象</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    /*1.认识arguments
+    - arguments是函数内部的一个对象，当函数调用时系统会将传入的实参依次存入arguments“数组”对象中。
+    - js没有重载函数的功能，但是arguments对象能够模拟重载。
+    - js中每个函数都会有一个arguments“数组”对象的实例，可以使用数组下标方式“[]”引用arguments对象的数据。
+    */ 
+
+    // 每个函数都有一个属于自己的arguments对象
+    var func = function func(){
+        // 输出一个arguments"数组"对象。
+        console.log(arguments);
+    }
+    func();
+
+    // 调用函数传入的实参会存放到arguments数组中
+    function func1(){
+        console.log(arguments);
+        // 可以使用数组下标方式“[]”引用arguments对象的数据。
+        console.log(arguments[1] + arguments[3]);
+        // 获取arguments“数组”对象的长度
+        console.log(arguments.length);
+        // arguments.callee 引用函数自身
+        console.log(arguments.callee);
+        // arguments.callee(); 会循环调用自身，谨慎使用
+    }
+    func1(1,2,3,4);
+
+    /*2.arguments的特点
+        - arguments对象和Function是分不开。
+        - arguments对象不能显示创建。
+        - arguments对象只有在函数开始时可以使用。
+    */ 
+
+
+    /* 3.使用方法
+    - arguments对象并不是一个数组，是类数组“类似于数组的对象，提供了一种访问原始二进制数据的机制，但是不是真正的数组”。
+        常见的类数组：arguments ，NodeList ，HtmlCollection，Jquery
+    - 访问单个参数的方式与访问数组元素的方式相同。
+    - 作用1：当函数中没有形参，但是调用函数时传入了实参，可以通过arguments对象操作实参
+    */
+    var list = document.querySelectorAll('ul li');
+    console.log(list); //NodeList(4) [li, li, li, li]  '返回类数组'
+
+    function test(){
+        var str = '';
+        for(var i = 0;i<arguments.length;i++){
+            str += arguments[i] + ' ';
+        }
+        return str;
+    }
+    var res = test("name",'张三');
+    console.log(res);
+
+    // 作用2：arguments对象大多用于针对不同的方法多处调用并且传递参数不一样时进行使用。
+    // arguments.callee , callee属性的初始只就是正被执行的Function 对象。
+    // 案例：1-6的求和 “匿名的递归函数”
+    var sum = function (n){ 
+        if(1 == n){
+            return 1;
+        }else{
+            return n + arguments.callee(n - 1); 
+        }
+    }
+    console.log(sum(6)) //21 
+   
+    function test1(n){
+        if(n == 1){
+            return n ;
+        }else{
+            return n + test1(n - 1); 
+        }
+    }
+    console.log(test1(6));
+
+
+
+</script>
+</html>

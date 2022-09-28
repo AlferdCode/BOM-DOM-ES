@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的递归调用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 函数可以调用自身，直接调用会造成死循环
+    function func(){
+        console.log('hello');
+        // func();
+    }
+    func();
+
+    // 两个函数之间互相调用,也会产生死循环
+    function f1(){
+        console.log('f1');
+        f2()
+    }
+    function f2(){
+        console.log('f2');
+        // f1()
+    }
+    f1();
+
+    // 方法递归：自己调用自己，必须要有一个结束函数的条件
+    function back(n){
+        console.log(n);
+        if(n > 0){
+            back(n-1);
+        }
+        
+    }
+    back(5);
+
+    // 案例：使用函数求1-100以内的和
+    function sum(n){
+        var sum = 0;
+        for(var i=0;i<=n;i++){
+            sum += i;
+        }
+        return sum;
+    }
+    var res = sum(100);
+    console.log(res);
+    
+    // 要求：不使用for循环
+    function sum1(n){
+        if(n == 0){
+            return 0;
+        }else{
+            return n + sum(n-1);
+        }
+    }
+    console.log(sum1(100));
+
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 渲染要求
+    // allObj对象里面的有几条数据输出几个块
+    // 每个块内输出对应的数据信息
+    var allObj = {
+        'aiHao': {
+            name: '羽毛球',
+            youdian: '锻炼手臂',
+            sace:'奥运会项目'
+        },
+        'ciYi': {
+            name: '舞蹈',
+            youdian: '锻炼韧性，身形',
+            // sace:"让你的气质由内而发"
+        }
+    }
+
+    // 1.遍历allObj对象中的key “aiHao和ciYi” 循环两次，每次循环输出一个div共输出两个div块。
+    for(var key in allObj){ //2
+        document.write("<div>")
+            var count = 0;//声明一个遍历记录输出的第几条数据
+            for(var k in allObj[key]){ //3
+                var objs = allObj[key];
+                count++;
+                if(count == 1){
+                    document.write(`<h3>${objs.name + count}</h3>`);
+                }else if(count == 2){
+                    document.write(`<h3>${objs.youdian+ count}</h3>`);
+                }else if(count == 3){
+                    document.write(`<h3>${objs.sace+ count}</h3>`);
+                }
+            }
+        document.write("</div>")
+    }
+
+</script>
+
+</html>

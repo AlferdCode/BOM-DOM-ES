@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //函数创建有三种
+
+
+
+        //1：function关键字创建
+        //语法；function 函数名（形参）{函数体}
+        //执行：当没有调用函数时 ，函数的代码不会执行，
+        function text() {
+            console.log('function关键字声明');
+        }
+        text();
+
+
+
+        // 2：表达式声明函数
+        //函数名可以忽略。函数表达式声明只能在表达式的下面调用。
+        //注意；函数名可以忽略
+        //如果用调用func() 会报不是一个函数 
+        // console.log(text1);//undefined
+        // text1();//报错，不是一个函数 
+        var text1 = function fun() {
+            console.log('表达式声明');
+        }
+        text1();
+
+
+
+        //3；匿名函数：没有命名的函数。 
+        //语法 ;未命名的函数外层添加小括号包裹。
+        //自调用函数：不能在其他地方调用，且只能调用一次。
+        (function () {
+            console.log('匿名函数');
+        })(); (function () {
+            console.log('匿名函数');
+        }());
+
+
+        //箭头函数
+        // ()=>{}
+
+
+        //函数的参数
+        //()内时形参 形参可以时0个或者多个， 函数内使用形参再调用函数时，要用实参去接收。
+        function func(a, b, c) {
+            console.log(a + b + c);
+        }
+        func(1, 2, 3);
+
+
+
+        //（案例）数组求和
+        var arr = [1, 2, 3, 4];
+        function arrSum(a) {
+            var sum = 0;
+            for (var i = 0; i < a.length; i++) {
+                sum += a[i];
+                // sum = sum +a[i];
+            }
+            console.log(sum);
+        }
+        arrSum(arr);
+
+
+        //函数的返回值
+        // return作用
+        //1，return后面跟的“变量 ， 表达式....”,结束函数并返回一个内容。要声明变量去接收返回值。
+        //2.用来结束函数
+        //注意：return和返回的内容在同一行。return下面的代码块不会被执行。
+
+        // function func1(a, b) {
+        //     return
+        //      a + b;//不会去执行a+b
+        // }
+        function func1(a, b) {
+            // return a + b;//结束函数返回一个结果
+            for(var b = 0 ; b< a ; b++){
+                console.log(b);
+                if(b == 8){
+                    return;
+                }
+            }
+        }
+        //只写func1(10,4); //返回时10 4 
+        var res = func1(10, 4);//有返回的结果,使用变量去接受返回值.
+        console.log(res);
+
+    </script>
+
+</body>
+
+</html>

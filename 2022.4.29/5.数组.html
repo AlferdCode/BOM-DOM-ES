@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 数组：与对象一样也是一些数据的集合，这些数据可以是任何数据类型的。不同点是在数组中存放的数据没有命名“不能通过属性名的方式查看数据”。
+
+
+    // -----------------part1.创建数组---------------------------
+    // 1.通过字面量创建[]
+    var arr = [1, 'hello', true, function(){}];
+    console.dir(arr);
+
+    // 2.通过new 构造函数 Array() 创建数组
+    var newArr = new Array();
+    console.dir(newArr);
+
+    // 3.不是用new关键字，创建数组。
+    var arr2 = Array("你好",51);
+    console.dir(arr2);
+
+
+    // ------------------- part2.数组的方法 --------------------------
+    // 根据数组的下标操作数组
+    // 下标：因为数组存放没有key只有数据，所以对应每条数据都有一个索引从0开始
+    var  arr = [1, 'hello', true, function(){}]; //创建时直接添加数据
+    console.log(arr[3]); //通过下标查看数据，下标越界返回undefined
+    arr[4] = {name:'张三'}; //通过下标获取到未存在的数据并赋值，添加一个新的数据。
+    console.dir(arr);
+
+    // 数组对象的方法
+    console.log(arr.length); //返回数组的长度“数组数据的条数”
+    console.log(arr.push("中国",'中国','中国','中国'));//在数组尾部添加数据，返回数组新的长度
+    console.log(arr.unshift(false));//在数组头部添加数据，返回数组新的长度
+    console.log(arr.pop());//在数组尾部删除数据，返回被删除的数据
+    console.log(arr.shift());//在数组头部删除数据，返回被删除的数据
+    /*
+    splice() 删除，替换，插入数组数据[]
+    参数为两个(a,b)：删除，a为开始的下标，b为删除几个数据
+    参数为三个(a,b,c):插入/替换元素，a为开始的位置，b为选择几条数据替换“0为插入”，c为新的数据
+    */ 
+    console.log(arr.splice(1,1)); //删除
+    console.log(arr.splice(1,2,"中国"));//替换
+    console.log(arr.splice(1,0,"hi"));//插入
+
+    /*
+    slice() 截取数组中的一部分数据，截取后返回一个新的数组
+    参数：
+        1 ：代表开始截取的位置到数据末尾。
+        2 ：第一个为开始截取的下标，第二个为结束的下标。
+    */ 
+    console.log(arr.slice(1));
+    var res = arr.slice(1,3)
+    console.dir(res);
+    console.dir(arr);
+    // 数组1.concat(数组2) ，将数组2合并到数组1内。
+    var newarrs = arr.concat(res);
+    console.dir(newarrs);//合并后的数组
+    // reverse()，颠倒数组中的数据
+    console.log(newarrs.reverse());
+    // sort(),将数组中数据排序，默认按照ASCII码排序，把数组中的数据线转化为字符串，然后按照ASCII码值进行比较，排序。
+    console.log(newarrs.sort());
+
+    var arrs = ['a','B','%'];
+    console.log(arrs.sort());
+
+/*
+https://blog.csdn.net/weixin_46389390/article/details/124457533
+*/ 
+</script>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+</head>
+
+<body>
+
+</body>
+<script>
+// —————————————————————————————————————  单分支  —————————————————————————————————————————
+// 1.输入你的年龄age，如果大于18岁，输出你已经成年了，你要对自己负责
+
+    var age = prompt("请输入你的年龄");
+    if (age >= 18) {
+        console.log("你已经成年了，你要对自己负责");
+    }
+// 2.输入你的年龄age和性别sex，如果age>18，并且 sex 为 女，输出"女大十八变，越变越好看^-^”
+
+    var sex = prompt("请输入你的性别");
+    if (age1 > 18 && sex == "女"){
+        console.log("女大十八变，越变越好看^-^");
+    }
+
+// —————————————————————————————————————  双分支  —————————————————————————————————————————
+// 1.如果张三的阶段测试成绩大于90分，老师奖励他一个苹果(吃的)，否则惩罚默写笔记
+
+    var mark = 85;
+    if (mark > 90){
+        console.log("老师奖励他一个苹果");
+    }else{
+        console.log("惩罚默写笔记");
+    }
+
+
+// 2.从键盘获取你的分数，60分为及格，判断是否及格,及格的话，输出，你及格了，否则 学渣！
+
+    var num = prompt("请输入你的分数");
+    if(num >= 60){
+        console.log("你及格了");
+    }else{
+        console.log("学渣！");
+    }
+
+// 3.从键盘获取用户输入的用户名，密码，如果用户名为"admin”,而且密码为"123”，提示登录成功，否则提示用户名密码错误
+  
+    var name = prompt("请输入用户名");
+    var password = prompt("请输入密码");
+    if(name ==  "admin" && password == "123"){
+        console.log("登录成功");
+    }else{
+        console.log("用户名密码错误");
+    }
+
+// 4.张三数学的成绩大于90分，且体育成绩大于80分，或者数学成绩等于100分，体育成绩大于70分时，可以获得奖励，否则惩罚一边跑步一边背诵笔记
+
+    var maths = 93;
+    var sports = 82;
+    if((maths > 90 && sports >80) || (maths == 100 && sports > 70)){
+        console.log("可以获得奖励");   
+    }else{
+        console.log("惩罚一边跑步一边背诵笔记");
+    }
+
+// —————————————————————————————————————  多分支  —————————————————————————————————————————
+/* 
+1.从键盘输入考试分数
+    int score = ....;
+    score >=90  输出："学霸实在牛"   console.log("");
+    score >=80  输出：学神要加油
+    score >=70  输出：学民好害羞
+    score >=60  输出：学弱打酱油
+    score < 60  输出：学渣泪在流、
+*/
+    var score = prompt("请输入考试分数");
+    if(score >=90){
+        console.log("学霸实在牛");
+    }else if(score >=80 && score < 90){
+        console.log("学神要加油");
+    }else if(score >=70 && score < 80){
+        console.log("学民好害羞");
+    }else if(score >=60 && score < 70){
+        console.log("学弱打酱油");
+    }else{
+        console.log("学渣泪在流");
+    }
+
+/* 
+2.请输入（春天、夏天、秋天、冬天）季节：
+    春天，打印 “春暖花开”
+    夏天，打印 “绿树成荫”
+    秋天，打印 “五谷丰登”
+    冬天，打印 “漫天飞雪”
+*/
+    var season = prompt("请输入季节");
+    if(season == "春天"){
+        console.log("春暖花开");
+    }else if(season == "夏天"){
+        console.log("绿树成荫");
+    }
+    else if(season == "秋天"){
+        console.log("五谷丰登");
+    }
+    else if(season == "冬天"){
+        console.log("漫天飞雪");
+    }
+
+// —————————————————————————————————————  嵌套练习  —————————————————————————————————————————
+/*  如果今天是周六或周日，打算外出。外出的时候如果气温在30度以上，去游泳；否则就去爬山
+    如果今天不是周六或周日，就要工作。如果天气好，去客户单位谈业务；否则，在公司上网查资料
+*/
+    var day = "周六";
+    if(day == "周六" || "周日"){
+        console.log("打算外出");
+        var temp = "20"
+        if(temp > 30){
+            console.log("去游泳");
+        }else{
+            console.log("去爬山");
+        }
+    }else{
+        console.log("去工作");
+        var weather = "good";
+        if(weather = "good"){
+            console.log("去客户单位谈业务");
+        }else{
+            console.log("在公司上网查资料");
+        }
+    }
+
+
+
+
+</script>
+
+</html>

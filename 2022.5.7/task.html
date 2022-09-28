@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    // 1.打印所有0-100（包含100）之间除了22，44，66以及88之外的偶数，并求他们的和
+    // var he=[];
+    // var he=0;
+    //     for(var i=1;i<=100;i++){
+    //         if(i==22||i==44||i==88){
+    //             continue;
+    //         }
+    //         if(i%2==0){
+    //             he+=i;
+    //         }
+    //         // he.push(i);
+    //     }
+    //     console.log("他们的和为"+he);
+        
+    // 2.互不相同且⽆重复数字的三位数
+    // var a,b,c;
+    // a *=1;b*=i;c*=1;
+    // for(var i=1;i<1000||i>100;i++){
+    //     i = a*100 + b*10 + c;
+    //     if(a==b||b==c||a==c){
+    //         continue;
+    //     }
+    //     console.log("这样的数为"+i);
+    // }
+    // //======================
+    // var lex;
+    // lex *=1;
+    // for(var i=1;i<=9;i++){
+    //     for(var j=0;i<=9;j++){
+    //             for(var k=0;k<=9;k++){
+    //                 if(j==k||i==j||k==i){
+    //                     continue;
+    //                 }else{
+    //                     lex=i*100 +j*10 +k;
+    //                     console.log("这样的数为"+lex);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // 有数字1、2、3、4，能组成多少个互不相同且⽆重复数字的三位数？都是多少？
+    var lex2;
+    lex2 *=1;
+    for(var i=1;i<=4;i++){
+        for(var j=1;j<=4;j++){  
+            for(var k=1;k<=4;k++){
+                if(k==j||i==k||j==i){
+                    continue;
+                }
+                lex2 = i*100+j*10+k;
+                console.log(lex2)
+            }
+        }
+    }
+
+    // 3.要求将数组中的0项去掉，将不为0的值存⼊⼀个新的数组，⽣成新的数组
+    var arr = [4, 0, 7, 9, 0, 0, 2, 6, 0, 3, 1, 0];
+    var arr1=[];
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]!=0){
+            arr1.push(arr[i]);
+        }
+    }
+    console.log(arr1);
+    // 4. 使⽤for循环 - 求出数组⾥⼤于5的和
+    var zonghe=0;
+    var ayy = [4, 9, 6, 90, 3, 11];
+    for(var i=0;i<ayy.length;i++){
+        if(ayy[i]>5){
+            // console.log(ayy[i]);
+            zonghe +=ayy[i];
+        }
+    }
+    console.log("数组⾥⼤于5的和"+zonghe);
+    // 5.使⽤for循环 - 求出班级⾥同学们平均年龄
+    var arr = [15, 19, 21, 33, 18, 24];
+    var count=0;
+    for(var i=1;i<length;i++){
+        
+    }
+
+    // 6.去掉字符串的空格
+    var str = ' abc   aa   s     ';
+    // for(var i=0;i<str.length;i++){
+    //     if(str[i]==''){
+    //         str.slice(" ");
+    //         console.log(str);
+    //     }
+    // }
+    console.dir(str.split(' ').join(''));
+    // 7.删除字符串中所有的数字
+    var str = "hello123你好——456中国";
+    
+
+    // 8. 反转字符串
+    var str = "哈哈哈嘿嘿嘿啦啦啦";
+    
+
+    // 9.完成小米官网
+    // 需求：1.首页基础布局。 2.使用数组套对象的方式将数据渲染到页面中指定区域内容
+    // 例题：获取某个块使用
+    
+    var box = document.getElementById("box");
+    box.innerHTML = `
+    <ul>
+        <li>你好</li>
+    </ul>`
+
+</script>
+
+</html>

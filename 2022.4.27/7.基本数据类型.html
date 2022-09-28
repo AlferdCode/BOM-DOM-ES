@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本数据类型</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* JS数据类型
+    基本数据类型：
+         数值型：number
+         浮点类型
+         字符串类型：string
+         布尔类型：boolean
+         undefind
+         null
+    */
+    /*数值型 number
+    1.最基本的数值字面量是一个十进制整数。
+    2.数字可以使用八进制数或者十六进制表示，但在进行计算时，会把八进制或十六进制数转换为十进制数值。
+    */ 
+    var num = 10;//十进制数
+    var num1 = 001;//八进制，以 0 开头的
+    var num2 = 0xA;//十六进制数，以 0x 开头的
+    console.log(num,num1,num2);
+
+    /*浮点型
+    1.该数值中必须包含一个小数点，并且小数点后面至少有一位数字。
+    2.如果小数点后面没有添加任何的数字，或小数点后面是0，都会被转化为整数保存。
+    */
+   var num3 =1.56674848;
+   var num3 =1.;//等同于 1.0 ，返回 1
+   var num3 =.3542;//等同于0.3542
+   var num3 =1.0;
+   console.log(num3);
+
+    /*字符串类型 String
+    1.字符串是JS中用来表示文本的数据量类型，由Unicode字符，数字和标点符号组成的一个字符串序列 。
+    2.是由 单引号 或 双引号 包裹起来的内容（单引号 和 双引号 均可解析转义字符 或变量）。
+    3.任何数据类型的数据，或变量，使用 + 来连接，都会拼接为字符串返回 。
+    */
+   var str = "hello";
+   console.log(str + num3);
+   console.log(str + "world!");
+   console.log(str + true);
+
+   /*布尔类型 Boolean
+   布尔类型的字面量只有两个，true 和 false，严格区分大小写。
+   */
+   var bool = true;
+   var bool = false;
+   console.log(bool);
+   
+   /*
+    undefind:是一个特殊的数据类型，只有在定义了一个变量未赋值，或者使用了一个不存在对象的属性是会返回undefind 。
+    null ：是一个特殊的数据类型，其代表的意思是“空”，没有，不存在。这个空代表没有值，不是任何数据类型 。
+    undefind 与 null 的区别：
+         相同点：两个类型都只有一个值就是自身。
+         不同点：变量的默认值为 undefind 。 
+                null 用来表示一个不存在的对象。
+   */
+   var names;
+   console.log(names);//undefind
+   var people = {
+       name : '张三',
+        sex : 30
+   }
+   console.log(people.name);//张三
+   console.log(people.height);//undefind
+
+   //弹出框点击取消按钮，返回null
+   var count = prompt("请输入内容");
+   console.log(count);//null
+
+/*
+1.调⽤Number()来对string进⾏值类型转换。
+2.parseInt()。
+3.parseFloat()。
+
+
+Number()
+使⽤Number()函数来对string进⾏强制类型转换是最直接的做法。不过，这种做法有⼀个局限性：如果字符串截去开头和结尾的空⽩字符
+后，不是纯数字字符串，那么最终返回结果为NaN。⽤Number()函数来进⾏string-to-number转换时，函数只接受10进制字符串，但测试结果表明事实并⾮如此，Number()函数可以接
+受”0xff”作为参数并将其转换成数值255。
+
+
+parseInt()
+parseInt()函数可以将字符串转换成⼀个整数，与Number()函数相⽐，parseInt()函数不仅可以解析纯数字字符串，也可以解析以数字开头
+的部分数字字符串(⾮数字部分字符串在转换过程中会被去除)。值得注意的是，当parseInt()函数所解析的是浮点数字符串时，取整操作所
+使⽤的⽅法为“向下取整”(truncate)。
+除了字符串作为第⼀个参数，parseInt()函数还可以接受2到36之间的任意整数作为第⼆个参数，⽤于指定转换过程中的进制数。
+
+parseFloat()
+
+与parseInt()⼀样，parseFloat()也可以解析以数字开头的部分数字字符串(⾮数字部分字符串在转换过程中会被去除)。与parseInt()不同的
+是，parseFloat()可以将字符串转换成浮点数；但同时，parseFloat()只接受⼀个参数，且仅能处理10进制字符串。
+
+*/
+
+</script>
+
+</html>

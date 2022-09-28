@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分支结构</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    switch …… case条件语句，适合多个值进行判断使用。
+    语法：switch (key){ case value ： break; case …… default: break;}
+    描述：switch 开关；（）变量； case：实例；value：对比的数值；break：打断；default:默认；
+    执行过程：
+          1.当变量的取值与某个case后面的值一致时，会执行这个case后面的代码，如果都不一致则执行default中的代码。  
+          2.case后面跟的时具体的数据“数值，字符串，变量……”，case后面一定要加break。
+          3.break 作用：这个case执行完毕后用来结束整个switch语句的。
+    */
+    var day = 4;
+    switch (day) {
+        case 1:
+            console.log("周一");
+            break;
+        case 2:
+            console.log("周二");
+            break;
+        case 3:
+            console.log("周三");
+            break;
+        case 4:
+            console.log("周四");
+            break;
+        case 5:
+            console.log("周五");
+            break;
+        case 6:
+            console.log("周六");
+            break;
+        case 7:
+            console.log("周日");
+            break;
+        default:
+            console.log("鬼知道星期几啊！")
+            break;
+    }
+
+
+    /*
+    if 和 switch 的区别：
+    相同点：都是分支结构，用于分支判断
+    不同点：switc结构只能处理等值判断条件的情况。
+            if 语句适合某个变量处于某个连续区间时的情况。
+    
+    */
+</script>
+
+</html>

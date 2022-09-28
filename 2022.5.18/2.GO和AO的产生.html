@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO和AO的产生</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    // 对于JS来说，首会有一个预编译期的过程，在这个过程中会发生什么？
+    // 预编译：有函数预编译AO，全局预编译GO
+    // 预编译时发生在函数执行的前一刻
+
+    // 函数内的变量c：使用的是函数的提升，在预编译阶段，把变量提升到其作用域的顶端，先赋值undefined，走到变量赋值部分重新赋值。
+    function test(a,b){
+        console.log(a); // function a(){}
+        console.log(c); // undefined
+        var c = 123; 
+        function a(){};
+        console.log(b); // 2
+        var b = function(){};
+        console.log(b); // function(){}
+        console.log(c); // 123
+    }
+    test(1,2);
+
+    // 局部域：(函数)预编译分成四个步骤
+    // 1.创建一个AO对象(activation Object)，AO{}
+    // 2.将函数内所有的形参和声明的变量名储存到AO对象中，value为undefined
+    var AO = {
+        a:undefined,
+        b:undefined,
+        c:undefined
+    }
+    // 3.将形参和实参进行统一。
+    AO = {
+        a:1,
+        b:2,
+        c:123
+    }
+    // 4.将所有的函数声明的函数名作为AO对象的Key，函数整体内容为value赋值存储到AO对象中。
+    AO = {
+        a:function a(){},
+        b:2,
+        c:123
+    }
+
+    // 全局域：分成三个步骤
+    // 1.生成GO对象 GO{} (global Object) , 全局域属于window
+    // 2.将全局的变量声明，储存到GO对象中，value赋值undefined
+    // 3.将全局的函数声明的函数名作为key，函数体作为value储存到GO对象中
+
+
+
+    // 作用域链：GO —— AO —— AO
+    function func(){
+        var b = 10;
+        function func1(x,y){
+            var b = 100;
+            console.log(b); //100
+            function y(){
+
+            };
+            console.log(y);
+            console.log(y);// function y(){}
+        }
+        func1(1,2);
+    }
+    console.log(b);
+    var b = 123;
+    func();
+
+    //1. GO{ b:undefined, func:function func(){} }
+    //2. AO{ x:1 , y:function y(){}}
+    //3. AO{ }
+</script>
+</html>

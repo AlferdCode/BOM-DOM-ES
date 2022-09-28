@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引入方式</title>
+</head>
+<body>
+    <!--    
+        js引入方式：
+        1.行内：js代码可读性差，不推荐。
+        2.内部：js只能用于当前的页面，其他页面不能使用。
+        3.外部:js常用方法，推荐。
+
+     -->
+     <!-- 行内js -->
+     <button onclick="alert('hello')" >按钮</button>
+     <!-- 注意：js和html放在一起，会按照从上至下执行，指定元素在js下面会造成js无效 -->
+     <!-- <script>
+         var btn = document.getElementById("btn");
+         console.log(btn);
+         btn.onclick = function(){
+             this.style.backgroundColor = "pink";
+         }
+     </script>
+     <button id="btn">点击变色</button> -->
+</body>
+<!-- 内部js -->
+<script>
+     console.log("hello");
+</script>
+<!-- 引入外部js文件 
+注意：不可在此标签书写js代码，会无效 -->
+<script src="./one.js"></script>
+
+<!-- 
+    js的注释方式：
+    // 单行注释
+    /**/ 多行注释
+
+ -->
+</html>

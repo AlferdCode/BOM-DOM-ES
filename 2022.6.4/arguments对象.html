@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//arguments ; 是函数内部的对象， 是一个集合“类数组”。
+//作用 ：当调用函数插入实参 ， 系统会自动将所有的实参一次存入到arguments对象中。 
+
+
+//1. 形参设置多个 实参传入一个 ， 该实参作用于？形参。
+
+
+//2.没有形参，实参是否能用。  可以用arguments
+
+function text( x,y,z){x
+    console.log(x+y);
+    console.log(y+z);
+}
+text(10,5);
+function text1(){
+    console.log(arguments);
+    for(var i = 0 ; i<arguments.length ;i++){
+        console.log(arguments[0] + arguments[1]);
+        console.log(arguments[1] + arguments[2]);
+    }
+    console.log(arguments.length);//实参的个数
+    console.log(arguments.callee);//引用自身函数
+    //arguments.callee(); 谨慎使用，会造成死循环
+    //最好设置好条件再用 比如return; 
+}
+text1(12,21);
+
+//阶乘 
+//案例；5的阶乘 1*2*3*4*5
+var jc = 1 ;
+function jiecheng(){
+    var that = arguments[arguments.length-1];
+    console.log(that);
+    if(that>0){
+        jc*=that;
+        arguments.callee(that-1);
+        return jc;
+    }
+}
+var res = jiecheng(5);
+console.log(res);
+
+
+
+    </script>
+</body>
+</html>

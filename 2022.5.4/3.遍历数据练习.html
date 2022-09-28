@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历数据练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            width: 1000px;
+            height: auto;
+            margin: 50px auto;
+            border: 1px solid;
+        }
+        ul li{
+            width: 200px;
+            height: 300px;
+            border: 1px solid;
+            text-align: center;
+        }
+        ul li img{
+            width: 100%;
+        }
+        ul li h3{
+            width: 160px;
+            margin: 10px auto;
+        }
+
+    </style>
+</head>
+<body>
+    
+</body>
+<!-- 数据文件 -->
+<script src="./js/goodList.js"></script>
+<script>
+// 渲染数据
+    document.write("<ul>");
+        // for循环遍历数组
+        for(var i = 0;i <goodList.length;i++){
+            var item = goodList[i];
+            document.write(`
+                <li>
+                    <img src="${item.imageUrl}" alt="image">
+                    <h3>${item.title}</h3>
+                    <p>${"￥"+item.priceStr+"元"}</p>
+                </li>
+            `);
+        }
+    document.write("</ul>");
+
+</script>
+</html>

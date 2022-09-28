@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转义字符</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 单引号和双引号之间的嵌套,内部的引号代表字符本身。
+    console.log('你好，我是“张三”');
+
+    // 当引号使用不当，会造成语法错误
+    // console.log('你好，我是'张三'');
+
+    // 反斜杠“\”代表转义字符，它可以和其他的字符组合为一个新的字符
+    // 这里的 \' 可以理解为保留引号的格式
+    console.log('你好，我是\'张三\'');
+
+    // '\r' 代表的是回车，在页面中输出“html文件将回车解析为一个空格显示在页面中”
+    document.write('你好，我是\r张三');
+
+    // '\n' 代表换行，会将当前位置移到下一行的开头
+    console.log('你好，我是\n张三');
+
+    // '\t' 相当于tab键，跳到下一个进制单位
+    console.log('你好，我是\t张三');
+
+    // 注意：在字符串中需要输出\也要进行转义 ，\\代表输出一个反斜杠
+    console.log('你好，我是张\\三');
+    console.log('你好，我是\\\\张三');
+
+    // '\u' u:uncode编码,后面的4位数代表16进制的字符
+    console.log('\u6211');
+    console.log('\u00A3');
+    console.log('\u00A9');
+    console.log('\u6211\u7231\u4f60\u4e2d\u56fd');
+
+    var str = 'hello';
+    // charCodeAt() 是获取指定索引字符对象的unicode十进制编码
+    console.log(str.charCodeAt(0));//104
+    // String.fromCharCode() 把参数是一个十进制的unicode编码转化为对应字符
+    console.log(String.fromCharCode(104));//h
+
+    // 案例 
+    // 需求：把数组中的数据转化为unicode字符输出为一个字符串
+    var arr = [104,101,108,108,111];
+    var str = '';
+    for(var i=0;i<arr.length;i++){
+        var time = String.fromCharCode(arr[i]);
+        str += time;
+    }
+    console.log(str); 
+
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串转换为数字</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // parseInt()方法
+    // 作用：将其他数据类型化为整数数值
+    /*
+    1.忽略字符串前面的空格，直到找到第一个非空字符。
+    2.如果找到的第一个字符不是数字，空字符串，或者负号“负号后面没有跟数字字符”，都返回NaN
+    3.如果第一个字符是"数字字符"会继续解析第二个字符，直到解析后续字符遇到一个非"数字字符"，停止解析
+    4.以0x开头的数字字符，会把其当做十六进制数，会转换为十进制数输出。
+    5.以0开头的数字字符，会忽略前面的0后解析输出。
+    */ 
+    console.log(parseInt('123'));
+    console.log(parseInt(' 123'));
+    console.log(parseInt('abc123'));
+    console.log(parseInt('-abc123'));
+    console.log(parseInt(''));
+    console.log(parseInt('123abc456'));
+    console.log(parseInt('-123abc456'));
+    console.log(parseInt('0xA'));
+    console.log(parseInt('070'));
+    console.log(parseInt('0'));
+    console.log(parseInt('0.123'));
+    console.log(parseInt(0xA));
+    console.log(parseInt(070));
+    // parseInt()方法的第二参数
+    // 第一个参数，数值。第二个参数：2-36之间的整数值，这个值就是进制
+    var str = '0xA';
+    console.log(parseInt(str,16));//0xA 是 16进制数，转换为10进制输出，10
+    console.log(parseInt(101,2));//101 是 2进制数，转换为10进制输出 ，5
+
+
+    // parseFloat( ) 将其他数据类型转换为数值小数
+    // 具有parseInt方法的所有特点。区别：可以解析小数“解析字符串中的第一个小数点”
+    // parseFloat不能将八进制或十六进制的"字符串"转换为十进制数
+    console.log(parseFloat('123'));
+    console.log(parseFloat(' 123'));
+    console.log(parseFloat('-123'));
+    console.log(parseFloat('-12.3.4.5.6abc456'));
+    console.log(parseFloat('中国'));
+    console.log(parseFloat('-abc'));
+    console.log(parseFloat('0xA'));//0
+    console.log(parseFloat('070'));
+    // 八进制或十六进制数值可以转换为十进制输出
+    console.log(parseFloat(0xA));
+    console.log(parseFloat(070));
+
+
+</script>
+<!-- 
+    总结：其他数据类型转换为数值型的方法
+    Number() 尽最大的可能把其他数据类型转换为数值，除了非纯数字字符串
+    parseInt() 将其他数据类型转换为整数数值，可以解析非纯数字字符串
+    parseFloat() 将其他数据类型转换为数值“可保留小数”，可以解析非纯数字字符串
+ -->
+</html>

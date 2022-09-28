@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐式转换</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 隐式转换：在运算或比较数据的时候，数据类型不同时会发生转化，先转化后再运算或比较。
+
+
+    // 字符串转为数值型，后进行运算。
+    var res = "070" - 10; 
+    console.log(res);// 60
+    console.log('70'-(-10));//加号会拼接字符串 ，可以用减号来转换加号
+    // 或者利用 Number() parseInt() parseFloat() 转换为Number数字型在运算
+    // 非数字字符串会先转化为NaN
+
+    var res1 = "hello" - 10;
+    console.log(res1);// NaN
+    // null会转化为 0
+    var res2 = null - 0;
+    console.log(res2); // 0
+    // 布尔类型转化为数值型 ture = 1 ，false = 0
+    var res3 = true - 1;
+    console.log(res3); // 0
+    // undefined 转化为数值NaN
+    var res4 = undefined - 1;
+    console.log(res4);//NaN
+
+    console.log( NaN == NaN);//false
+    console.log( typeof NaN);//number  typeof:判断数据类型
+
+    
+    // 在比较大小运算符其他数据类型与数值类型进行比较，其他数据类型会转化为数值型再比较
+    // NaN属于数值型，但是不能进行比较
+    console.log(res1 > false);//false
+    console.log(  2  > NaN);//false
+    console.log(  2  > '0');//true
+    console.log(true > '0');//true
+    console.log('a'  == 12);//false
+</script>
+</html>

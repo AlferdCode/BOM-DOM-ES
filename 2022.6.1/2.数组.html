@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+// 数组的创建方式
+// 1.字面量创建
+var arr = [ 123,'hello',true,function(){},{} ];
+// 2.使用new关键字，实例化Array()方法。
+var arr1 = new Array(123,'hello',true,function(){},{});
+// 3.省略new关键字。
+var arr2 = Array(123,'hello',true,function(){},{});
+
+console.dir(arr);
+console.dir(arr1);
+console.dir(arr2);
+
+// 增删改查
+// 添加
+console.log(arr.push("晶晶"));
+console.log(arr.unshift("光辉"));
+// 删除
+console.log(arr.pop()); //尾部删除
+console.log(arr.shift()); //头部删除
+console.log(arr.splice(2)); //从下标为？的位置删除到数组末尾
+console.log(arr.splice(2,1)); //从下标为？的位置开始删除？条数据
+//替换
+var num = [4,5,6];
+console.log(arr.splice(0,1,num)); //从下标为？的位置开始选择？条数，替换为？新的数据
+console.log(arr[0][0]); //查看数组中的数组的数据。
+
+// 截取
+console.log(arr.slice(1)); //从下标为？的位置开始截取到数组末尾
+console.log(arr.slice(0,1)); //从下标为？的位置开始截取到下标为？的数据
+
+// 把数组转化为字符串
+console.log(arr1.toString());
+// 把数组中数据逆序排列
+console.log(arr1.reverse());
+// 数组的合并，往某个数组内添加新的数组内容
+var newArr = arr1.concat(arr);
+console.log(newArr);
+
+
+
+
+
+</script>
+</html>

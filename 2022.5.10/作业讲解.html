@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1，统计一个字符串中字母me出现了多少次。
+    var str = "give me some sunshine give me some rain give me another changce i wanna grow up once again";
+    var count = 0; //次数
+    // 方法一
+    // count = str.split('me').length-1; //使用字符串从字符me位置分割，分割后返回一个数组，从数组的长度-1判断me的个数 
+    // console.log(count);
+
+    // 方法二
+    // for(var i = 0;i<str.length;i++){
+    //     if(str[i] + str[i+1] === 'me'){
+    //         count++;
+    //     }
+    // }
+    // console.log(count);
+
+    // 方法三 
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] == 'm') {
+            for (var j = i + 1; j < str.length; j++) {
+                if (str[i] + str[j] == 'me') {
+                    count++;
+                    break;
+                }
+            }
+        }
+    }
+    console.log(count);
+
+    // 2，找出一个数组中所有的偶数(质数)。
+    var arr = [1, 8, 3, 4, 7, 4, 5, 9, 2, 3, 7, 5];
+    // 获取质数一，方法一函数判断 
+    function isZS(num) {
+        if (num < 2) {
+            return false;
+        } else {
+            for (var i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    for (var i = 0; i < arr.length; i++) {
+        // 找出所有的偶数
+        if (arr[i] % 2 == 0) {
+            document.write("偶数" + arr[i] + "&#x3000;");
+            // 质数：大于2的偶数“不是质数”，如果是奇数“有可能是质数” 
+        }
+        // 配合上面的函数使用
+        if (isZS(arr[i])) {
+            // document.write("质数" + arr[i] + "&#x3000;");
+        }
+    }
+    // 获取质数二
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > 1) {
+            for (j = 2; j <= arr[i]; j++) {
+                if (arr[i] % j == 0) {
+                    break;
+                }
+            } if (j >= arr[i]) {
+                document.write("质数" + arr[i] + "&#x3000;");
+            }
+        }
+    }
+    // 获取质数三
+    var arr = [1, 8, 3, 4, 7, 4, 5, 9, 2, 3, 7, 5];
+    var newArr = [];
+    var count = 0;
+    var temp = 0;
+    for (var i = 0; i < arr.length; i++) {
+        temp = 0;
+        for (var j = 2; j < arr[i]; j++) {
+            if (arr[i] % j == 0) {
+                temp++;
+            }
+        }
+        if (arr[i] > 1 && temp == 0) {
+            newArr[count] = arr[i];
+            count++;
+        }
+    }
+    console.log(newArr);
+
+    document.write("<br>");
+    // 3，一个数组中存放着若干人名，找出所有姓王的名字。
+    var persons = ['唐僧', '王小二', '猪八戒', '孙悟空', '王二狗', '王小利'];
+    for(var i = 0;i<persons.length;i++){
+        // 方式一 charAt() 判断参数下标为0的数据是否是王
+        // if(persons[i].charAt(0) == '王'){
+        //     document.write(persons[i] + "&#x3000;");
+        // }
+
+        // 方式二 indexOf() 判断参数王的下标是否是0
+        // if(persons[i].indexOf('王') == 0){
+        //     document.write(persons[i] + "&#x3000;");
+        // }
+
+        // 方式三 startsWith()用来判断参数是否是开头字母，返回布尔值
+        // if(persons[i].startsWith('王')){
+        //     document.write(persons[i] + "&#x3000;");
+        // }
+
+        // 方式四 slice(0,1) 截取，参数，从下标为0截取一位字符，判断是否是王
+        if(persons[i].slice(0,1) == '王'){
+            document.write(persons[i] + "&#x3000;");
+        }
+    }
+
+
+    // 4，找出数组中最大的数字。
+    var arr = [1, 2, -6, 8, 3, -9, 3, 4, 5, 6, 2];
+    var max = 0;
+    for(var i = 0;i<arr.length;i++){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    console.log(max);
+
+
+    // 5，统计一个字符串中出现次数最多的单词是什么。
+    var str = "give me some sunshine give me some rain give me another changce i wanna grow up once again";
+    var arr = str.split(" ");
+    var obj = {};
+    for(var i = 0;i<arr.length;i++){
+        var ch = arr[i];
+        if(obj[ch]){
+            obj[ch] ++;
+        }else{
+            obj[ch] = 1;
+        }
+    }
+    console.log(obj);
+    var count = 0;
+    var word = '';
+    for(var k in obj){
+        if(obj[k] >= count){
+            count = obj[k];
+            word += k + ",";
+        }
+    }
+    console.log('出现最多的单词是'  + word );
+
+
+    // 6，字符串去重
+    var str = 'abbaaccadd';
+    // 方法一：不改变原字符串，去重后返回新的字符串
+    var newStr = '';
+    for(var i = 0; i<str.length;i++){
+        if(newStr.indexOf(str[i]) === -1){
+            newStr += str[i];
+        }
+    }
+    console.log(newStr);
+
+    // 方法二：改变原字符串
+    for(var i = str.length-1; i>=0; i--){ 
+        for(var j = i-1;j>=0; j--){
+            if(str[i] == str[j]){ 
+                str = str.replace(str[j],'');
+                break;
+            }
+        }
+    }
+    console.log(str);
+
+
+</script>
+
+</html>

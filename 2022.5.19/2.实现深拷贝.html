@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //实现深拷贝
+    //判断数据类型
+    //typeof 常用在判断基本数据类型，判断引用数据类型不太准确。
+    //instanceof 常用在判断引用数据类型。
+    var num = 123;
+    var arr =[];
+    console.log(typeof num);//number
+    console.log(typeof arr);//object
+    console.log(arr instanceof Array);//ture
+
+    //案例实现
+    var obj1 ={
+        name:'张三',
+        age:30,
+        hobbies:['吃饭','睡觉','玩游戏']
+    }
+    var obj2 = {};
+    for(var k in obj1){
+        //判断数据是否是数组，是的话对数组进行深拷贝
+        if(obj1 instanceof Array){
+            obj2[k]= [];
+            for(var i=0;i<obj1[k].length;i++){
+                obj2[k][i] = obj1[k][i];
+            }
+            //如果是值类型直接收值即可
+        }else{
+            obj2[k] = obj1[k];
+        }
+    }
+    console.log(obj2);
+
+    obj1['isMale']=true;
+    console.log(obj1);
+    console.log(obj2);
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while循环</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    语法：while(条件){循环体；迭代变量}；
+    执行流程：
+        1.判断条件是否成立，若值为ture，则执行循环体，执行迭代变量（改变初始值）。
+        2.重复执行第一步，直到条件不成立值为false,则立即结束循环。
+    
+    */
+   var num = 0;
+   while(num < 5){
+        console.log(num);
+        // 注意：迭代变量不可缺少，否则会造成死循环
+        num++;
+   }
+
+    // 案例：1-100数之间的和
+    var num1 = 1; // 初始值
+    var sum = 0; // 求和
+    while(num <= 100){
+        sum += num1;
+        num1++;
+    }
+    console.log(sum);
+
+
+
+
+    /*
+    do……while(至少执行一次循环体)
+    语法：do{ 循环体；迭代变量；} while(循环条件判断)；
+    执行流程：先执行循环体，改变迭代变量，再判断循环条件是否满足，true则继续执行循环体“依次重复”，直到条件不满足，结束循环
+    重点：先执行后判断，迭代变量不可缺少“会造成死循环”。while后的()不可缺少。
+    */
+   var num2 = 0;
+   do{
+       console.log(num2);
+       num2++;
+   }while(num2 < 5);
+
+
+</script>
+</html>

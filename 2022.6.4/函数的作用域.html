@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数的变量可以使用的区域
+        //全局域和局部域 即 script内和函数内
+        //全局域的变量可以是任何地方使用'全局域不能使用局部域变量'
+        // 局部域的变量只能在当前函数内使用'函数可以使用外部函数的变量'
+        
+
+        var num = 100;//全局域变量
+
+
+        //console.log(obj); 报错  未使用var关键字声明的变量只能在赋值下面使用 , 没有变量提升过程.
+
+        var count = 0;
+
+
+        function func(){
+            num = 1000;// 全局变量; 未var '局部域中未使用var声明,变量名存在'
+            console.log(num);
+            var str = 'hello';
+            console.log(str);
+            obj = {name:'张三'};//全局变量 '在局部域中未未声明变量 , 此变量为全局域变量'
+            console.log(obj );
+            // console.log(count);//undefind
+            var count = 20 ;
+            console.log(count);//20 局部域变量; "和全局域变量重名 , 在局部域中使用var关键字 , 使用的是自己区域内的变量"
+        }
+        func();
+        console.log(num);
+        // console.log(str); 报错 ,在全局域使用的局部域的变量
+        console.log(obj.name);
+        console.log(count);//0
+
+        //作用域链
+        //先找自身 无 再去外层找 直到全局域中 "未找到报错 找到就用"
+        var a = 10;
+        function text (){
+            var a = 100 ;
+            console.log(a);//100
+            b= 'hello';
+            function text1 (){
+                a = 1000;
+                var b = 'hi';
+                var c = true;
+            }
+            text1();
+            console.log(a);//1000
+            console.log(b);//'hello'
+        }
+        text();
+            console.log(a);//10
+            console.log(b);//'hello'
+            //console.log(c);  报错
+
+console.log('------------------------------');
+
+//案例
+// var aa = 50 ;
+(function(){
+var aa = bb = 5;
+//转化为 var aa = bb ; bb = 5; 
+})();
+console.log(bb);//5
+console.log(aa);//报错 因为 aa 是局部域变量 
+    </script>
+    
+</body>
+</html>

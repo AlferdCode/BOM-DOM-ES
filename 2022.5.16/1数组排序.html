@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组排序</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*冒泡排序(Bubble Sort),是计算机领域比较简单的排序算法
+    //原理：相邻的两个数字两两比较，按照从小到大或从大到小排的顺序进行交换
+    //这样一趟过去后，最大或最小的值会被交换到数组的末尾
+    */
+    var arr = [1, 20, 3, 100];
+    for (var i = 1; i < arr.length; i++) {
+        // console.log(arr[i]);
+        for (var j = 0; j < arr.length - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                var temp = arr[j + 1];
+                arr[j + 1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    console.log(arr);
+
+    /*选择排序：(Selection sort)
+    原理：将第一位数依次与后面的元素进行比较，得到最小或最大值，与第一位交换
+    
+    
+    */
+    var arr = [1, 20, 3, 100, 0, 50];
+    for (var i = 0; i < arr.length - 1; i++) {
+        var min = arr[i];
+        var minIndex = i;
+        for (var j = i + 1; j < arr.length; j++) {
+            if (min > arr[j]) {
+                min = arr[j];
+                minIndex = j;
+            }//只判断了大小并没有换位置 判断了本次循环的最小值
+        }
+        arr[minIndex] = arr[i];//把本次循环的比值 最小的换成最大的
+        arr[i] = min;//最大的换成最小的
+    }
+
+    console.log(arr);
+
+
+    //数组中排序函数sort()
+    //原理：根据冒泡排序规则进行排序
+    //两两对比，把最小或最大值换数组的末尾
+    //sort()根据返回值判断是否交换“若值大于0( y<x,则x和y进行位置交换)，若值小于0( y>x,则x和y不进行位置交换)”
+    var arr = [1, 20, 3, 100, 0, 50];
+    arr.sort((x, y) => {
+        return x - y;
+    })
+    console.log(arr);
+
+
+</script>
+
+</html>

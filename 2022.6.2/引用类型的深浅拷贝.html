@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 浅拷贝
+    var arr = [1,2,3,4,5];
+    var newArr = arr;
+    console.log(arr);
+    console.log(newArr);
+    newArr.pop();
+    console.log(newArr);
+    console.log(arr);
+
+    // 数组的深拷贝 
+    var arr = [1,2,3,4,5];
+    var newArr = [];
+    for(var i=0;i<arr.length;i++){
+        newArr.push(arr[i]);
+    }
+    newArr.pop();
+    console.log(newArr);
+    console.log(arr);
+
+    //对象的深拷贝
+    var obj = {
+        name:'张三',
+        age:30
+    }
+    var newObj = {};
+
+    for(var k in obj){
+        newObj[k] = obj[k];
+    }
+
+    newObj.name = "李四";
+    newObj['age'] = 25;
+
+    console.dir(newObj);
+    console.dir(obj);
+
+
+
+</script>
+</html>

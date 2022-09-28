@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> . 与 [] 的区别 </title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {};
+    console.dir(obj);
+    // 对象，属性 “直接添加”
+    obj.name = "ccc";
+    // 对象['属性'] "直接添加"
+    obj['age'] = 20;
+    var sex = '性别';
+    // []内未使用字符串，会把其当作变量，把变量的值作为对象属性使用。
+    obj[sex] = "boy";
+    // obj.123 = 100;语法错误，点后面不能跟数字
+    obj['123'] = 'number';
+
+
+    var obj1 = {};
+    var adds = ['郑州','上海','北京','南京'];
+    // city
+    for(i = 1; i<4;i++){
+        obj1['city' + 1] =adds[i-1];
+    }
+    console.dir(obj1);
+
+
+    /*不同点
+    1.[]可以用变量作为对象的属性访问，而点不可以。
+    2.[]可以用数字作为属性名使用，而点不可以。
+    3.[]可以动态访问属性名"例如是一个表达式"，可以在程序运行中创建和修改属性，而点不可以。
+    4.[]可以使用属性名中包含了会导致语法错误的符号的字符，而点不可以。
+    */
+</script>
+</html>

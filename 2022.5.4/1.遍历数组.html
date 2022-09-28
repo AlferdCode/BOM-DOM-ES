@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 实用字面量[]创建一个数组
+    var arr = ['a','b','c','d','e','f','g'];
+    console.dir(arr);
+    // 获取数组数据“通过下标”
+    console.log(arr[5]);
+    // 获取数组的长度“数组有几条数据”
+    console.log(arr.length);//7
+    // 获取了一个不存在的数组数据，返回undefined
+    console.log(arr[7]);
+
+    // for循环遍历
+    // 遍历的是数组的下标“从0开始，到数组的长度”
+    for(var i = 0; i < arr.length; i++){
+        console.log(arr[i]);
+    }
+    for(var i = 0; i <= arr.length-1; i++){
+        console.log(arr[i]);
+    }
+
+    // [111,122,133,144,155,166]  =》 [131,142,153,164,175,186]
+    var arr1 = [111,122,133,144,155,166];
+    // 重新赋值
+    // arr1[0] = 131; 
+    // arr1[4] = 175;
+    // console.dir(arr1);
+    for(var i = 0; i<arr1.length; i++){
+        arr1[i] += 20;
+    }
+    console.log(arr1);
+
+</script>
+</html>

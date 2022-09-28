@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套循环</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*  嵌套循环
+    当一次循环不能满足实际需求时，可以使用嵌套循环。
+    重点：
+        1.嵌套循环内，多层变量名不能重复。
+        2.外层循环执行一次，内层循环执行完毕“循环结束” 
+        3.内层循环可以使用外层循环的变量，但是外层不能使用内层循环的变量（js 中其实可以，不推荐）。
+    */
+
+    // 内层循环的次数 = 外层循环的次数 * 内层循环执行的次数
+   for(var i = 0; i < 5; i++){
+       console.log(i+"=====================");
+       for(var j =0; j < 5; j++){
+        console.log(j+"----------------------------");
+       }
+   }
+    // 案例：99乘法表 
+    // 需求：需要输出几行，每行要输出几个算式
+
+    // 需要输出几行    
+    for(var i = 1; i < 10; i++){
+        // 每行输出的内容
+        // j决定一行有几个算式；
+        for(var j = 1;j <= i; j++){
+            var res = j + 'x' + i + "=" + i * j + "&#x3000;";
+            document.write(res)
+        }
+
+
+
+
+        document.write("<br>");
+    }
+
+</script>
+</html>

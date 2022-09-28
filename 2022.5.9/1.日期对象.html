@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期对象</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // JS中的内置对象，可以直接使用。
+    // 日期对象及所有的API
+    // 创建日期对象new Date()
+    var date = new Date();
+    console.log(date);
+    
+    console.log(date.getFullYear()); //年份
+    console.log(date.getMonth()+1); //月份，国外月份0-11
+    console.log(date.getDate());//日
+    console.log(date.getHours());//时
+    console.log(date.getMinutes());//分
+    console.log(date.getSeconds());//秒
+    console.log(date.getDay());//周几,国外周几 0-6
+    console.log(date.getTime());//时间戳“时间戳具有唯一性” 
+
+
+    // 案例：在页面中输出当前的日期
+    var date = new Date();
+    var year = date.getFullYear();
+    var moth = date.getMonth()+1;
+    var dates = date.getDate();
+    var day = date.getDay(); 
+    var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    document.write("今天是" + year + "年，" + moth + "月"+ dates + "日，" + arr[day]);
+
+</script>
+</html>

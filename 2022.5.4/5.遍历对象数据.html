@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历对象数据</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            display: flex;
+        }
+
+        ul li {
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var allObj = {
+        varieties: {
+            dog: {
+                name: '金毛',
+                sex: '男',
+                hobby: '游泳'
+            },
+            cat: {
+                name: '波斯猫',
+                sex: '女',
+                hobby: '跳跃'
+            },
+            pig: {
+                name: '小香猪',
+                sex: '男',
+                hobby: '睡觉'
+            },
+            pig1: {
+                name: '小香猪',
+                sex: '男',
+                hobby: '睡觉'
+            }
+        }
+    }
+
+    // 遍历三层嵌套对象
+    document.write("<ul>");
+    // 方法一：for循环遍历对象
+    for (var key in allObj) {
+        // console.log(allObj[key]);
+        for (var ke in allObj[key]) {//3
+
+            document.write("<li>");
+            // console.log(allObj[key][ke]);
+
+            var count = 0;
+            for (var k in allObj[key][ke]) {//3*3=9
+                // console.log(allObj[key][ke][k]);
+                count++;
+                if (count == 1) {
+                    document.write(`
+                            <h1>${"姓名："+ allObj[key][ke].name}<h1>
+                        `)
+                } else if (count == 2) {
+                    document.write(`
+                            <h1>${"性别："+ allObj[key][ke].sex}<h1>
+                        `)
+                } else{
+                    document.write(`
+                            <h1>${"爱好："+ allObj[key][ke].hobby}<h1>
+                        `)
+                }
+            }
+
+            document.write("</li>");
+        }
+    }
+
+
+    // 方法二：对象打点调
+    // for(var i=0;i<3;i++){
+    //     document.write("<li>")
+    //     if(i == 0){
+    //         document.write(`
+    //             <h1>${"名字："+ allObj.varieties.dog.name}<h1>
+    //             <h1>${"性别："+ allObj.varieties.dog.sex}<h1>
+    //             <h1>${"爱好："+ allObj.varieties.dog.hobby}<h1>
+    //         `)
+    //     }else
+    //     if(i == 1){
+    //         document.write(`
+    //         <h1>${"名字："+ allObj.varieties.cat.name}<h1>
+    //             <h1>${"性别："+ allObj.varieties.cat.sex}<h1>
+    //             <h1>${"爱好："+ allObj.varieties.cat.hobby}<h1>
+    //         `)
+    //     }else
+    //     if(i == 2){
+    //         document.write(`
+    //             <h1>${"名字："+ allObj.varieties.pig.name}<h1>
+    //             <h1>${"性别："+ allObj.varieties.pig.sex}<h1>
+    //             <h1>${"爱好："+ allObj.varieties.pig.hobby}<h1>
+    //         `)
+    //     }
+    //     document.write("</li>")
+    // }
+    
+    document.write("</ul>");
+
+
+
+
+
+</script>
+
+</html>

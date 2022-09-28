@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除询问</title>
+</head>
+<body>
+    <span class="text">你要删除我吗?</span>
+    <button id="del">删除</button>
+</body>
+<script>
+    //获取元素
+    var delBtn = document.getElementById("del");
+    var text = document.querySelector(".text")
+
+    //添加事件
+    delBtn.onclick = function(){
+        //获取弹出框的值 ture / false
+        var res = confirm("确定要删除吗");
+
+        if(res){//点击确定
+            alert("执行删除操作");
+            text.style.display = "none"
+        }else{//点击取消
+            text.style.display = "inline-block";
+        }
+    }
+</script>
+</html>

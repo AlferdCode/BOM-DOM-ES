@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 使用Number()函数，不使用new关键字，创建数字，转换"把其他数据类型转换为number"
+    var num = 3;
+    num = Number(10); //直接创建数字，参数直接是数字就是传入
+    num = Number('5'); //把数字字符串转换为数字
+    num = Number('中文'); //返回NaN
+    num = Number('abc'); //返回NaN
+    num = Number(' '); //空格返回0
+    num = Number(''); //空字字符串返回0
+    num = Number(true); //返回1
+    num = Number(false); //返回0
+    num = Number(null);//返回0
+    num = Number(undefined);//返回NaN
+    console.log(num);
+   
+
+    //  number方法
+    num = 3.1415926;
+    
+    // 把数字转化为字符串
+    console.log(num.toString());
+
+    // 保留小数点很后面的几位小数？，并转化为字符串类型输出
+    console.log(num.toFixed(4));
+
+    // 转化为指数形式，并转化为字符串类型输出
+    console.log(num.toExponential());
+    // 科学表示法，同时保留几位小数
+    console.log(num.toExponential(2));
+
+    // 保留几位有效数字
+    console.log(num.toPrecision(5));
+    
+    // 判断参数是不是一个整数，返回布尔值
+    console.log(Number.isInteger(num));
+    // 从字符串中解析出一个整数
+    console.log(Number.parseInt('123.456abc456哈哈哈'));
+    // 从字符串中解析出一个小数
+    console.log(Number.parseFloat('-123.456.789abc456哈哈哈'));
+
+    // 最大值 
+    console.log(Number.MAX_VALUE)
+    // 最小值，接近于0
+    console.log(Number.MIN_VALUE)
+    // 最小值
+    console.log(-Number.MAX_VALUE)
+
+
+</script>
+</html>

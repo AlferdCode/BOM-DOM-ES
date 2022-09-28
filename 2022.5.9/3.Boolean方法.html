@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // Boolean()函数,可以把不同类型的数据转换为布尔类型
+    // 直接使用函数，不使用new关键字，根据参数的真假，生成一个boolean变量返回
+    var bool = Boolean("你好");//true
+    bool = Boolean(' ');//true
+    bool = Boolean('');//false
+    bool = Boolean(10);//true
+    bool = Boolean(0);//fasle
+    bool = Boolean(null);//fasle
+    bool = Boolean(undefined);//fasle
+    bool = Boolean('null');//true
+    bool = Boolean('false');//true
+    bool = Boolean(NaN);//false
+    bool = Boolean(true);//true
+    bool = Boolean(false);//false
+    console.log(bool);
+
+
+    // !的作用有两个
+    // 1.取反
+    console.log(!true); //取反
+    var a = 2,b = 3;
+    // 2.强制类型转换，把其他的数据类型转化为布尔类型“并具有取反功能”
+    console.log(Boolean(a+b));// true
+    console.log(!(a+b)); //false
+
+
+    // 使用new关键字，创建一个包含true值的布尔对象
+    var boolObj = new Boolean(false);
+    console.dir(boolObj);
+    // 使用布尔值进行判断时，其得到的永远是true，因为这个判断判断的不是布尔的值，而是这个布尔对象是否存在
+    if(boolObj){ //是否存在
+        console.log("布尔值对象为true");
+    }
+    if(boolObj == false){//判断布尔对象的值
+        console.log("布尔值对象值为false");
+    }
+    // 总结：在条件判断时，尽量少使用布尔对象作为条件
+
+
+    
+</script>
+</html>

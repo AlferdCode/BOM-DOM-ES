@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的参数与返回值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // part1 : 函数的参数 
+    // 参数：可以是无，可以是一个或多个
+    // 定义函数时()的参数为“形参”，调用函数时()的参数为“实参”，实参是给形参传递数据的。
+    // 定义无参函数
+    function test(){
+        console.log("无参函数");
+    }
+    test();
+
+    // 定义带参函数 (调用传实际参数，在函数内部给参数赋值)
+    function test1(a,b,c){
+        var a = 5;
+        var b = 2;
+        var c = 10;
+        console.log(a+b+c);
+    }
+    test1();
+
+    // 定义带参函数，在调用函数时传递实际的参数
+    function test2(a,b,c){
+        console.log(a+b+c);
+    }
+    test2(10,5,30);
+
+    // 案例：写一个方法，对数组中的数据求和
+    var arr = [20,10,5,6,3];
+    var arr1 = [100,2,3];
+    var sum = function(item){
+        var sumVaule = 0;
+        for(var i = 0;i<item.length;i++){
+            sumVaule += item[i];
+        }
+        console.log(sumVaule);
+    }
+    sum(arr);
+    sum(arr1);
+
+    // ========================================================================
+    // part2 函数的返回值
+    // 函数的返回值需要函数内使用return语法返回一个结果
+    // return的作用：结束函数，返回一个结果“需要接收结果”。
+    function add(x,y){
+        // 注意：return关键字和后面的表达式不能换行，换行后将得不到返回的结果。
+        return x+y;
+        // 注意：return后面的代码为“无效代码”，程序不会执行。
+        console.log(x+y);
+    }
+    add(5,10); //接受不到返回值
+    // 调用具有返回值的函数，要使用一个变量去接收返回值
+    var res = add(5,10);
+    console.log('函数返回值结果：' + res);
+
+    // 案例，总结return在函数中的应用
+    // return在函数中的作用
+    // 1.在return后面不添加具体的内容，函数执行到return语句仅仅用来结束函数
+    // 2.在return后面添加具体的内容，函数执行到return语句，会返回return的结果并结束函数“在调用函数的时候使用一个变量接收返回值即可”
+    // 总结：在函数中return不管是否返回一个结果，都会结束函数。
+    var find = function(n){
+        if(n <= 0){
+            alert("负数,结束函数");
+            return;
+        }else{
+            alert("正在计算");
+            return n+5;
+        }
+    }
+    find(-5); //传参为负值，结束函数
+    var res = find(10); //传参为正值，返回一个计算结果
+    console.log("计算结果为:" + res);
+
+
+</script>
+</html>

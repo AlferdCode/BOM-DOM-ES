@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 800px;
+            height: auto;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+        ul li{
+            list-style: none;
+            width: 220px;
+            height: 260px;
+            margin-bottom: 10px;
+        }
+
+        ul li p{
+            width: 95%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin:0 0 3px 0;
+        }
+        ul li span{
+            font-size: 20px;
+            color: red;
+        }
+        ul li span::before{
+            content: "￥";
+
+        }
+
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = [
+        {
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        },{
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        }, {
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        }, {
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        },{
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        }, {
+            imgUrl : "https://gw.alicdn.com/bao/uploaded/i3/6000000003769/O1CN01o9zxFT1diFWvNVvEi_!!6000000003769-0-picassoopen.jpg_220x10000Q75.jpg_.webp",
+            Introduce : 'ABC卫生巾日用mini巾超薄棉柔迷你巾3包装护垫 带护翼防漏姨妈巾',
+            price : "13.9"
+        }
+    ];
+    
+    // for(var i = 0;i<arr.length;i++){
+    //     document.write(`${arr[i].price}`)
+    // }
+    document.write('<ul>');
+        for(var i=0;i<arr.length;i++){ 
+            document.write(`
+                <li>
+                    <img src="${arr[i].imgUrl}" alt="image">
+                    <p>${arr[i].Introduce}</p>
+                    <span>${arr[i].price}</span>
+                </li>
+            `);
+        }
+    document.write('</ul>');
+
+
+</script>
+</html>

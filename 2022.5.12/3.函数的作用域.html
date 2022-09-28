@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的作用域</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 作用域：变量在定义时，都有自己的作用域，每个变量都只能在自己的作用域内使用。
+    // 变量的作用域：变量可以使用的范围“区域”。
+    // 直接在script标签内或者JS文件内定义的变量，属于window作用域“全局作用域”。
+    // 全局作用域中的变量，可以在任何地方使用。
+
+    var str = 'hello world'; //在全局域中声明的变量
+    console.log(str);
+    window.document.write(str);
+    console.log(window.str);  //可以使用window对象调用全局域中的任何变量
+
+    // js中的作用域分为函数内和函数外
+    // 每个函数都拥有一个独立的作用域“局部作用域”
+    // 总结：函数内“局部域”可以使用“全局域”中变量，在“全局域”中不能使用函数内“局部域”变量。
+    function func(){
+        var num = 100; //在局部作用域中声明的变量
+        console.log(num);
+        str = "hi 你好"; //在局部域中可以使用全局域中的变量
+        console.log(str); 
+    }
+    func();
+
+    // 注意：在局部域中声明的变量不能在全局域中使用
+    // console.log(num); 报错：num is not defined
+    console.log(str);
+
+    // 案例：函数套函数
+    // 总结作用域链：全局域中 ——> test函数作用域  ——> test1函数作用域
+    // 1.当你需要某个变量的时候，它会先从自身的作用域寻找，找不到的话去其外层的作用域寻找，直到找到全局作用域下还没找到就会报错
+    // 2.当本作用域中var的变量和上层作用中的变量名同名“重复”，会覆盖上层作用域中变量。
+    var a = 10;//全局域
+    var out = 1;
+    function test(){
+        var b = 100; //test局部域
+        var a = 15; //局部作用域变量会覆盖全局作用域变量
+        out = 111; //改变的是全局域中变量“重新赋值”
+
+        var test1 = function(){
+            var c = 1000; //test1局部域
+            console.log(a + b + c); //在test局部域中可以使用“外部局部域test内变量”和全局域中变量
+        }
+
+        console.log(a + b); // 在test局部域中可以使用全局域中的变量
+        // console.log(c); 报错：c is not defined ，说明在test局部域中不能使用test1局部域中的变量
+        test1();
+    }
+    test();
+    // console.log(b,c); 报错：b/c is not defined 在全局域中不能使用任何局部域的变量
+    console.log(a);//10
+    console.log(out);//111
+</script>
+</html>

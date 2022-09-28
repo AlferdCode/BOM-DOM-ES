@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>url路径解析</title>
+    <script src="./js/gn.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // url路径：统一资源定位符，可以从互联网山得到的资源位置，或访问的方法。
+    // 格式：https://www.baidu.com/abc?x=10&y=20&c=30
+    // 域名?参数名=参数值&参数名=参数值
+
+    // 普通写法
+    // var url = "https://www.baidu.com/abc?x=10&y=20&z=30";
+    // var s1 = url.split("?")[1]; //拿到域名后面的参数 x=10&y=20&z=30
+    // var arr = s1.split("&"); //所有参数存在数组中
+    // var obj = {};//存储切割后的参数
+    // for(var i =0;i<arr.length;i++){
+    //     var s2 = arr[i].split("="); 
+    //     // 把分割后的数组数据存放按到对象中
+    //     obj[s2[0]] = s2[1];
+    // }
+    // console.log(obj);
+
+
+    // 封装写法
+    var res = splitUrl("https://www.baidu.com/abc?x=10&y=20&z=30");
+    var res = splitUrl('https://www.jd.com/?cu=true&utm_source=c.duomai.com&utm_medium=tuiguang&utm_campaign=t_16282_26171774&utm_term=efa7d146922d43d5b7f73367bc7c396d');
+    console.log(res);
+</script>
+</html>

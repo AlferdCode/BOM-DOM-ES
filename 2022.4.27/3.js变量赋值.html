@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 有一个var才会定义一次变量，var一个变量就会在计算机的内存中占一个位置，而重新赋值则不会重新占据位置。
+    // 一个变量只能保存一个数据“变量的值”，给同一个变量多次赋值，以最后一次赋值为准。
+    // 声明num变量，并赋值。
+    var num = 0;
+    console.log(num);//0
+    // 给num重新赋值（存在的变量为重新赋值）
+    num = 100;
+    console.log(num);//100
+    
+    // 未使用var关键字声明变量，可以使用“只能是全局域中变量”。
+    chai = "cai";
+    console.log(chai);//cai 
+
+    // 变量换值（变量的值可以是另一个变量“赋值的是另一个变量的值”）
+    var x = 100, y = true, z = 'hi';
+    console.log(x,y,z);
+    x = y; // x = true , x 获取 y 的值
+    y = z; // y = 'hi'，y 获取 z 的值
+    z = x; // z = true ，z 获取重新赋值后的 x 的值
+    console.log(x,y,z);
+
+    //z = w ;报错：js变量赋值.html:33:6 Uncaught ReferenceError: w is not defined（未被定义的，未声明的变量）
+    // console.log(z);
+ 
+</script>
+</html>

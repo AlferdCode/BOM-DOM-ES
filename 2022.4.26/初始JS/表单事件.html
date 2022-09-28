@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单事件</title>
+</head>
+<body>
+    <form action="#" id="myForm">
+        <div>
+            <input type="text" name="user" placeholder="请输入账号" >
+        </div>
+        <div>
+            <input type="password" name="psw" placeholder="请输入密码" >
+        </div>
+        <div>
+            <input type="submit" name="btn" value="登录" >
+            <input type="reset" name="btn" value="重置" >
+        </div>
+    </form>
+
+    <!-- 
+
+        一、placeholder 属性的用法
+
+placeholder 属性规定可描述输入字段预期值的简短的提示信息（比如：一个样本值或者预期格式的短描述）。
+
+该提示会在用户输入值之前显示在输入字段中。
+
+注意：placeholder 属性适用于下面的 input 类型：text、search、url、tel、email 和 password。
+
+     -->
+</body>
+<script>
+    //获取元素
+    var myForm = document.getElementById("myForm");
+    var username = document.getElementsByName("user")[0];
+    console.log(myForm,username);
+
+    // 表单提交时事件
+    myForm.onsubmit = function(){
+        var val = username.value;
+        if(val.length < 6 || val.length > 12){
+            alert("请输入6-12之间的长度");
+            return false; //阻止页面刷新
+        }
+    }
+
+    //表单重置事件
+    myForm.onreset = function(){
+        return false;//阻止重置事件
+    }
+
+ /*
+    以上代码涉及的 JS 内容
+    1.JS基础语法（变量，语句，函数，运算符）
+    2.JS中的DOM（获取元素，表单事件触发）
+   */
+
+/*
+在大多数情况下，为事件处理函数如果让其返回 false，可以防止默认的事件行为。例如，默认情况下，点击一个 <a> 标签元素，页面会跳转到该元素 href 属性指定的页，而 return false 就相当于终止符，return true 就相当于执行符。在 js 中 return false 的作用一般是用来取消默认动作的。比如你单击一个链接除了触发你的 "onclick" 事件以外还要触发一个默认事件就是执行页面的跳转。所以这时候如果你想取消对象的默认动作就可以 return false 来阻止它的动作。也就是说如果你想用 js 代码来局部改变一些数据而不引起页面其他部位的变化,那么你就应该在 onclick 事件代码的后面加上 return false;。
+*/   
+/*
+retrun true; - 返回正确的处理结果。
+return false; - 返回错误的处理结果，终止处理。
+return; - 把控制权返回给页面。
+*/ 
+/*
+return只能写在函数体内，如果写在函数体外将会报错
+在函数里 return 下面的内容将不再执行的：
+*/ 
+</script>
+</html>

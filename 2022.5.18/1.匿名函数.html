@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 使用function关键字创建函数，函数名()调用函数，调用可以在任何地方“函数的上下均可”。
+    func();
+    function func(){
+        console.log("我是func");
+    }
+    
+    // 使用函数表达式创建函数“把函数作为一个对象赋值给一个变量”，变量名()调用函数“必须在函数表达式声明之后调用”。
+    // 匿名函数1：把匿名函数作为对象赋值给变量
+    var func1 = function(){
+        console.log("我是func1");
+        func();
+        // ();  报错，不能在其他的地方调用匿名函数
+    }
+    func1();
+
+    // 匿名函数2：把匿名函数作为对象赋值给对象的属性、
+    var obj = {
+        name:'张三',
+        age:30,
+        say:function(){
+            console.log("你好，我是张三");
+        }
+    }
+    obj.say();
+
+    // 匿名函数（没有命名的函数）
+    // 通过function声明函数，并没有写函数名，那么就是一个匿名函数。
+    // 匿名函数有2种用途
+    // 1.作为一个函数对象，赋值给某个变量或其他对象的属性。
+    // 2.直接调用“自执行函数”。
+
+    // function(){}   声明了一个没有名字的函数，但是函数没有名字系统会报错“语法错误”。
+    // 匿名函数3：“自执行函数”在匿名函数的外层添加小括号，防止语法错误“在末尾处添加 ; ”
+    (function(){
+        console.log("我是匿名函数");
+    // 匿名函数调用1：无法使用函数名调用，只能在函数的末尾添加()调用“自执行”，不能在其他地方调用匿名函数。
+    })();
+    
+    // 匿名函数调用2：可以把尾部()调用，放在函数外层的()内。
+    (function(){
+        console.log("我是匿名函数");
+    }());
+
+    // 带参数的匿名函数
+    (function(x,y){
+        console.log(x + y);
+    })(10,25);
+
+    // 带返回值的匿名函数
+    var res = (function(x,y){
+        return x + y;
+    }(10,50));
+    console.log(res);
+
+
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的创建与调用</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 函数：又叫方法,通过一系列操作可以实现某个功能“把代码封装成一个方法，需要时调用”。
+
+    // 函数的创建：
+    // js中创建函数的方式有两种：'函数声明' 和 '函数表达式声明'。
+    /* 方法一：function函数声明 
+    语法：function name(params) {   }
+        - function 关键字，定义方法。
+        - name 方法名，定义函数的名字，自定义 “一定要有意义，不要使用关键字，不要以中文或数字开头，尽量短小精悍” 。
+        - ( params ) 参数列表，如果需要给方法传递参数，就在()内添加参数“参数无，可以是一个或多个”。
+        - { } 方法体，方法的功能，逻辑代码都写在方法体内。
+    */
+    //注意：使用function关键字声明函数，可以在任何地方调用函数“都可执行”
+    test();
+    //声明一个test方法：声明只是为了让这个方法存在,但是方法体内的代码不会自动执行
+    function test(){
+        console.log("我是test函数");
+    }
+    // 函数的调用：调用之后函数才能执行方法体
+    test();
+
+    // ===================================================================================
+    /*方法二：函数表达式声明
+    语法：var 变量名 = function(){
+    */ 
+    //注意：调用函数表达式声明的函数，必须在函数的下面才能调用，否则报错
+    // test1();  报错：test1 is not a function
+    //part1：声明变量接收函数（不添加函数名）
+    var test1 = function(){
+        console.log('我是test1函数');
+    }
+    // 使用变量名调用函数
+    test1();
+
+    // part2: 声明变量接收函数（添加函数名）
+    // 注意：使用函数表达式调用函数“且函数有命名”，必须使用变量名调用函数，否则报错。
+    var test2 = function func(){
+        console.log('我是test2函数');
+    }   
+    // func(); 报错：func is not defined
+    test2();
+</script>
+
+</html>

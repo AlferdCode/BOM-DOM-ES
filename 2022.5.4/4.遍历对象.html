@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // for k in object
+    var goodObj = {
+        'Id': 1850,
+        "title": "精铜方形冷热旋转厨房龙头",
+        "priceStr": "369",
+        "mack": "<span style=\"color: #FB4C81;background: ; border-color: #FB4C81\">&#x4E00;&#x8D77;&#x62FC;</span>        ",
+        "evaluate": "8664",
+        "imageUrl": "http://bfs.biyao.com/group1/M00/09/10/rBACYV3rGHCABzPyAAK2q5PCToc834_360x360.jpg",
+        "type_one": "家装",
+        "type_two": "龙头/水槽"
+    }
+    // 获取对象的数据“对象.属性”
+    console.log(goodObj.Id);
+    console.log(goodObj['title']);
+
+    // 对象数据，键值对“key:value”,获取数据“对象的value”
+    // 语法：for(var k"对象的属性" in object“对象名”){}
+    for(var key in goodObj){
+        console.log(key);//得到对象所有的key“字符串类型的”
+        console.log(goodObj[key]);//在遍历中获取对象数据必须使用[]获取，打点无效。
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退出循环</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    退出循环：当循环达到某一个值，或满足某一个条件时，我们需要提前结束循环。
+    退出方法：continue;  break;
+    二者区别：
+        continue ：结束此次循环，会继续执行下一次循环。
+           break : 结束整个循环，继续执行当前循环下面的代码。
+    
+    */
+    for(var i=0; i<5; i++){    
+        if(i == 3){
+           // continue;跳出当前循环
+            break; // 结束整个循环
+        }    
+        console.log(i);
+    }
+    // 在嵌套循环中，结束的是当前这一层循环，跟其外层或内层循环无关。
+    for(var i = 0 ; i < 3; i++){
+        for(var j = 0;j < 5;j++){       
+            if(i == 2){
+             continue;
+            }
+         console.log(i);
+       } 
+    }
+
+
+</script>
+</html>

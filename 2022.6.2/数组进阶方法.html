@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    // 获取多个li元素，返回NodeList(5)集合“是一个类数组：类似于数组的对象，不是真正的数组”。
+    var lis = document.querySelectorAll("li");
+    console.log(lis[2]);
+    console.log(lis instanceof Array);
+
+    //  Array.from( 类数组 )方法：把类数组转化为真正的数组。
+    var arr = Array.from(lis);
+    console.log(arr);
+    console.log(arr instanceof Array);
+
+
+    var arr1 = [10,100,true,'hello',function(){},{name:'张三'}];
+
+    // 遍历数组
+    for(var i=0;i<arr1.length;i++){
+        console.log(arr1[i]);
+    }
+    // forEach()方法：循环遍历数组，参数是一个函数“回调函数”,函数的参数3个(1.数组的数据。 2.数组的下标。 3.数组本身)。
+    arr1.forEach(function(item,index,arr1){
+        console.log(arr1[index]);
+        console.log(index);
+        console.log(item);
+    });
+
+    // every()方法：判断数组中数据是否都符合条件，只有都符合条件才返回true“一条不满足就返回false后面将不再执行” 
+    var res = arr1.every(function(item,index,arr1){
+        return item == "hello";
+    });
+    console.log(res);
+    // 原生方法
+    for(var i=0;i<arr1.length;i++){
+        if(arr1[i] != "hello"){
+            console.log(false);
+            break;
+        }else if(i == arr1.length-1 && arr1[i] == "hello"){
+            console.log(true);
+        }else if(arr1[i] == "hello"){
+            continue;
+        }
+    }
+
+    // some()方法：判断数组中数据是否都符合条件，只要有一个满足条件就返回true“全部不满足条件才返回false”
+    var res = arr1.some(function(item,index,arr1){
+        return item > 10;
+    });
+    console.log(res);
+    // 原生方法
+    for(var i=0;i<arr1.length;i++){
+        if(arr1[i] > 10){
+            console.log(true);
+            break;
+        }else if(i == arr1.length-1){
+            console.log(false);
+        }
+    }
+
+
+    // map()方法：映射，将原数组的内容经过函数内一些列操作后，把满足条件的内容映射到新的数组中"不改变原来的数组"。
+    var res = arr1.map(function(item,index,arr1){
+        return item + "1";
+    });
+    console.log(res);
+    // 原生方法
+    var newArr = [];
+    for(var i = 0;i<arr1.length;i++){
+        var item = arr1[i] + "1";
+        newArr.push(item);
+    }
+    console.log(newArr);
+
+
+    // filter()方法：过滤，筛选。把数组中的数据经过函数的内的运算，如果满足条件将元素存入新的数组中，不满足则过滤掉。
+    // 运算条件结果为true则保存值新的数组中，结果false则过滤掉。
+    var res = arr1.filter(function(item){
+        return typeof item == 'number' || typeof item == 'boolean' || item instanceof Function
+    });
+    console.log(res);
+    // 原生方法
+    var newArr = [];
+    var j = 0;
+    for(var i=0;i<arr1.length;i++){
+        var item = arr1[i];
+        if(item > 8){
+            newArr[j] = arr1[i];
+            j++;
+        }
+    }
+    console.log(arr1);
+    console.log(newArr);
+
+
+    // find()方法：找出数组中第一个符合条件的元素。
+    var res = arr1.find(function(item){
+        return item > 8
+    });
+    console.log(res);
+    // 原生写法
+    for(var i =0;i<arr1.length;i++){
+        if(arr1[i] > 8){
+            console.log(arr1[i]);
+            break;
+        }
+    }
+
+
+    // reduce()方法：将数组中所有的数据都参与函数运算，将运算的结果存放在一个参数“prev”中，再进行下一次运算
+    // 参数4个：1.初始值，存放上一次的运算结果。2.数组数据。3.数组下标。4.数组本身。
+    // prev “添加前”使用数组中的第一条数据“arr[0]”item为第二条数据 。   “添加后”prev使用初始值，item从第一条数据开始。
+    var arr2 = [1,2,3,4,5];
+    var res = arr2.reduce(function(prev,item,index,arr2){
+        return prev + item;
+    },10);
+    console.log(res);
+    // 原生写法
+    var sum = 10; 
+    for(var i=0;i<arr2.length;i++){
+        sum += arr2[i];
+    }
+    console.log(sum);
+
+
+
+
+
+
+
+</script>
+<!-- 原课件5.18号，详情解析 -->
+</html>

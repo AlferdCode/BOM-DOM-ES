@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 2.个人所得税计算
+    // 应缴纳个人所得税=（起征点5000元）* 工资所在级别的税率-速算扣除数
+    // 需求：1.输入当月的工资“”  2.税率。 3.扣除税。
+    
+    var gongzi = prompt("请输入你当月的工资");
+    gongzi *= 1; //把String计算后转化为number
+    var shuiLv = 0;
+    var kouChuShui = 0;
+
+    // 判断输入的工资不能是NaN类型，不能是负数
+    if(isNaN(gongzi) || gongzi < 0){
+        alert("请输入正确的工资");
+    }else{
+        // 年收入
+        var year = gongzi * 12;
+        // 年应纳税所得额
+        var suoDeE = year - 5000 * 12; 
+        // 根据年应纳税所得额，判断税率及速算扣除数应该是多少
+        
+        if(suoDeE < 0){
+            alert("工资太低，不用交税");
+        }else if(suoDeE <= 36000){
+            shuiLv = 0.03;
+            kouChuShui = 0;
+        }else if(suoDeE > 36000 && suoDeE <= 144000){
+            shuiLv = 0.1;
+            kouChuShui = 2520;
+        }else if(suoDeE > 144000 && suoDeE <= 300000){
+            shuiLv = 0.2;
+            kouChuShui = 16920;
+        }else if(suoDeE > 300000 && suoDeE <= 420000){
+            shuiLv = 0.25;
+            kouChuShui = 31920;
+        }else if(suoDeE > 420000 && suoDeE <= 660000){
+            shuiLv = 0.3;
+            kouChuShui = 52920;
+        }else if(suoDeE > 660000 && suoDeE <= 960000){
+            shuiLv = 0.35;
+            kouChuShui = 85920;
+        }else{
+            shuiLv = 0.45;
+            kouChuShui = 181920;
+        }
+
+        // 个税 = 应纳税所得额 * 税率 - 速算扣除
+        var geShui = suoDeE * shuiLv - kouChuShui;
+        alert("本年应缴纳个税" + geShui + "元");
+    }
+
+
+    // 遍历对象数据
+    var allObj = {
+        'aiHao':{
+            'yd':'羽毛球',
+            'sf':'毛笔字',
+            'pb':'马拉松'
+        },
+        'caiYi':{
+            'cg':'摇滚乐',
+            'tw':'民族舞'
+        }
+    }
+    /*输出：外层遍历2个key所以会循环两次
+    第一次遍历的的是'aiHao'有两条数据，内层循环遍历当前的'aiHao'对象k(两条数据“yd,sf”，就是会循环两次)，每循环一次页面中输出四条数据(两次共8条数据)。
+        第一次遍历：在页面中输出一个div块，块内是内层循环“里面是两个对象会遍历2次”，每次输出4个h3“两次共8个”
+        所以外层对象的key走一圈，内层对象的k走了两圈  =   一个div内装8个h3
+
+    第二次遍历的的是'caiYi'有两条数据，内层循环遍历当前的'caiYi'对象k(两条数据“cg,tw”，就是会循环两次)，每循环一次页面中输出四条数据(两次共8条数据)。
+        第二次遍历同第一次遍历相同。
+    */ 
+    for(var key in allObj){
+        // 输出allObj对象里面的数据“两个对象”
+        console.log(allObj.aiHao);
+        document.write("<div>");
+        for(var k in allObj[key]){
+            // 输出allObj对象的属性的数据 “获取四条数据”
+            console.log(allObj[key][k]);
+            var objs = allObj[key][k]
+            document.write(`
+                <h3>${allObj.aiHao.yd}</h3>
+                <h3>${allObj.aiHao.sf}</h3>
+                <h3>${allObj.caiYi.cg}</h3>
+                <h3>${allObj.caiYi.tw}</h3>
+            `)
+        }
+        document.write("</div>");
+    }
+
+</script>
+</html>

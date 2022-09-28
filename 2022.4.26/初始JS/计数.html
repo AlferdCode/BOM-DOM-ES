@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情页产品计数</title>
+    <style>
+        .box{
+            margin: 50px;
+        }
+        button,span{
+            vertical-align: middle;
+        }
+        .num{
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+         <button class="lt">-</button>
+         <span class="num">0</span>
+         <button class="rt">+</button>
+    </div>
+</body>
+<script>
+    //1.获取元素
+    var reduce = document.querySelector(".lt");
+    var num = document.querySelector(".box .num");
+    var add = document.querySelector(".rt");
+    console.log(reduce,num,add);
+    //2.给定num0初始值
+    var x = 0;
+
+    //3.给定事件
+    // 减号操作
+    reduce.onclick = function(){
+        // 每次点击递减1
+        x--;
+        // 判断数值小于0的情况
+        if(x < 0){
+            //把当前的数值添加到页面中
+            num.innerHTML = "0";
+            x = 0;
+        }else{
+            num.innerHTML = x;
+        }
+    }
+    //加号操作
+    add.onclick = function(){
+        x++;
+        num.innerHTML = x;
+    }
+
+  /*
+    以上代码涉及的 JS 内容
+    1.JS基础语法（变量，语句，函数，运算符）
+    2.JS中的DOM（获取元素，事件触发，改变HTML元素）
+   */
+</script>
+</html>
